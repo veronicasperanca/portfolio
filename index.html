@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verônica Sperança — Senior Product Designer</title>
+  <meta name="description" content="Senior Product Designer com 15 anos de experiência em UX/UI, iGaming e Banking. Especialista em Product-Led Growth, Design Systems e IA Aplicada." />
+  <meta property="og:title" content="Verônica Sperança — Senior Product Designer" />
+  <meta property="og:description" content="15 anos transformando complexidade em experiências que convertem, retêm e encantam." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">VS<span class="nav__logo-dot">.</span></a>
+    <ul class="nav__links" role="list">
+      <li><a href="#sobre"    class="nav__link">Sobre</a></li>
+      <li><a href="#cases"    class="nav__link">Cases</a></li>
+      <li><a href="#expertise" class="nav__link">Expertise</a></li>
+      <li><a href="#ds"       class="nav__link">Design System</a></li>
+      <li><a href="#contato"  class="nav__link">Contato</a></li>
+    </ul>
+    <a href="#contato" class="nav__cta">Vamos conversar</a>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navegação mobile">
+    <ul role="list">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#ds">Design System</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" aria-label="Introdução">
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+    <div class="hero__ambient" aria-hidden="true">
+      <div class="hero__ambient-orb hero__ambient-orb--1"></div>
+      <div class="hero__ambient-orb hero__ambient-orb--2"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__eyebrow" aria-label="Especialização">
+        Senior Product Designer &nbsp;·&nbsp; 15 anos de experiência
+      </div>
+      <h1 class="hero__name">
+        Verônica<br>
+        <span class="hero__name-em">Sperança</span>
+      </h1>
+      <p class="hero__role">Product · UX Strategy · iGaming · Banking</p>
+      <div class="hero__tagline-wrap">
+        <span class="hero__tagline" id="typedText"></span>
+      </div>
+      <div class="hero__cta-group">
+        <a href="#cases" class="btn btn--primary">Ver Cases</a>
+        <a href="#contato" class="btn btn--ghost">Vamos conversar →</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ====== METRICS ====== -->
+  <section class="metrics" aria-label="Principais resultados">
+    <div class="container">
+      <div class="metrics__grid">
+        <div class="metric-item">
+          <div class="metric-item__number">
+            <span class="counter" data-target="15">0</span>+
+          </div>
+          <div class="metric-item__label">Anos de Experiência</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">
+            +<span class="counter" data-target="25">0</span>%
+          </div>
+          <div class="metric-item__label">Retenção Mensal · Betano</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">
+            +<span class="counter" data-target="60">0</span>%
+          </div>
+          <div class="metric-item__label">Engajamento · 99Jobs</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">
+            <span class="counter" data-target="97">0</span>%
+          </div>
+          <div class="metric-item__label">Taxa de Retenção Histórica</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">
+            -<span class="counter" data-target="55">0</span>%
+          </div>
+          <div class="metric-item__label">Tempo de Interação · Banking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT ====== -->
+  <section class="about" id="sobre" aria-label="Sobre Verônica">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__visual reveal">
+          <div class="about__avatar-frame">
+            <div class="about__avatar-placeholder" role="img" aria-label="VS — Verônica Sperança">VS</div>
+            <div class="about__avatar-ring" aria-hidden="true"></div>
+            <div class="about__avatar-ring about__avatar-ring--2" aria-hidden="true"></div>
+          </div>
+          <div class="about__badge">Product-Led Growth</div>
+          <div class="about__badge about__badge--2">iGaming · Banking</div>
+        </div>
+        <div class="about__text">
+          <div class="section-label">Sobre mim</div>
+          <h2 class="section-title">Design que <em>transforma</em> negócios</h2>
+          <p class="about__body">
+            Sou uma líder estratégica que une profundidade técnica em UX/UI ao pensamento de produto. Em 15 anos, construí soluções em plataformas de alta complexidade — do iGaming ao setor bancário — sempre partindo da pesquisa e chegando em resultados mensuráveis para o negócio.
+          </p>
+          <p class="about__body">
+            Minha abordagem integra <strong>Psicologia Cognitiva</strong>, <strong>Design Baseado em Dados</strong> e frameworks de <strong>Product-Led Growth</strong> para construir produtos que retêm, convertem e encantam. Sou especialista em gamificação aplicada a contextos corporativos e em transformar processos complexos em jornadas intuitivas.
+          </p>
+          <p class="about__body">
+            Com atuação em Engenharia da Computação (UTFPR) e formação contínua em UX Strategy, trago uma visão única: a precisão técnica a serviço da experiência humana.
+          </p>
+          <div class="about__tags">
+            <span class="tag">Product Strategy</span>
+            <span class="tag">UX Research</span>
+            <span class="tag">Gamificação</span>
+            <span class="tag">Design System</span>
+            <span class="tag">Service Design</span>
+            <span class="tag">IA Aplicada</span>
+            <span class="tag">Scrum · Kanban</span>
+            <span class="tag">Eng. da Computação</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ====== CASES ====== -->
+  <section class="cases" id="cases" aria-label="Cases selecionados">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Portfólio</div>
+        <h2 class="section-title">Cases <em>Selecionados</em></h2>
+        <p class="section-subtitle">Projetos que demonstram a interseção entre estratégia de produto, psicologia de usuário e execução de design de alto padrão — com resultados mensuráveis.</p>
+      </div>
+
+      <div class="cases__grid">
+
+        <!-- ── CASE 1: BETANO ── -->
+        <article class="case-card case-card--featured">
+          <a href="case-betano.html" class="case-card__link" aria-label="Ver case Betano completo">
+            <div class="case-card__visual">
+              <div class="mockup-screen">
+                <div class="mockup-roulette" role="img" aria-label="Interface de roleta redesenhada">
+                  <div class="roulette-wheel"></div>
+                  <div class="roulette-track"></div>
+                </div>
+              </div>
+              <div class="case-card__tags-float" aria-label="Tags do projeto">
+                <span>iGaming</span>
+                <span>UX/UI</span>
+                <span>Game Design</span>
+                <span>Design System</span>
+              </div>
+            </div>
+            <div class="case-card__body">
+              <div class="case-card__company">Betano &nbsp;·&nbsp; 2024 – 2026</div>
+              <h3 class="case-card__title">Reestruturação do Ecossistema Digital para Milhões de Usuários</h3>
+              <p class="case-card__excerpt">
+                Como a aplicação de Teoria do Fluxo, Lei de Hick e princípios de Psicologia Cognitiva transformaram a plataforma — reduzindo carga cognitiva e tornando o fluxo de apostas 40% mais rápido para milhões de usuários ativos.
+              </p>
+              <div class="case-card__metrics">
+                <div class="case-metric">
+                  <span class="case-metric__value">+25%</span>
+                  <span class="case-metric__label">Retenção Mensal</span>
+                </div>
+                <div class="case-metric">
+                  <span class="case-metric__value">+18%</span>
+                  <span class="case-metric__label">Performance do Jogo</span>
+                </div>
+                <div class="case-metric">
+                  <span class="case-metric__value">40%</span>
+                  <span class="case-metric__label">Fluxo Mais Rápido</span>
+                </div>
+              </div>
+              <div class="case-card__cta">
+                Ver Case Completo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- ── CASE 2: 99JOBS ── -->
+        <article class="case-card" style="transition-delay:.1s">
+          <a href="case-99jobs.html" class="case-card__link" aria-label="Ver case 99Jobs completo">
+            <div class="case-card__visual">
+              <div class="mockup-game-ui" role="img" aria-label="Interface gamificada de recrutamento">
+                <div class="game-progress-bar">
+                  <div class="game-progress-fill"></div>
+                </div>
+                <div class="game-badge-row">
+                  <div class="game-badge"></div>
+                  <div class="game-badge game-badge--active"></div>
+                  <div class="game-badge"></div>
+                </div>
+                <div class="game-card-preview">
+                  <div class="game-card-line"></div>
+                  <div class="game-card-line short"></div>
+                </div>
+              </div>
+              <div class="case-card__tags-float">
+                <span>Gamificação</span>
+                <span>UX Research</span>
+                <span>Storytelling</span>
+                <span>Scrum</span>
+              </div>
+            </div>
+            <div class="case-card__body">
+              <div class="case-card__company">99Jobs &nbsp;·&nbsp; 2022 – 2023</div>
+              <h3 class="case-card__title">Gamificação de Processos Seletivos em Grandes Corporações</h3>
+              <p class="case-card__excerpt">
+                Aplicação do Octalysis Framework e Teoria da Autodeterminação para transformar o recrutamento de Casa&Video, ABB, Pirelli, Honda e outras 6 empresas — de um processo passivo para uma experiência imersiva e mensurável.
+              </p>
+              <div class="case-card__metrics">
+                <div class="case-metric">
+                  <span class="case-metric__value">+60%</span>
+                  <span class="case-metric__label">Engajamento</span>
+                </div>
+                <div class="case-metric">
+                  <span class="case-metric__value">97%</span>
+                  <span class="case-metric__label">Retenção no Processo</span>
+                </div>
+                <div class="case-metric">
+                  <span class="case-metric__value">-55%</span>
+                  <span class="case-metric__label">Tempo de Implementação</span>
+                </div>
+              </div>
+              <div class="case-card__cta">
+                Ver Case Completo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- ── CASE 3: BANKING ── -->
+        <article class="case-card" style="transition-delay:.2s">
+          <a href="case-banking.html" class="case-card__link" aria-label="Ver case Banking completo">
+            <div class="case-card__visual">
+              <div class="mockup-ura" role="img" aria-label="Visualização de sistema URA bancário">
+                <div class="ura-wave">
+                  <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <polyline points="0,40 20,20 40,55 60,30 80,45 100,15 120,50 140,35 160,45 180,25 200,40"
+                      fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="ura-nodes">
+                  <div class="ura-node active"></div>
+                  <div class="ura-node"></div>
+                  <div class="ura-node"></div>
+                </div>
+              </div>
+              <div class="case-card__tags-float">
+                <span>Banking</span>
+                <span>Service Design</span>
+                <span>Voice UX</span>
+              </div>
+            </div>
+            <div class="case-card__body">
+              <div class="case-card__company">NOOVI · Paraná Banco · Banco Original &nbsp;·&nbsp; 2022</div>
+              <h3 class="case-card__title">Voice UX & Service Design para Sistemas Bancários Críticos</h3>
+              <p class="case-card__excerpt">
+                Redesenho completo de URA bancária aplicando modelos cognitivos GOMS, Service Blueprinting e mapeamento de jornada — reduzindo em 55% o tempo de interação e em 30% os erros de navegação em sistemas de atendimento críticos.
+              </p>
+              <div class="case-card__metrics">
+                <div class="case-metric">
+                  <span class="case-metric__value">-55%</span>
+                  <span class="case-metric__label">Tempo de Interação</span>
+                </div>
+                <div class="case-metric">
+                  <span class="case-metric__value">+30%</span>
+                  <span class="case-metric__label">Compreensão</span>
+                </div>
+                <div class="case-metric">
+                  <span class="case-metric__value">-30%</span>
+                  <span class="case-metric__label">Erros e Chamadas Repetidas</span>
+                </div>
+              </div>
+              <div class="case-card__cta">
+                Ver Case Completo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== EXPERTISE ====== -->
+  <section class="expertise" id="expertise" aria-label="Áreas de expertise">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Diferenciais</div>
+        <h2 class="section-title">Expertise que <em>gera resultado</em></h2>
+        <p class="section-subtitle">Cada pilar da minha atuação é sustentado por frameworks reconhecidos, aplicados com intencionalidade e medido por impacto real.</p>
+      </div>
+
+      <div class="expertise__grid">
+
+        <div class="expertise-card reveal">
+          <div class="expertise-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3>Psicologia de Usuário</h3>
+          <p>Aplico princípios como Lei de Hick, Lei de Fitts, Teoria do Fluxo de Csikszentmihalyi, Modelos Mentais e Vieses Cognitivos para projetar interfaces que reduzem carga cognitiva e maximizam conversão.</p>
+          <div class="expertise-card__tags">
+            <span>Lei de Hick</span><span>Teoria do Fluxo</span><span>Vieses Cognitivos</span><span>GOMS</span>
+          </div>
+        </div>
+
+        <div class="expertise-card reveal" data-delay="100">
+          <div class="expertise-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>Product Intelligence</h3>
+          <p>Da hipótese ao dado — e do dado à decisão. Conduzo pesquisas qualitativas e quantitativas, mapeo jornadas completas e defino KPIs que conectam comportamento de usuário a objetivos de negócio.</p>
+          <div class="expertise-card__tags">
+            <span>User Research</span><span>Data-Driven</span><span>KPI Mapping</span><span>Analytics</span>
+          </div>
+        </div>
+
+        <div class="expertise-card reveal" data-delay="200">
+          <div class="expertise-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+          </div>
+          <h3>Design System</h3>
+          <p>Construção e governança de sistemas escaláveis — de tokens de design a componentes documentados, com adoption strategy para times distribuídos e padrões que reduzem o tempo de desenvolvimento em futuras iterações.</p>
+          <div class="expertise-card__tags">
+            <span>Design Tokens</span><span>Component Library</span><span>DesignOps</span><span>Figma</span>
+          </div>
+        </div>
+
+        <div class="expertise-card reveal" data-delay="300">
+          <div class="expertise-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+          </div>
+          <h3>IA Aplicada ao Design</h3>
+          <p>Utilizo ferramentas de IA como Gemini, Perplexity e modelos generativos para acelerar pesquisa sintética, geração de protótipos conceituais e análise de padrões de comportamento — mantendo o humano no centro.</p>
+          <div class="expertise-card__tags">
+            <span>Prompt Engineering</span><span>AI-Assisted Research</span><span>Synthetic Data</span><span>Gemini</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== DESIGN SYSTEM SHOWCASE ====== -->
+  <section class="ds-showcase" id="ds" aria-label="Design System">
+    <div class="container">
+
+      <div class="ds-section-intro reveal">
+        <div>
+          <div class="section-label">Design System</div>
+          <h2 class="section-title">Tokens, Componentes,<br><em>Escala</em></h2>
+        </div>
+        <div>
+          <p class="ds-body">
+            Um Design System não é uma biblioteca de componentes. É uma linguagem compartilhada que permite que times distribuídos falem com a mesma voz — visualmente, estruturalmente e semanticamente.
+          </p>
+          <p class="ds-body" style="margin-top:1rem;">
+            Minha abordagem começa pelos <strong style="color:var(--text-1)">tokens</strong> (as decisões atômicas de cor, espaçamento e tipografia), progride para <strong style="color:var(--text-1)">componentes documentados</strong> e culmina em <strong style="color:var(--text-1)">guidelines de uso e governança</strong> — garantindo adoção e consistência ao longo do tempo.
+          </p>
+        </div>
+      </div>
+
+      <div class="ds-grid reveal">
+
+        <!-- Color tokens -->
+        <div class="ds-card">
+          <div class="ds-card__label">Color Tokens</div>
+          <div class="ds-color-row">
+            <div class="ds-swatch">
+              <div class="ds-swatch__dot" style="background:#C9A96E"></div>
+              <div class="ds-swatch__info">
+                <span class="ds-swatch__name">primary.gold</span>
+                <span class="ds-swatch__value">#C9A96E</span>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch__dot" style="background:#7C5FD8"></div>
+              <div class="ds-swatch__info">
+                <span class="ds-swatch__name">accent.violet</span>
+                <span class="ds-swatch__value">#7C5FD8</span>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch__dot" style="background:#06060F; border:1px solid rgba(255,255,255,0.1)"></div>
+              <div class="ds-swatch__info">
+                <span class="ds-swatch__name">surface.base</span>
+                <span class="ds-swatch__value">#06060F</span>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch__dot" style="background:#F0EDE6"></div>
+              <div class="ds-swatch__info">
+                <span class="ds-swatch__name">text.primary</span>
+                <span class="ds-swatch__value">#F0EDE6</span>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch__dot" style="background:#B8B4AE"></div>
+              <div class="ds-swatch__info">
+                <span class="ds-swatch__name">text.secondary</span>
+                <span class="ds-swatch__value">#B8B4AE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography scale -->
+        <div class="ds-card">
+          <div class="ds-card__label">Type Scale</div>
+          <div class="ds-type-row">
+            <div class="ds-type-item">
+              <span class="ds-type-item__sample" style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300;">Display</span>
+              <span class="ds-type-item__meta">Cormorant / 300 / 2rem</span>
+            </div>
+            <div class="ds-type-item">
+              <span class="ds-type-item__sample" style="font-size:1.25rem; font-weight:500;">Heading</span>
+              <span class="ds-type-item__meta">Inter / 500 / 1.25rem</span>
+            </div>
+            <div class="ds-type-item">
+              <span class="ds-type-item__sample" style="font-size:1rem; color:var(--text-2);">Body text</span>
+              <span class="ds-type-item__meta">Inter / 400 / 1rem</span>
+            </div>
+            <div class="ds-type-item">
+              <span class="ds-type-item__sample" style="font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:.15em; color:var(--gold);">LABEL TEXT</span>
+              <span class="ds-type-item__meta">DM Mono / 400 / 0.7rem</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Components -->
+        <div class="ds-card">
+          <div class="ds-card__label">Componentes</div>
+          <div class="ds-component-row">
+            <div>
+              <span class="ds-comp-btn ds-comp-btn--primary">Ação Principal</span>
+            </div>
+            <div>
+              <span class="ds-comp-btn ds-comp-btn--secondary">Secundário</span>
+            </div>
+            <div>
+              <span class="ds-comp-btn ds-comp-btn--ghost">Ghost</span>
+            </div>
+            <div class="ds-comp-input">Campo de entrada</div>
+            <div class="ds-comp-card">
+              <span style="font-size:0.8rem; font-weight:500; color:var(--text-1);">Card Component</span>
+              <p>surface-2 · radius-lg · border-card</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== AI SECTION ====== -->
+  <section class="ai-section" aria-label="IA Aplicada">
+    <div class="container">
+      <div class="ai-grid">
+
+        <div class="ai-visual reveal" aria-hidden="true">
+          <div class="ai-visual__orbit">
+            <div class="ai-visual__center">AI Core</div>
+            <div class="ai-orbit-ring ai-orbit-ring--1"></div>
+            <div class="ai-orbit-ring ai-orbit-ring--2"></div>
+
+            <div class="ai-orbit-node" style="top:5%; left:50%; transform:translateX(-50%);">Gemini</div>
+            <div class="ai-orbit-node" style="top:25%; right:-5%;">Perplexity</div>
+            <div class="ai-orbit-node" style="bottom:5%; left:50%; transform:translateX(-50%);">Midjourney</div>
+            <div class="ai-orbit-node" style="top:25%; left:-5%;">GPT-4o</div>
+          </div>
+        </div>
+
+        <div class="ai-content reveal" data-delay="100">
+          <div class="section-label">IA Aplicada</div>
+          <h2 class="section-title">Conhecimento avançado<br><em>em Inteligência Artificial</em></h2>
+          <p class="section-subtitle">IA não substitui o pensamento de design — ela amplifica a velocidade e profundidade da pesquisa e prototipagem.</p>
+          <ul>
+            <li>Pesquisa sintética com LLMs para validação inicial de hipóteses e geração de personas</li>
+            <li>Prompt Engineering aplicado à geração de variantes de UI e exploração de conceitos</li>
+            <li>Análise de padrões de comportamento com auxílio de ferramentas como Perplexity e Gemini</li>
+            <li>Automação de testes de acessibilidade e checagem de contraste com IA</li>
+            <li>Geração de conteúdo de UX Writing alinhado à voz da marca com modelos generativos</li>
+            <li>Aceleração de Design System: documentação assistida e geração de variantes de tokens</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SKILLS ====== -->
+  <section style="padding: var(--sp-24) 0;" aria-label="Habilidades e ferramentas">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Stack</div>
+        <h2 class="section-title">Habilidades & <em>Ferramentas</em></h2>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4); margin-top:var(--sp-12);">
+        <div class="ds-card reveal">
+          <div class="ds-card__label">Habilidades</div>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--sp-2); margin-top:var(--sp-4);">
+            <span class="tag">UX Design</span><span class="tag">UI Design</span><span class="tag">Product Strategy</span>
+            <span class="tag">User Research</span><span class="tag">Service Design</span><span class="tag">Game Design</span>
+            <span class="tag">Gamificação</span><span class="tag">Storytelling</span><span class="tag">Design Thinking</span>
+            <span class="tag">UX Writing</span><span class="tag">DesignOps</span><span class="tag">ResearchOps</span>
+            <span class="tag">QA</span><span class="tag">Psicologia Cognitiva</span><span class="tag">Product-Led Growth</span>
+          </div>
+        </div>
+        <div class="ds-card reveal" data-delay="100">
+          <div class="ds-card__label">Ferramentas</div>
+          <div style="display:flex; flex-direction:column; gap:var(--sp-3); margin-top:var(--sp-4);">
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:.8rem; color:var(--text-2);">Figma</span>
+                <span style="font-family:var(--font-mono); font-size:.65rem; color:var(--gold);">Avançado</span>
+              </div>
+              <div style="height:4px; background:var(--surface-3); border-radius:99px; overflow:hidden;">
+                <div class="skill-fill" data-width="95" style="height:100%; background:linear-gradient(90deg, var(--violet), var(--gold)); border-radius:99px; width:0; transition:width 1.2s ease;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:.8rem; color:var(--text-2);">Jira · Trello</span>
+                <span style="font-family:var(--font-mono); font-size:.65rem; color:var(--gold);">Avançado</span>
+              </div>
+              <div style="height:4px; background:var(--surface-3); border-radius:99px; overflow:hidden;">
+                <div class="skill-fill" data-width="92" style="height:100%; background:linear-gradient(90deg, var(--violet), var(--gold)); border-radius:99px; width:0; transition:width 1.3s ease .1s;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:.8rem; color:var(--text-2);">Git / Github</span>
+                <span style="font-family:var(--font-mono); font-size:.65rem; color:var(--gold);">Avançado</span>
+              </div>
+              <div style="height:4px; background:var(--surface-3); border-radius:99px; overflow:hidden;">
+                <div class="skill-fill" data-width="88" style="height:100%; background:linear-gradient(90deg, var(--violet), var(--gold)); border-radius:99px; width:0; transition:width 1.4s ease .2s;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:.8rem; color:var(--text-2);">Miro</span>
+                <span style="font-family:var(--font-mono); font-size:.65rem; color:var(--gold);">Intermediário</span>
+              </div>
+              <div style="height:4px; background:var(--surface-3); border-radius:99px; overflow:hidden;">
+                <div class="skill-fill" data-width="75" style="height:100%; background:linear-gradient(90deg, var(--violet), var(--gold)); border-radius:99px; width:0; transition:width 1.5s ease .3s;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:.8rem; color:var(--text-2);">Gemini · Perplexity</span>
+                <span style="font-family:var(--font-mono); font-size:.65rem; color:var(--gold);">Avançado</span>
+              </div>
+              <div style="height:4px; background:var(--surface-3); border-radius:99px; overflow:hidden;">
+                <div class="skill-fill" data-width="90" style="height:100%; background:linear-gradient(90deg, var(--violet), var(--gold)); border-radius:99px; width:0; transition:width 1.6s ease .4s;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <section class="contact" id="contato" aria-label="Contato">
+    <div class="container">
+      <div class="section-label contact__eyebrow reveal">Contato</div>
+      <h2 class="contact__title reveal">Pronta para o seu<br><em>próximo grande projeto</em></h2>
+      <p class="contact__sub reveal">
+        Sou Verônica Sperança — Senior Product Designer com 15 anos de experiência. Trago resultado mensurável, pensamento estratégico e execução de alto padrão.
+      </p>
+      <div class="reveal">
+        <a href="mailto:contato@veronicasperanca.com" class="btn btn--primary" style="font-size:.9rem; padding:var(--sp-4) var(--sp-12);">
+          Entrar em Contato
+        </a>
+      </div>
+      <div class="contact__links reveal">
+        <a href="mailto:contato@veronicasperanca.com" class="contact__link">contato@veronicasperanca.com</a>
+        <span class="contact__dot"></span>
+        <a href="https://linkedin.com/in/veronicasperanca" class="contact__link" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="contact__dot"></span>
+        <a href="https://github.com/veronicasperanca" class="contact__link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer role="contentinfo">
+    <p class="footer__copy">© 2026 Verônica Sperança · Senior Product Designer</p>
+    <div class="footer__links">
+      <a href="case-betano.html">Betano</a>
+      <a href="case-99jobs.html">99Jobs</a>
+      <a href="case-banking.html">Banking</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
