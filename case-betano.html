@@ -298,6 +298,212 @@
       .case-hero__title { font-size: clamp(2rem, 8vw, 3rem); }
       .case-metrics-bar .metrics__grid { grid-template-columns: 1fr; }
     }
+
+    /* ── Wireframe Section ── */
+    .wireframe-section {
+      background: var(--surface-1);
+      padding: var(--sp-24) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .wireframe-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 5% 50%, rgba(109,79,194,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 95% 20%, rgba(201,169,110,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .wireframe-section .container { position: relative; z-index: 1; }
+
+    .wireframe-intro {
+      max-width: 640px;
+      margin-bottom: var(--sp-16);
+    }
+    .wireframe-intro p {
+      color: var(--text-2);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-top: var(--sp-4);
+    }
+
+    /* Wireframe annotation legend */
+    .wf-legend {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-6);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-10);
+      padding: var(--sp-4) var(--sp-6);
+      background: var(--surface-2);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--r-lg);
+      width: fit-content;
+    }
+    .wf-legend__item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .wf-legend__swatch {
+      width: 20px;
+      height: 8px;
+      border-radius: 2px;
+    }
+    .wf-legend__swatch--primary { background: var(--gold); opacity: 0.6; }
+    .wf-legend__swatch--nav     { background: var(--surface-4); border: 1px solid var(--border); }
+    .wf-legend__swatch--content { background: transparent; border: 1.5px dashed var(--text-3); opacity: 0.6; }
+    .wf-legend__swatch--action  { background: var(--violet); opacity: 0.4; }
+
+    /* Grid of wireframe cards */
+    .wireframe-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-4);
+      align-items: start;
+    }
+
+    .wf-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-card);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      transition: all var(--t-ease);
+      cursor: default;
+    }
+    .wf-card:hover {
+      border-color: var(--gold-border);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-3px);
+    }
+    .wf-card__header {
+      background: var(--surface-3);
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wf-card__num {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .wf-card__screen-label {
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .wf-card__title {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-1);
+      padding: var(--sp-3) var(--sp-4) var(--sp-2);
+    }
+
+    /* The actual wireframe SVG area */
+    .wf-frame {
+      padding: var(--sp-3) var(--sp-4) var(--sp-4);
+    }
+    .wf-frame svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Annotations below each card */
+    .wf-annotations {
+      padding: var(--sp-3) var(--sp-4) var(--sp-4);
+      border-top: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .wf-annotation {
+      display: flex;
+      gap: var(--sp-2);
+      align-items: flex-start;
+    }
+    .wf-annotation__dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.25;
+      font-family: var(--font-mono);
+      font-size: 0.45rem;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      border: 1px solid var(--gold);
+    }
+    .wf-annotation__text {
+      font-size: 0.68rem;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    /* Flow arrows between cards */
+    .wireframe-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-4);
+      position: relative;
+      margin-bottom: var(--sp-4);
+    }
+    .wireframe-flow::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(10% + var(--sp-4));
+      right: calc(10% + var(--sp-4));
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-border), var(--gold-border), var(--gold-border), transparent);
+      transform: translateY(-50%);
+    }
+    .wf-flow-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wf-flow-label span {
+      background: var(--surface-2);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--r-full);
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 2px 8px;
+    }
+
+    @media (max-width: 1200px) {
+      .wireframe-grid { grid-template-columns: repeat(3, 1fr); }
+      .wireframe-flow { grid-template-columns: repeat(3, 1fr); }
+      .wireframe-flow .wf-flow-label:nth-child(n+4) { display: none; }
+    }
+    @media (max-width: 768px) {
+      .wireframe-grid { grid-template-columns: repeat(2, 1fr); }
+      .wireframe-flow { display: none; }
+    }
+    @media (max-width: 480px) {
+      .wireframe-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -398,6 +604,7 @@
         <a href="#desafio">O Desafio</a>
         <a href="#processo">Processo</a>
         <a href="#solucao">Solução</a>
+        <a href="#wireframes">Wireframes</a>
         <a href="#jornada">Jornada do Jogador</a>
         <a href="#resultados">Resultados</a>
         <a href="#aprendizados">Aprendizados</a>
@@ -541,6 +748,407 @@
       </p>
     </article>
   </div>
+
+  <!-- ====== WIREFRAME SECTION ====== -->
+  <section class="wireframe-section" id="wireframes" aria-label="Wireframes do projeto Betano">
+    <div class="container">
+
+      <div class="section-label">Processo de Design</div>
+      <h2 class="section-title">Wireframes & <em>Estrutura</em></h2>
+
+      <div class="wireframe-intro">
+        <p>
+          Antes de qualquer decisão visual, os wireframes definiram a hierarquia de informação, os padrões de navegação e os pontos de decisão do usuário. Cada tela foi desenhada como um argumento: <strong>por que este elemento está aqui?</strong> O que o usuário precisa ver agora, e o que pode esperar?
+        </p>
+      </div>
+
+      <!-- Legend -->
+      <div class="wf-legend" aria-label="Legenda do wireframe">
+        <div class="wf-legend__item">
+          <div class="wf-legend__swatch wf-legend__swatch--primary"></div>
+          Ação primária
+        </div>
+        <div class="wf-legend__item">
+          <div class="wf-legend__swatch wf-legend__swatch--nav"></div>
+          Navegação / Container
+        </div>
+        <div class="wf-legend__item">
+          <div class="wf-legend__swatch wf-legend__swatch--content"></div>
+          Conteúdo dinâmico
+        </div>
+        <div class="wf-legend__item">
+          <div class="wf-legend__swatch wf-legend__swatch--action"></div>
+          Área de interação
+        </div>
+      </div>
+
+      <!-- Flow connectors row -->
+      <div class="wireframe-flow" aria-hidden="true">
+        <div class="wf-flow-label"><span>01 · Home</span></div>
+        <div class="wf-flow-label"><span>02 · Descoberta</span></div>
+        <div class="wf-flow-label"><span>03 · Bet Slip</span></div>
+        <div class="wf-flow-label"><span>04 · Confirmação</span></div>
+        <div class="wf-flow-label"><span>05 · Resultado</span></div>
+      </div>
+
+      <!-- Wireframe cards grid -->
+      <div class="wireframe-grid">
+
+        <!-- ── WF 01: Home ── -->
+        <div class="wf-card reveal">
+          <div class="wf-card__header">
+            <span class="wf-card__num">01</span>
+            <span class="wf-card__screen-label">Home · Desktop</span>
+          </div>
+          <div class="wf-card__title">Acesso & Home</div>
+          <div class="wf-frame">
+            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Nav bar -->
+              <rect x="0" y="0" width="160" height="16" rx="0" fill="var(--surface-4)" opacity="0.9"/>
+              <rect x="6" y="5" width="24" height="6" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <rect x="90" y="5" width="16" height="6" rx="2" fill="var(--surface-3)" opacity="0.7"/>
+              <rect x="110" y="5" width="14" height="6" rx="2" fill="var(--surface-3)" opacity="0.7"/>
+              <rect x="128" y="4" width="26" height="8" rx="3" fill="var(--gold)" opacity="0.7"/>
+              <!-- Hero banner -->
+              <rect x="0" y="18" width="160" height="52" rx="0" fill="var(--surface-3)" opacity="0.8"/>
+              <rect x="8" y="26" width="4" height="4" rx="1" fill="var(--gold)" opacity="0.8"/>
+              <rect x="8" y="34" width="80" height="7" rx="2" fill="var(--text-1)" opacity="0.25"/>
+              <rect x="8" y="44" width="55" height="5" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="8" y="57" width="32" height="9" rx="3" fill="var(--gold)" opacity="0.65"/>
+              <!-- Quick access chips -->
+              <rect x="8" y="78" width="30" height="8" rx="4" fill="var(--gold)" opacity="0.3"/>
+              <rect x="42" y="78" width="28" height="8" rx="4" fill="var(--surface-4)" opacity="0.6"/>
+              <rect x="74" y="78" width="32" height="8" rx="4" fill="var(--surface-4)" opacity="0.6"/>
+              <rect x="110" y="78" width="24" height="8" rx="4" fill="var(--surface-4)" opacity="0.6"/>
+              <!-- Section label -->
+              <rect x="8" y="94" width="50" height="4" rx="2" fill="var(--text-3)" opacity="0.4"/>
+              <!-- Content cards row 1 -->
+              <rect x="8" y="102" width="44" height="36" rx="4" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="10" y="104" width="40" height="18" rx="2" fill="var(--gold)" opacity="0.12"/>
+              <rect x="10" y="125" width="28" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="10" y="131" width="18" height="3" rx="2" fill="var(--gold)" opacity="0.3"/>
+              <rect x="58" y="102" width="44" height="36" rx="4" fill="var(--surface-3)" stroke="var(--gold-border)" stroke-width="0.5"/>
+              <rect x="60" y="104" width="40" height="18" rx="2" fill="var(--violet)" opacity="0.1"/>
+              <rect x="60" y="125" width="28" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="60" y="131" width="18" height="3" rx="2" fill="var(--gold)" opacity="0.3"/>
+              <rect x="108" y="102" width="44" height="36" rx="4" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="110" y="104" width="40" height="18" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="110" y="125" width="28" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="110" y="131" width="18" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <!-- Section 2 label -->
+              <rect x="8" y="146" width="60" height="4" rx="2" fill="var(--text-3)" opacity="0.4"/>
+              <!-- List items -->
+              <rect x="8" y="155" width="144" height="14" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="14" y="159" width="6" height="6" rx="1" fill="var(--gold)" opacity="0.3"/>
+              <rect x="24" y="160" width="60" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="130" y="159" width="16" height="6" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <rect x="8" y="172" width="144" height="14" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="14" y="176" width="6" height="6" rx="1" fill="var(--violet)" opacity="0.2"/>
+              <rect x="24" y="177" width="50" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="130" y="176" width="16" height="6" rx="2" fill="var(--surface-4)" opacity="0.6"/>
+              <rect x="8" y="189" width="144" height="14" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="14" y="193" width="6" height="6" rx="1" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="24" y="194" width="55" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="130" y="193" width="16" height="6" rx="2" fill="var(--surface-4)" opacity="0.6"/>
+              <!-- Annotation markers -->
+              <circle cx="44" cy="62" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="43" y="64" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">A</text>
+              <circle cx="58" cy="120" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="57" y="122" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">B</text>
+            </svg>
+          </div>
+          <div class="wf-annotations">
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">A</div>
+              <span class="wf-annotation__text">CTA destacado no hero com contexto personalizado</span>
+            </div>
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">B</div>
+              <span class="wf-annotation__text">Card em destaque = jogo mais relevante para o perfil</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WF 02: Descoberta ── -->
+        <div class="wf-card reveal" data-delay="80">
+          <div class="wf-card__header">
+            <span class="wf-card__num">02</span>
+            <span class="wf-card__screen-label">Descoberta · Desktop</span>
+          </div>
+          <div class="wf-card__title">Busca & Descoberta</div>
+          <div class="wf-frame">
+            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Nav -->
+              <rect x="0" y="0" width="160" height="16" rx="0" fill="var(--surface-4)" opacity="0.9"/>
+              <rect x="6" y="5" width="24" height="6" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <rect x="128" y="4" width="26" height="8" rx="3" fill="var(--gold)" opacity="0.7"/>
+              <!-- Search bar prominente -->
+              <rect x="8" y="22" width="144" height="16" rx="4" fill="var(--surface-3)" stroke="var(--gold)" stroke-width="0.8"/>
+              <circle cx="20" cy="30" r="4" fill="none" stroke="var(--text-3)" stroke-width="1" opacity="0.5"/>
+              <line x1="23" y1="33" x2="26" y2="36" stroke="var(--text-3)" stroke-width="1" opacity="0.5"/>
+              <rect x="28" y="27" width="80" height="6" rx="2" fill="var(--surface-4)" opacity="0.4"/>
+              <!-- Filter chips scrollable -->
+              <rect x="8" y="44" width="38" height="9" rx="4" fill="var(--gold)" opacity="0.35"/>
+              <rect x="50" y="44" width="30" height="9" rx="4" fill="var(--surface-4)" opacity="0.6"/>
+              <rect x="84" y="44" width="34" height="9" rx="4" fill="var(--surface-4)" opacity="0.6"/>
+              <rect x="122" y="44" width="30" height="9" rx="4" fill="var(--surface-4)" opacity="0.6"/>
+              <!-- Game grid 3x3 -->
+              <rect x="8" y="60" width="44" height="36" rx="3" fill="var(--gold)" opacity="0.12" stroke="var(--gold-border)" stroke-width="0.5"/>
+              <rect x="10" y="62" width="40" height="20" rx="2" fill="var(--gold)" opacity="0.1"/>
+              <rect x="10" y="85" width="30" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="10" y="91" width="18" height="3" rx="2" fill="var(--gold)" opacity="0.35"/>
+              <rect x="58" y="60" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="60" y="62" width="40" height="20" rx="2" fill="var(--violet)" opacity="0.08"/>
+              <rect x="60" y="85" width="30" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="60" y="91" width="18" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <rect x="108" y="60" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="110" y="62" width="40" height="20" rx="2" fill="var(--surface-4)" opacity="0.4"/>
+              <rect x="110" y="85" width="30" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="110" y="91" width="18" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <!-- Row 2 -->
+              <rect x="8" y="100" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="10" y="102" width="40" height="20" rx="2" fill="var(--surface-4)" opacity="0.4"/>
+              <rect x="10" y="125" width="30" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="58" y="100" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="60" y="102" width="40" height="20" rx="2" fill="var(--gold)" opacity="0.07"/>
+              <rect x="60" y="125" width="30" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="108" y="100" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="110" y="102" width="40" height="20" rx="2" fill="var(--violet)" opacity="0.07"/>
+              <rect x="110" y="125" width="30" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <!-- Row 3 -->
+              <rect x="8" y="140" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="10" y="142" width="40" height="20" rx="2" fill="var(--surface-4)" opacity="0.35"/>
+              <rect x="58" y="140" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="60" y="142" width="40" height="20" rx="2" fill="var(--surface-4)" opacity="0.35"/>
+              <rect x="108" y="140" width="44" height="36" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="110" y="142" width="40" height="20" rx="2" fill="var(--surface-4)" opacity="0.35"/>
+              <!-- Pagination -->
+              <rect x="58" y="184" width="44" height="8" rx="4" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="68" y="186" width="6" height="4" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <rect x="77" y="186" width="6" height="4" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="86" y="186" width="6" height="4" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <!-- Annotation -->
+              <circle cx="44" cy="30" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="43" y="32" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">A</text>
+              <circle cx="30" cy="68" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="29" y="70" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">B</text>
+            </svg>
+          </div>
+          <div class="wf-annotations">
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">A</div>
+              <span class="wf-annotation__text">Search em foco no topo — acesso imediato sem scroll</span>
+            </div>
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">B</div>
+              <span class="wf-annotation__text">Primeiro card = sugestão contextual, não aleatória</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WF 03: Bet Slip ── -->
+        <div class="wf-card reveal" data-delay="160">
+          <div class="wf-card__header">
+            <span class="wf-card__num">03</span>
+            <span class="wf-card__screen-label">Seleção · Desktop</span>
+          </div>
+          <div class="wf-card__title">Bet Slip Persistente</div>
+          <div class="wf-frame">
+            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Nav -->
+              <rect x="0" y="0" width="160" height="16" rx="0" fill="var(--surface-4)" opacity="0.9"/>
+              <rect x="6" y="5" width="24" height="6" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <rect x="128" y="4" width="26" height="8" rx="3" fill="var(--gold)" opacity="0.7"/>
+              <!-- Layout 2 colunas: conteúdo + bet slip -->
+              <!-- Main content col -->
+              <rect x="8" y="22" width="96" height="10" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="12" y="25" width="6" height="4" rx="1" fill="var(--violet)" opacity="0.4"/>
+              <rect x="20" y="26" width="50" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <!-- Odds grid -->
+              <rect x="8" y="36" width="96" height="30" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="12" y="40" width="40" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="12" y="46" width="25" height="14" rx="2" fill="var(--gold)" opacity="0.2" stroke="var(--gold-border)" stroke-width="0.5"/>
+              <rect x="40" y="46" width="25" height="14" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="68" y="46" width="25" height="14" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <!-- Second match -->
+              <rect x="8" y="70" width="96" height="10" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="12" y="73" width="6" height="4" rx="1" fill="var(--gold)" opacity="0.3"/>
+              <rect x="20" y="74" width="45" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="8" y="84" width="96" height="30" rx="3" fill="var(--surface-3)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="12" y="88" width="40" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="12" y="94" width="25" height="14" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="40" y="94" width="25" height="14" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="68" y="94" width="25" height="14" rx="2" fill="var(--violet)" opacity="0.15" stroke="var(--violet)" stroke-width="0.4"/>
+              <!-- Bet slip sidebar (highlighted) -->
+              <rect x="112" y="22" width="40" height="130" rx="4" fill="var(--surface-2)" stroke="var(--gold)" stroke-width="0.8"/>
+              <!-- Slip header -->
+              <rect x="116" y="26" width="24" height="4" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <rect x="144" y="25" width="6" height="6" rx="1" fill="var(--surface-4)" opacity="0.5"/>
+              <!-- Slip item -->
+              <rect x="116" y="34" width="32" height="20" rx="2" fill="var(--surface-3)" stroke="var(--gold-border)" stroke-width="0.5"/>
+              <rect x="118" y="37" width="20" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="118" y="42" width="14" height="3" rx="2" fill="var(--gold)" opacity="0.4"/>
+              <rect x="118" y="47" width="8" height="3" rx="2" fill="var(--text-1)" opacity="0.3"/>
+              <!-- Divider -->
+              <line x1="116" y1="58" x2="148" y2="58" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <!-- Amount input -->
+              <rect x="116" y="62" width="32" height="10" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="118" y="65" width="14" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <!-- Total -->
+              <rect x="116" y="76" width="16" height="4" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <rect x="136" y="76" width="12" height="4" rx="2" fill="var(--gold)" opacity="0.5"/>
+              <!-- CTA button -->
+              <rect x="116" y="118" width="32" height="10" rx="4" fill="var(--gold)" opacity="0.75"/>
+              <rect x="124" y="121" width="16" height="4" rx="2" fill="var(--surface-1)" opacity="0.6"/>
+              <!-- Annotation markers -->
+              <circle cx="30" cy="53" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="29" y="55" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">A</text>
+              <circle cx="132" cy="122" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="131" y="124" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">B</text>
+            </svg>
+          </div>
+          <div class="wf-annotations">
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">A</div>
+              <span class="wf-annotation__text">Odd selecionada destacada — estado visual imediato</span>
+            </div>
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">B</div>
+              <span class="wf-annotation__text">CTA fixo no slip — nunca escondido pelo conteúdo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WF 04: Confirmação ── -->
+        <div class="wf-card reveal" data-delay="240">
+          <div class="wf-card__header">
+            <span class="wf-card__num">04</span>
+            <span class="wf-card__screen-label">Confirmação · Mobile</span>
+          </div>
+          <div class="wf-card__title">Revisão & Confirmação</div>
+          <div class="wf-frame">
+            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Mobile frame outline -->
+              <rect x="30" y="0" width="100" height="220" rx="10" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+              <rect x="38" y="10" width="84" height="200" rx="6" fill="var(--surface-3)" opacity="0.6"/>
+              <!-- Notch -->
+              <rect x="62" y="10" width="36" height="7" rx="3" fill="var(--surface-4)" opacity="0.8"/>
+              <!-- Back nav -->
+              <rect x="42" y="22" width="10" height="6" rx="2" fill="var(--surface-4)" opacity="0.5"/>
+              <rect x="60" y="24" width="40" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <!-- Confirmation card -->
+              <rect x="42" y="34" width="76" height="80" rx="5" fill="var(--surface-2)" stroke="var(--gold)" stroke-width="0.7"/>
+              <!-- Card title -->
+              <rect x="48" y="40" width="44" height="5" rx="2" fill="var(--text-1)" opacity="0.35"/>
+              <!-- Data rows -->
+              <rect x="48" y="50" width="30" height="3" rx="2" fill="var(--text-3)" opacity="0.4"/>
+              <rect x="88" y="50" width="24" height="3" rx="2" fill="var(--gold)" opacity="0.4"/>
+              <rect x="48" y="58" width="28" height="3" rx="2" fill="var(--text-3)" opacity="0.4"/>
+              <rect x="88" y="58" width="18" height="3" rx="2" fill="var(--text-2)" opacity="0.3"/>
+              <rect x="48" y="66" width="35" height="3" rx="2" fill="var(--text-3)" opacity="0.4"/>
+              <rect x="88" y="66" width="20" height="3" rx="2" fill="var(--text-2)" opacity="0.3"/>
+              <!-- Divider -->
+              <line x1="48" y1="75" x2="112" y2="75" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <!-- Total row -->
+              <rect x="48" y="80" width="22" height="5" rx="2" fill="var(--text-1)" opacity="0.35"/>
+              <rect x="88" y="79" width="24" height="6" rx="2" fill="var(--gold)" opacity="0.6"/>
+              <!-- Edit link -->
+              <rect x="70" y="90" width="20" height="4" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <!-- Confirm CTA button -->
+              <rect x="42" y="120" width="76" height="16" rx="8" fill="var(--gold)" opacity="0.8"/>
+              <rect x="62" y="125" width="36" height="5" rx="2" fill="var(--surface-1)" opacity="0.6"/>
+              <!-- Cancel link -->
+              <rect x="58" y="142" width="44" height="8" rx="4" fill="transparent" stroke="var(--border)" stroke-width="0.5"/>
+              <rect x="68" y="145" width="24" height="3" rx="2" fill="var(--text-3)" opacity="0.4"/>
+              <!-- Safety badge -->
+              <rect x="52" y="157" width="56" height="10" rx="3" fill="var(--surface-3)" opacity="0.7"/>
+              <rect x="56" y="160" width="8" height="4" rx="1" fill="var(--gold)" opacity="0.3"/>
+              <rect x="67" y="160" width="36" height="4" rx="2" fill="var(--text-3)" opacity="0.25"/>
+              <!-- Annotations -->
+              <circle cx="116" cy="84" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="115" y="86" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">A</text>
+              <circle cx="42" cy="128" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="41" y="130" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">B</text>
+            </svg>
+          </div>
+          <div class="wf-annotations">
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">A</div>
+              <span class="wf-annotation__text">Total em destaque — sem surpresa no valor final</span>
+            </div>
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">B</div>
+              <span class="wf-annotation__text">CTA principal único — foco na ação sem distração</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WF 05: Resultado ── -->
+        <div class="wf-card reveal" data-delay="320">
+          <div class="wf-card__header">
+            <span class="wf-card__num">05</span>
+            <span class="wf-card__screen-label">Resultado · Mobile</span>
+          </div>
+          <div class="wf-card__title">Feedback & Próximo Jogo</div>
+          <div class="wf-frame">
+            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Mobile frame -->
+              <rect x="30" y="0" width="100" height="220" rx="10" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+              <rect x="38" y="10" width="84" height="200" rx="6" fill="var(--surface-3)" opacity="0.6"/>
+              <rect x="62" y="10" width="36" height="7" rx="3" fill="var(--surface-4)" opacity="0.8"/>
+              <!-- Result area (hero) -->
+              <rect x="38" y="18" width="84" height="60" rx="0" fill="var(--gold)" opacity="0.06"/>
+              <!-- Result icon -->
+              <circle cx="80" cy="42" r="14" fill="var(--gold)" opacity="0.12" stroke="var(--gold)" stroke-width="0.8"/>
+              <polyline points="72,42 78,48 88,36" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Result label -->
+              <rect x="60" y="60" width="40" height="6" rx="3" fill="var(--gold)" opacity="0.3"/>
+              <rect x="68" y="69" width="24" height="4" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <!-- Stats row -->
+              <rect x="42" y="82" width="34" height="20" rx="3" fill="var(--surface-2)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="46" y="86" width="14" height="7" rx="2" fill="var(--gold)" opacity="0.3"/>
+              <rect x="46" y="95" width="22" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <rect x="84" y="82" width="34" height="20" rx="3" fill="var(--surface-2)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="88" y="86" width="14" height="7" rx="2" fill="var(--violet)" opacity="0.25"/>
+              <rect x="88" y="95" width="22" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <!-- Re-engagement section -->
+              <rect x="42" y="108" width="76" height="4" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <!-- Suggested next bets -->
+              <rect x="42" y="116" width="76" height="22" rx="3" fill="var(--surface-2)" stroke="var(--gold-border)" stroke-width="0.5"/>
+              <rect x="46" y="120" width="8" height="8" rx="2" fill="var(--gold)" opacity="0.2"/>
+              <rect x="58" y="121" width="36" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="58" y="127" width="24" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <rect x="103" y="121" width="12" height="6" rx="2" fill="var(--gold)" opacity="0.4"/>
+              <rect x="42" y="142" width="76" height="22" rx="3" fill="var(--surface-2)" stroke="var(--border-soft)" stroke-width="0.5"/>
+              <rect x="46" y="146" width="8" height="8" rx="2" fill="var(--violet)" opacity="0.15"/>
+              <rect x="58" y="147" width="30" height="3" rx="2" fill="var(--text-2)" opacity="0.2"/>
+              <rect x="58" y="153" width="20" height="3" rx="2" fill="var(--text-3)" opacity="0.3"/>
+              <!-- CTA play again -->
+              <rect x="42" y="172" width="76" height="14" rx="7" fill="var(--gold)" opacity="0.7"/>
+              <rect x="60" y="177" width="40" height="4" rx="2" fill="var(--surface-1)" opacity="0.6"/>
+              <!-- Annotations -->
+              <circle cx="118" cy="42" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="117" y="44" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">A</text>
+              <circle cx="34" cy="127" r="4" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.7"/>
+              <text x="33" y="129" font-family="monospace" font-size="4" fill="var(--gold)" opacity="0.7" text-anchor="middle">B</text>
+            </svg>
+          </div>
+          <div class="wf-annotations">
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">A</div>
+              <span class="wf-annotation__text">Feedback positivo sempre visível — celebração medida</span>
+            </div>
+            <div class="wf-annotation">
+              <div class="wf-annotation__dot">B</div>
+              <span class="wf-annotation__text">Sugestão contextual = loop de reengajamento natural</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /wireframe-grid -->
+
+    </div>
+  </section>
 
   <!-- ====== JOURNEY / SCREEN DEMO SECTION ====== -->
   <section class="journey-section" id="jornada-demo" aria-label="Demonstração de telas e jornada do jogador">
