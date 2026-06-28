@@ -506,6 +506,25 @@
     }
 
     /* ── High-Fidelity Prototype Section ── */
+
+    /* Betano brand tokens — as close to production as possible */
+    :root {
+      --bt-navy:     #0c1220;   /* deepest bg */
+      --bt-navy2:    #111827;   /* card bg */
+      --bt-navy3:    #1a2235;   /* elevated surfaces */
+      --bt-navy4:    #1f2d44;   /* hover / selected */
+      --bt-border:   #243044;   /* subtle border */
+      --bt-border2:  #2e3f58;   /* card border */
+      --bt-red:      #e8292c;   /* Betano primary red */
+      --bt-red2:     #c82226;   /* red hover */
+      --bt-orange:   #f5820a;   /* odds highlight */
+      --bt-green:    #2eb872;   /* live / profit */
+      --bt-text:     #e2eaf5;
+      --bt-text2:    #8fa3be;
+      --bt-text3:    #546a84;
+      --bt-yellow:   #f5c842;
+    }
+
     .hifi-section {
       background: var(--surface-1);
       padding: var(--sp-24) 0;
@@ -534,968 +553,1177 @@
       margin-top: var(--sp-4);
     }
 
-    /* Tab navigation */
-    .hifi-tabs {
-      display: flex;
-      gap: var(--sp-2);
-      margin-bottom: var(--sp-10);
-      border-bottom: 1px solid var(--border-soft);
-      padding-bottom: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .hifi-tabs::-webkit-scrollbar { display: none; }
-    .hifi-tab {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-2);
-      padding: var(--sp-3) var(--sp-5);
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      white-space: nowrap;
-      transition: color var(--t-base), border-color var(--t-base);
-    }
-    .hifi-tab:hover { color: var(--text-1); }
-    .hifi-tab.active {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-    .hifi-tab__dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.6;
-    }
+    /* ──────────────────────────────────────
+       Betano-accurate UI components
+       All scoped inside .bt- prefix
+    ────────────────────────────────────── */
 
-    /* Prototype canvas */
-    .hifi-canvas {
-      display: none;
-      grid-template-columns: 1fr 340px;
-      gap: var(--sp-8);
-      align-items: start;
-    }
-    .hifi-canvas.active { display: grid; }
-
-    .hifi-device-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    /* Mobile device shell */
-    .hifi-phone {
-      width: 280px;
-      background: #0e0e12;
-      border-radius: 36px;
-      border: 2px solid #2a2a35;
-      box-shadow:
-        0 0 0 1px rgba(201,169,110,0.08),
-        0 40px 80px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+    /* Shared layout chrome */
+    .bt-frame {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bt-navy);
+      color: var(--bt-text);
       overflow: hidden;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .hifi-phone__notch {
-      width: 90px;
-      height: 22px;
-      background: #0e0e12;
-      border-radius: 0 0 14px 14px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .hifi-phone__notch-cam {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #1a1a22;
-      border: 1px solid #2a2a35;
-    }
-    .hifi-phone__screen {
-      height: 560px;
-      overflow: hidden;
-      position: relative;
-      background: #0f1117;
-    }
-
-    /* Desktop device shell */
-    .hifi-desktop {
-      width: 100%;
-      max-width: 680px;
-      background: #0e0e12;
-      border-radius: 12px 12px 0 0;
-      border: 1.5px solid #2a2a35;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,169,110,0.06);
-      overflow: hidden;
-    }
-    .hifi-desktop__bar {
-      background: #19191f;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid #2a2a35;
-    }
-    .hifi-desktop__dots {
-      display: flex;
-      gap: 5px;
-    }
-    .hifi-desktop__dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-    }
-    .hifi-desktop__dot:nth-child(1) { background: #ff5f57; }
-    .hifi-desktop__dot:nth-child(2) { background: #febc2e; }
-    .hifi-desktop__dot:nth-child(3) { background: #28c840; }
-    .hifi-desktop__url {
-      flex: 1;
-      height: 22px;
-      background: #0e0e12;
-      border-radius: 5px;
-      border: 1px solid #2a2a35;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      gap: 5px;
-    }
-    .hifi-desktop__url-icon {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(201,169,110,0.3);
-      opacity: 0.5;
-    }
-    .hifi-desktop__url-text {
-      font-family: var(--font-mono);
-      font-size: 0.5rem;
-      color: var(--text-3);
-      letter-spacing: 0.05em;
-    }
-    .hifi-desktop__screen {
-      height: 420px;
-      overflow: hidden;
-      background: #0f1117;
-    }
-
-    /* Annotation panel */
-    .hifi-annotations {
+      height: 100%;
       display: flex;
       flex-direction: column;
-      gap: var(--sp-4);
-      padding-top: var(--sp-6);
     }
-    .hifi-annotation-title {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: var(--sp-2);
-    }
-    .hifi-annotation-item {
-      display: flex;
-      gap: var(--sp-3);
-      align-items: flex-start;
-      padding: var(--sp-4);
-      background: var(--surface-2);
-      border: 1px solid var(--border-card);
-      border-radius: var(--r-lg);
-      transition: border-color var(--t-base);
-    }
-    .hifi-annotation-item:hover { border-color: var(--gold-border); }
-    .hifi-annotation-badge {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--gold-dim);
-      border: 1px solid var(--gold-border);
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
-      color: var(--gold);
+
+    /* ── Top nav bar (desktop) ── */
+    .bt-topbar {
+      background: #0a101c;
+      padding: 0 16px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0;
+      height: 48px;
+      border-bottom: 1px solid var(--bt-border);
       flex-shrink: 0;
     }
-    .hifi-annotation-text strong {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--text-1);
-      margin-bottom: 3px;
+    .bt-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--bt-red);
+      letter-spacing: -0.03em;
+      margin-right: 20px;
+      flex-shrink: 0;
     }
-    .hifi-annotation-text span {
-      font-size: 0.72rem;
-      color: var(--text-3);
-      line-height: 1.5;
-    }
-
-    /* ── Actual screen content inside prototypes ── */
-
-    /* Shared betano UI tokens */
-    .bt-gold { color: #C9A96E; }
-    .bt-bg { background: #0f1117; }
-    .bt-surface { background: #16181f; }
-    .bt-surface2 { background: #1c1e28; }
-    .bt-border { border-color: #2a2a3a; }
-    .bt-text { color: #e8e8f0; }
-    .bt-text-dim { color: #7a7a90; }
-
-    /* Home screen (desktop) */
-    .proto-home {
+    .bt-logo span { color: #fff; }
+    .bt-mainnav {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
       height: 100%;
-      background: #0f1117;
-      font-family: var(--font-body);
-      overflow: hidden;
+      gap: 0;
     }
-    .proto-nav {
+    .bt-mainnav__item {
       display: flex;
       align-items: center;
-      padding: 10px 20px;
-      background: rgba(15,17,23,0.95);
-      border-bottom: 1px solid rgba(201,169,110,0.12);
-      gap: 20px;
-    }
-    .proto-nav__logo {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
+      padding: 0 14px;
+      font-size: 0.62rem;
       font-weight: 600;
-      color: #C9A96E;
-      letter-spacing: 0.05em;
-    }
-    .proto-nav__links {
-      display: flex;
-      gap: 16px;
-      flex: 1;
-    }
-    .proto-nav__link {
-      font-size: 0.65rem;
-      color: #7a7a90;
-      letter-spacing: 0.05em;
+      color: var(--bt-text2);
+      letter-spacing: 0.02em;
       cursor: pointer;
-      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+      white-space: nowrap;
+      gap: 5px;
     }
-    .proto-nav__link:hover, .proto-nav__link.active { color: #e8e8f0; }
-    .proto-nav__cta {
-      background: #C9A96E;
-      color: #0f1117;
-      font-size: 0.6rem;
+    .bt-mainnav__item:hover { color: var(--bt-text); }
+    .bt-mainnav__item.active {
+      color: #fff;
+      border-bottom-color: var(--bt-red);
+    }
+    .bt-mainnav__item .bt-live-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--bt-green);
+      box-shadow: 0 0 5px var(--bt-green);
+      animation: bt-blink 1.8s infinite;
+    }
+    @keyframes bt-blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .bt-mainnav__badge {
+      background: var(--bt-red);
+      color: #fff;
+      font-size: 0.42rem;
       font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 20px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      padding: 1px 4px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
     }
-    .proto-nav__bal {
-      font-size: 0.6rem;
-      color: #7a7a90;
+    .bt-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .bt-bal {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      font-size: 0.5rem;
     }
-    .proto-nav__bal strong { color: #C9A96E; font-size: 0.75rem; }
+    .bt-bal__label { color: var(--bt-text3); letter-spacing: 0.05em; text-transform: uppercase; }
+    .bt-bal__val { color: var(--bt-green); font-weight: 700; font-size: 0.68rem; }
+    .bt-btn-red {
+      background: var(--bt-red);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .bt-btn-red:hover { background: var(--bt-red2); }
+    .bt-btn-outline {
+      background: transparent;
+      color: var(--bt-text);
+      border: 1px solid var(--bt-border2);
+      border-radius: 4px;
+      padding: 5px 12px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .bt-btn-outline:hover { border-color: var(--bt-text2); }
 
-    .proto-hero {
-      background: linear-gradient(135deg, #16181f 0%, #1c1a28 100%);
-      padding: 20px;
-      border-bottom: 1px solid rgba(201,169,110,0.08);
+    /* ── Sport tab strip (below main nav) ── */
+    .bt-sporttabs {
+      background: var(--bt-navy2);
+      padding: 0 16px;
       display: flex;
-      gap: 16px;
       align-items: stretch;
+      gap: 0;
+      height: 38px;
+      border-bottom: 1px solid var(--bt-border);
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex-shrink: 0;
     }
-    .proto-hero__main {
+    .bt-sporttabs::-webkit-scrollbar { display: none; }
+    .bt-sporttab {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 12px;
+      font-size: 0.58rem;
+      font-weight: 500;
+      color: var(--bt-text2);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .bt-sporttab:hover { color: var(--bt-text); }
+    .bt-sporttab.active {
+      color: #fff;
+      border-bottom-color: var(--bt-red);
+    }
+    .bt-sporttab svg { width: 13px; height: 13px; }
+
+    /* ── Main content area with sidebar ── */
+    .bt-body {
+      display: flex;
       flex: 1;
-      background: linear-gradient(135deg, rgba(109,79,194,0.15), rgba(201,169,110,0.08));
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* Left sidebar */
+    .bt-sidebar {
+      width: 180px;
+      background: var(--bt-navy2);
+      border-right: 1px solid var(--bt-border);
+      flex-shrink: 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .bt-sidebar::-webkit-scrollbar { display: none; }
+    .bt-sidebar__section {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--bt-border);
+    }
+    .bt-sidebar__heading {
+      padding: 4px 12px 6px;
+      font-size: 0.48rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bt-text3);
+    }
+    .bt-sidebar__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      font-size: 0.58rem;
+      color: var(--bt-text2);
+      cursor: pointer;
+      transition: background 0.12s;
+      gap: 6px;
+    }
+    .bt-sidebar__item:hover { background: rgba(255,255,255,0.04); color: var(--bt-text); }
+    .bt-sidebar__item.active { background: rgba(232,41,44,0.1); color: #fff; }
+    .bt-sidebar__item-left { display: flex; align-items: center; gap: 6px; }
+    .bt-sidebar__flag { font-size: 0.7rem; }
+    .bt-sidebar__count {
+      background: var(--bt-navy4);
+      color: var(--bt-text3);
+      font-size: 0.42rem;
+      padding: 1px 5px;
       border-radius: 10px;
-      border: 1px solid rgba(201,169,110,0.15);
-      padding: 16px;
+    }
+
+    /* Main content */
+    .bt-main {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none;
+      background: var(--bt-navy);
+    }
+    .bt-main::-webkit-scrollbar { display: none; }
+
+    /* Hero banner */
+    .bt-hero-banner {
+      background: linear-gradient(135deg, #0d1a2e 0%, #162040 100%);
+      padding: 14px 16px;
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid var(--bt-border);
+    }
+    .bt-hero-match {
+      flex: 1;
+      background: linear-gradient(135deg, rgba(232,41,44,0.08), rgba(22,32,64,0.6));
+      border: 1px solid rgba(232,41,44,0.2);
+      border-radius: 8px;
+      padding: 12px 14px;
       position: relative;
       overflow: hidden;
     }
-    .proto-hero__main::before {
+    .bt-hero-match::after {
       content: '';
       position: absolute;
-      top: -20px; right: -20px;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,169,110,0.15), transparent 70%);
+      right: -10px; top: -10px;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(232,41,44,0.12), transparent 70%);
     }
-    .proto-hero__tag {
-      font-family: var(--font-mono);
-      font-size: 0.45rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #C9A96E;
-      margin-bottom: 6px;
+    .bt-hero-league {
       display: flex;
       align-items: center;
-      gap: 4px;
-    }
-    .proto-hero__tag::before {
-      content: '';
-      width: 12px; height: 1px;
-      background: #C9A96E;
-    }
-    .proto-hero__title {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: #e8e8f0;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .proto-hero__title em { color: #C9A96E; font-style: italic; }
-    .proto-hero__odds {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-    .proto-odds-btn {
-      background: rgba(201,169,110,0.1);
-      border: 1px solid rgba(201,169,110,0.3);
-      border-radius: 6px;
-      padding: 4px 8px;
-      font-size: 0.55rem;
-      color: #C9A96E;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .proto-odds-btn:hover, .proto-odds-btn.selected {
-      background: rgba(201,169,110,0.2);
-      border-color: #C9A96E;
-    }
-    .proto-odds-btn strong { font-size: 0.75rem; display: block; }
-    .proto-hero__ctas { display: flex; gap: 6px; }
-    .proto-btn-primary {
-      background: #C9A96E;
-      color: #0f1117;
-      border: none;
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .proto-btn-primary:hover { background: #dbbf87; }
-    .proto-btn-ghost {
-      background: transparent;
-      color: #7a7a90;
-      border: 1px solid #2a2a3a;
-      border-radius: 20px;
-      padding: 6px 12px;
-      font-size: 0.58rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .proto-btn-ghost:hover { border-color: #C9A96E; color: #C9A96E; }
-
-    .proto-hero__side {
-      width: 160px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .proto-live-badge {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.45rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #e8e8f0;
-      margin-bottom: 4px;
-    }
-    .proto-live-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 6px #4ade80;
-      animation: pulse-live 2s infinite;
-    }
-    @keyframes pulse-live {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .proto-live-card {
-      background: #16181f;
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 8px;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    .proto-live-card:hover { border-color: rgba(201,169,110,0.3); }
-    .proto-live-card__teams {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      margin-bottom: 6px;
-    }
-    .proto-live-card__team {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.55rem;
-      color: #e8e8f0;
-    }
-    .proto-live-card__score {
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      color: #C9A96E;
-      font-weight: 300;
-    }
-    .proto-live-card__min {
-      font-size: 0.45rem;
-      color: #4ade80;
-      font-family: var(--font-mono);
+      gap: 5px;
+      font-size: 0.48rem;
+      font-weight: 600;
+      color: var(--bt-text3);
       letter-spacing: 0.1em;
-    }
-    .proto-live-card__odds {
-      display: flex;
-      gap: 3px;
-    }
-    .proto-mini-odd {
-      flex: 1;
-      background: rgba(201,169,110,0.08);
-      border: 1px solid rgba(201,169,110,0.15);
-      border-radius: 4px;
-      padding: 3px 4px;
-      text-align: center;
-      font-size: 0.5rem;
-      color: #C9A96E;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .proto-mini-odd:hover { background: rgba(201,169,110,0.18); }
-
-    .proto-section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px 8px;
-    }
-    .proto-section-label {
-      font-family: var(--font-mono);
-      font-size: 0.5rem;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #7a7a90;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .proto-section-label::before {
-      content: '';
-      width: 16px; height: 1px;
-      background: rgba(201,169,110,0.4);
-    }
-    .proto-see-all {
-      font-size: 0.5rem;
-      color: #C9A96E;
-      cursor: pointer;
-    }
-    .proto-game-row {
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-    }
-    .proto-game-card {
-      background: #16181f;
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .proto-game-card:hover {
-      border-color: rgba(201,169,110,0.3);
-      background: #1c1e28;
-    }
-    .proto-game-card__category {
-      font-family: var(--font-mono);
-      font-size: 0.4rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #7a7a90;
-      margin-bottom: 4px;
-    }
-    .proto-game-card__teams {
-      font-size: 0.55rem;
-      color: #e8e8f0;
-      margin-bottom: 5px;
-      line-height: 1.4;
-    }
-    .proto-game-card__time {
-      font-size: 0.45rem;
-      color: #4ade80;
-      font-family: var(--font-mono);
       margin-bottom: 6px;
     }
-    .proto-game-card__time.upcoming { color: #7a7a90; }
-    .proto-game-card__odds-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-    }
-
-    /* Mobile — Bet Slip screen */
-    .proto-mobile {
-      height: 100%;
-      background: #0f1117;
-      font-family: var(--font-body);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .proto-mobile-status {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 16px 4px;
-      font-size: 0.5rem;
-      color: #7a7a90;
-    }
-    .proto-mobile-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 14px 10px;
-      border-bottom: 1px solid rgba(201,169,110,0.08);
-    }
-    .proto-mobile-nav__logo {
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      color: #C9A96E;
-    }
-    .proto-mobile-nav__icons {
-      display: flex;
-      gap: 12px;
-    }
-    .proto-icon-btn {
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      background: #16181f;
-      border: 1px solid #2a2a3a;
+    .bt-hero-league-icon {
+      width: 14px; height: 14px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, #1a3060, #0a1830);
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
+      font-size: 0.55rem;
     }
-    .proto-icon-btn svg { width: 10px; height: 10px; stroke: #7a7a90; }
-    .proto-mobile-content { flex: 1; overflow: hidden; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
-
-    .proto-match-header {
-      background: #16181f;
-      border: 1px solid rgba(201,169,110,0.12);
-      border-radius: 10px;
-      padding: 10px 12px;
-    }
-    .proto-match-league {
-      font-family: var(--font-mono);
-      font-size: 0.42rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #C9A96E;
-      margin-bottom: 6px;
-    }
-    .proto-match-teams {
+    .bt-hero-teams {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
-    .proto-team-name {
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: #e8e8f0;
-      text-align: center;
+    .bt-hero-team {
       flex: 1;
-    }
-    .proto-match-score {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: #C9A96E;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-    .proto-match-status {
       text-align: center;
-      font-size: 0.45rem;
-      color: #4ade80;
-      font-family: var(--font-mono);
-      letter-spacing: 0.1em;
-      margin-top: 4px;
     }
-
-    .proto-bet-market {
-      font-family: var(--font-mono);
-      font-size: 0.48rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #7a7a90;
-      margin-bottom: 6px;
+    .bt-hero-team-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
     }
-    .proto-odds-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .bt-hero-team-badge {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      margin: 0 auto 4px;
+      border: 1px solid var(--bt-border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+    .bt-hero-vs {
+      font-size: 0.6rem;
+      color: var(--bt-text3);
+      font-weight: 600;
+    }
+    .bt-hero-time {
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: var(--bt-green);
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+    .bt-hero-odds-row {
+      display: flex;
       gap: 5px;
       margin-bottom: 8px;
     }
-    .proto-odd-btn {
-      background: #16181f;
-      border: 1px solid #2a2a3a;
-      border-radius: 7px;
-      padding: 7px 5px;
+    .bt-hero-odd-btn {
+      flex: 1;
+      background: var(--bt-navy3);
+      border: 1px solid var(--bt-border2);
+      border-radius: 5px;
+      padding: 6px 5px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
-    .proto-odd-btn:hover {
-      border-color: rgba(201,169,110,0.4);
-      background: rgba(201,169,110,0.06);
+    .bt-hero-odd-btn:hover {
+      background: var(--bt-navy4);
+      border-color: rgba(232,41,44,0.4);
     }
-    .proto-odd-btn.selected {
-      background: rgba(201,169,110,0.15);
-      border-color: #C9A96E;
+    .bt-hero-odd-btn.sel {
+      background: rgba(232,41,44,0.15);
+      border-color: var(--bt-red);
     }
-    .proto-odd-label {
+    .bt-hero-odd-label {
       font-size: 0.42rem;
-      color: #7a7a90;
-      display: block;
-      margin-bottom: 3px;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
+      color: var(--bt-text3);
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
     }
-    .proto-odd-val {
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      color: #C9A96E;
-      font-weight: 300;
+    .bt-hero-odd-val {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--bt-orange);
     }
-    .proto-odd-btn.selected .proto-odd-val { color: #dbbf87; }
+    .bt-hero-odd-btn.sel .bt-hero-odd-val { color: #fff; }
+    .bt-hero-cta {
+      display: flex;
+      gap: 6px;
+    }
 
-    /* Bet slip panel */
-    .proto-bet-slip {
-      background: #16181f;
-      border: 1px solid rgba(201,169,110,0.18);
-      border-radius: 10px;
-      padding: 10px 12px;
+    /* Hero side panel - live matches */
+    .bt-hero-side {
+      width: 155px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
       flex-shrink: 0;
     }
-    .proto-slip-header {
+    .bt-live-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
-    }
-    .proto-slip-title {
-      font-family: var(--font-mono);
-      font-size: 0.48rem;
-      letter-spacing: 0.15em;
+      gap: 5px;
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: var(--bt-green);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #C9A96E;
+      padding: 0 2px 4px;
+      border-bottom: 1px solid var(--bt-border);
+    }
+    .bt-live-card {
+      background: var(--bt-navy2);
+      border: 1px solid var(--bt-border);
+      border-radius: 6px;
+      padding: 7px 9px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .bt-live-card:hover { border-color: var(--bt-border2); }
+    .bt-live-card-league {
+      font-size: 0.43rem;
+      color: var(--bt-text3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
       gap: 4px;
     }
-    .proto-slip-count {
-      background: #C9A96E;
-      color: #0f1117;
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      font-size: 0.45rem;
+    .bt-live-min {
+      color: var(--bt-green);
       font-weight: 700;
+      font-size: 0.45rem;
+    }
+    .bt-live-teams-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+    .bt-live-team-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.55rem;
+      font-weight: 500;
+      color: var(--bt-text);
+    }
+    .bt-live-score {
+      font-weight: 800;
+      font-size: 0.7rem;
+      color: #fff;
+      min-width: 14px;
+      text-align: center;
+    }
+    .bt-live-score.winning { color: var(--bt-green); }
+    .bt-live-odds-row {
+      display: flex;
+      gap: 3px;
+    }
+    .bt-mini-odd {
+      flex: 1;
+      background: var(--bt-navy3);
+      border: 1px solid var(--bt-border2);
+      border-radius: 3px;
+      padding: 3px 4px;
+      text-align: center;
+      font-size: 0.52rem;
+      font-weight: 700;
+      color: var(--bt-orange);
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .bt-mini-odd:hover {
+      background: rgba(245,130,10,0.15);
+      border-color: rgba(245,130,10,0.5);
+    }
+
+    /* Events list section */
+    .bt-events-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px 6px;
+      border-bottom: 1px solid var(--bt-border);
+    }
+    .bt-events-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.56rem;
+      font-weight: 700;
+      color: var(--bt-text);
+      letter-spacing: 0.04em;
+    }
+    .bt-events-flag { font-size: 0.8rem; }
+    .bt-events-count {
+      font-size: 0.48rem;
+      color: var(--bt-text3);
+    }
+    .bt-events-mkt-labels {
+      display: flex;
+      gap: 0;
+    }
+    .bt-mkt-label {
+      width: 60px;
+      text-align: center;
+      font-size: 0.42rem;
+      color: var(--bt-text3);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Event row */
+    .bt-event {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(36,48,68,0.5);
+      min-height: 44px;
+      cursor: pointer;
+      transition: background 0.12s;
+      gap: 8px;
+    }
+    .bt-event:hover { background: rgba(255,255,255,0.02); }
+    .bt-event__time-col {
+      width: 38px;
+      flex-shrink: 0;
+    }
+    .bt-event__time {
+      font-size: 0.5rem;
+      color: var(--bt-text3);
+      line-height: 1.3;
+    }
+    .bt-event__time.live {
+      color: var(--bt-green);
+      font-weight: 700;
+      font-size: 0.52rem;
+    }
+    .bt-event__score {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .bt-event__teams-col { flex: 1; min-width: 0; }
+    .bt-event__team {
+      font-size: 0.58rem;
+      color: var(--bt-text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.6;
+    }
+    .bt-event__team.winning { color: #fff; font-weight: 600; }
+    .bt-event__odds-col {
+      display: flex;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+    .bt-event__odd {
+      width: 57px;
+      background: var(--bt-navy3);
+      border: 1px solid var(--bt-border2);
+      border-radius: 4px;
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--bt-orange);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .bt-event__odd:hover {
+      background: rgba(245,130,10,0.12);
+      border-color: rgba(245,130,10,0.5);
+    }
+    .bt-event__odd.selected {
+      background: rgba(245,130,10,0.2);
+      border-color: var(--bt-orange);
+      color: #fff;
+    }
+    .bt-event__odd.dash { color: var(--bt-text3); font-size: 0.5rem; }
+    .bt-event__more {
+      font-size: 0.48rem;
+      color: var(--bt-text3);
+      white-space: nowrap;
+      padding: 0 4px;
+      cursor: pointer;
+    }
+    .bt-event__more:hover { color: var(--bt-text); }
+
+    /* Right bet slip panel (desktop) */
+    .bt-slip-panel {
+      width: 220px;
+      background: var(--bt-navy2);
+      border-left: 1px solid var(--bt-border);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .bt-slip-header {
+      background: #0a101c;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--bt-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bt-slip-title {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .bt-slip-counter {
+      background: var(--bt-red);
+      color: #fff;
+      font-size: 0.48rem;
+      font-weight: 800;
+      width: 16px; height: 16px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .proto-slip-remove {
-      font-size: 0.45rem;
-      color: #7a7a90;
+    .bt-slip-clear {
+      font-size: 0.5rem;
+      color: var(--bt-text3);
       cursor: pointer;
     }
-    .proto-slip-selection {
-      background: rgba(201,169,110,0.06);
-      border: 1px solid rgba(201,169,110,0.12);
-      border-radius: 6px;
-      padding: 6px 8px;
+    .bt-slip-clear:hover { color: var(--bt-text2); }
+    .bt-slip-body { flex: 1; overflow-y: auto; padding: 10px 12px; scrollbar-width: none; }
+    .bt-slip-body::-webkit-scrollbar { display: none; }
+    .bt-slip-sel {
+      background: var(--bt-navy);
+      border: 1px solid var(--bt-border2);
+      border-left: 3px solid var(--bt-red);
+      border-radius: 0 5px 5px 0;
+      padding: 8px 10px;
       margin-bottom: 8px;
+    }
+    .bt-slip-sel-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      margin-bottom: 3px;
     }
-    .proto-slip-sel-left { flex: 1; }
-    .proto-slip-sel-label {
-      font-size: 0.42rem;
-      color: #7a7a90;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .proto-slip-sel-name {
+    .bt-slip-sel-name {
       font-size: 0.58rem;
-      color: #e8e8f0;
-      margin-top: 2px;
+      font-weight: 600;
+      color: #fff;
+      flex: 1;
+      padding-right: 6px;
     }
-    .proto-slip-sel-odd {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: #C9A96E;
-      font-weight: 300;
+    .bt-slip-sel-odd {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--bt-orange);
     }
-
-    .proto-stake-row {
+    .bt-slip-sel-match {
+      font-size: 0.48rem;
+      color: var(--bt-text3);
+    }
+    .bt-slip-sel-mkt {
+      font-size: 0.46rem;
+      color: var(--bt-text3);
+      margin-top: 1px;
+    }
+    .bt-slip-type-row {
       display: flex;
-      align-items: center;
-      gap: 6px;
+      gap: 3px;
       margin-bottom: 8px;
     }
-    .proto-stake-label {
-      font-size: 0.45rem;
-      color: #7a7a90;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .proto-stake-input {
+    .bt-slip-type-btn {
       flex: 1;
-      background: #0f1117;
-      border: 1px solid #2a2a3a;
-      border-radius: 6px;
-      padding: 5px 8px;
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      color: #C9A96E;
-      text-align: right;
-    }
-    .proto-stake-presets {
-      display: flex;
-      gap: 4px;
-    }
-    .proto-preset {
-      background: rgba(201,169,110,0.08);
-      border: 1px solid rgba(201,169,110,0.18);
+      padding: 5px;
       border-radius: 4px;
-      font-size: 0.45rem;
-      color: #C9A96E;
-      padding: 3px 6px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      text-align: center;
       cursor: pointer;
-      transition: all 0.15s;
-      font-family: var(--font-mono);
+      background: var(--bt-navy);
+      border: 1px solid var(--bt-border2);
+      color: var(--bt-text2);
+      transition: all 0.12s;
     }
-    .proto-preset:hover { background: rgba(201,169,110,0.18); }
-    .proto-preset.active { background: rgba(201,169,110,0.25); border-color: #C9A96E; }
-
-    .proto-return-row {
+    .bt-slip-type-btn.active {
+      background: rgba(232,41,44,0.15);
+      border-color: var(--bt-red);
+      color: #fff;
+    }
+    .bt-slip-stake-label {
+      font-size: 0.48rem;
+      color: var(--bt-text3);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .bt-slip-stake-input {
+      width: 100%;
+      background: var(--bt-navy);
+      border: 1px solid var(--bt-border2);
+      border-radius: 5px;
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: right;
+      box-sizing: border-box;
+      margin-bottom: 5px;
+    }
+    .bt-slip-stake-input:focus { outline: none; border-color: var(--bt-red); }
+    .bt-slip-presets {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 10px;
+    }
+    .bt-slip-preset {
+      flex: 1;
+      background: var(--bt-navy);
+      border: 1px solid var(--bt-border2);
+      border-radius: 4px;
+      padding: 4px 2px;
+      text-align: center;
+      font-size: 0.48rem;
+      font-weight: 600;
+      color: var(--bt-text2);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .bt-slip-preset:hover { border-color: var(--bt-text2); color: #fff; }
+    .bt-slip-preset.active { background: rgba(245,130,10,0.12); border-color: var(--bt-orange); color: var(--bt-orange); }
+    .bt-slip-return {
+      background: var(--bt-navy);
+      border: 1px solid var(--bt-border);
+      border-radius: 5px;
+      padding: 8px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
-      padding: 6px 0;
-      border-top: 1px solid rgba(201,169,110,0.08);
+      margin-bottom: 10px;
     }
-    .proto-return-label {
-      font-size: 0.48rem;
-      color: #7a7a90;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
+    .bt-slip-return-label {
+      font-size: 0.5rem;
+      color: var(--bt-text3);
       text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
-    .proto-return-val {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: #C9A96E;
-      font-weight: 300;
+    .bt-slip-return-val {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--bt-green);
     }
-    .proto-confirm-btn {
+    .bt-slip-confirm {
       width: 100%;
-      background: #C9A96E;
-      color: #0f1117;
+      background: var(--bt-red);
       border: none;
-      border-radius: 24px;
-      padding: 10px;
-      font-size: 0.6rem;
+      border-radius: 5px;
+      padding: 11px;
+      font-size: 0.62rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      color: #fff;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.15s;
+    }
+    .bt-slip-confirm:hover { background: var(--bt-red2); }
+    .bt-slip-terms {
+      font-size: 0.42rem;
+      color: var(--bt-text3);
+      text-align: center;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ─── MOBILE shell ─── */
+    .bt-mobile {
+      height: 100%;
+      background: var(--bt-navy);
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .bt-mobile-status {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 14px 4px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: var(--bt-text);
+      flex-shrink: 0;
+    }
+    .bt-mobile-topbar {
+      background: #0a101c;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--bt-border);
+      flex-shrink: 0;
+      gap: 8px;
+    }
+    .bt-mobile-logo {
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: var(--bt-red);
+      letter-spacing: -0.03em;
+    }
+    .bt-mobile-logo span { color: #fff; }
+    .bt-mobile-sport-strip {
+      background: var(--bt-navy2);
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--bt-border);
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex-shrink: 0;
+    }
+    .bt-mobile-sport-strip::-webkit-scrollbar { display: none; }
+    .bt-mobile-sport-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px 10px;
+      gap: 2px;
+      border-bottom: 2px solid transparent;
+      font-size: 0.42rem;
+      color: var(--bt-text2);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .bt-mobile-sport-tab.active { border-bottom-color: var(--bt-red); color: #fff; }
+    .bt-mobile-sport-tab svg { width: 16px; height: 16px; }
+
+    /* Mobile match view */
+    .bt-mobile-match-header {
+      background: linear-gradient(160deg, #111d32 0%, #0d1525 100%);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--bt-border);
+      flex-shrink: 0;
+    }
+    .bt-mobile-league {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.44rem;
+      font-weight: 600;
+      color: var(--bt-text3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .bt-mobile-score-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 12px;
     }
-    .proto-confirm-btn:hover { background: #dbbf87; }
-    .proto-confirm-btn svg { width: 12px; height: 12px; stroke: #0f1117; }
-
-    /* Mobile bottom nav */
-    .proto-bottom-nav {
+    .bt-mobile-team-block {
+      flex: 1;
+      text-align: center;
+    }
+    .bt-mobile-team-badge {
+      font-size: 1.3rem;
+      margin-bottom: 3px;
+    }
+    .bt-mobile-team-name {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .bt-mobile-scoreboard {
       display: flex;
-      border-top: 1px solid #2a2a3a;
-      background: #0f1117;
+      align-items: center;
+      gap: 4px;
+    }
+    .bt-mobile-score-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      min-width: 20px;
+      text-align: center;
+    }
+    .bt-mobile-score-sep {
+      font-size: 1rem;
+      color: var(--bt-text3);
+      font-weight: 300;
+    }
+    .bt-mobile-live-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: var(--bt-green);
+      justify-content: center;
+      margin-top: 5px;
+    }
+
+    /* Markets */
+    .bt-mobile-content {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .bt-mobile-content::-webkit-scrollbar { display: none; }
+    .bt-market-section {
+      border-bottom: 1px solid var(--bt-border);
+    }
+    .bt-market-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      cursor: pointer;
+      background: var(--bt-navy2);
+    }
+    .bt-market-name {
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--bt-text);
+    }
+    .bt-market-odds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      padding: 8px 10px;
+      background: var(--bt-navy);
+    }
+    .bt-market-odd {
+      background: var(--bt-navy3);
+      border: 1px solid var(--bt-border2);
+      border-radius: 5px;
+      padding: 7px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .bt-market-odd:hover {
+      border-color: rgba(245,130,10,0.4);
+      background: rgba(245,130,10,0.06);
+    }
+    .bt-market-odd.selected {
+      background: rgba(245,130,10,0.18);
+      border-color: var(--bt-orange);
+    }
+    .bt-market-odd-label {
+      font-size: 0.42rem;
+      color: var(--bt-text3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+    }
+    .bt-market-odd-val {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--bt-orange);
+    }
+    .bt-market-odd.selected .bt-market-odd-val { color: #fff; }
+
+    /* Floating bet slip bar (mobile) */
+    .bt-mobile-slip-bar {
+      background: var(--bt-navy2);
+      border-top: 2px solid var(--bt-red);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       flex-shrink: 0;
     }
-    .proto-bottom-nav__item {
+    .bt-slip-bar-info { flex: 1; }
+    .bt-slip-bar-count {
+      font-size: 0.48rem;
+      color: var(--bt-text3);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .bt-slip-bar-badge {
+      background: var(--bt-red);
+      color: #fff;
+      font-size: 0.45rem;
+      font-weight: 800;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bt-slip-bar-return {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--bt-green);
+    }
+    .bt-slip-bar-open {
+      background: var(--bt-red);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 16px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
+
+    /* Bottom nav (mobile) */
+    .bt-bottom-nav {
+      display: flex;
+      background: #0a101c;
+      border-top: 1px solid var(--bt-border);
+      flex-shrink: 0;
+    }
+    .bt-bottom-nav__item {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 8px 4px;
+      padding: 7px 4px 6px;
       gap: 3px;
       cursor: pointer;
+      border-top: 2px solid transparent;
     }
-    .proto-bottom-nav__item svg { width: 14px; height: 14px; stroke: #7a7a90; }
-    .proto-bottom-nav__item.active svg { stroke: #C9A96E; }
-    .proto-bottom-nav__label {
-      font-family: var(--font-mono);
-      font-size: 0.4rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #7a7a90;
+    .bt-bottom-nav__item.active { border-top-color: var(--bt-red); }
+    .bt-bottom-nav__item svg { width: 18px; height: 18px; stroke: var(--bt-text3); }
+    .bt-bottom-nav__item.active svg { stroke: var(--bt-red); }
+    .bt-bottom-nav__label {
+      font-size: 0.42rem;
+      font-weight: 600;
+      color: var(--bt-text3);
+      letter-spacing: 0.04em;
     }
-    .proto-bottom-nav__item.active .proto-bottom-nav__label { color: #C9A96E; }
+    .bt-bottom-nav__item.active .bt-bottom-nav__label { color: var(--bt-red); }
 
-    /* Result screen */
-    .proto-result {
-      height: 100%;
-      background: #0f1117;
-      display: flex;
-      flex-direction: column;
-    }
-    .proto-result-hero {
-      background: linear-gradient(160deg, #16181f, #1c1a28);
-      padding: 20px 14px 16px;
-      border-bottom: 1px solid rgba(201,169,110,0.1);
+    /* ─── Result screen ─── */
+    .bt-result-header {
+      background: linear-gradient(160deg, #0e1c30 0%, #0c1525 100%);
+      padding: 16px 14px;
       text-align: center;
+      border-bottom: 1px solid var(--bt-border);
+      flex-shrink: 0;
     }
-    .proto-result-icon {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: rgba(201,169,110,0.12);
-      border: 2px solid rgba(201,169,110,0.4);
-      margin: 0 auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .proto-result-icon svg { width: 22px; height: 22px; stroke: #C9A96E; }
-    .proto-result-label {
-      font-family: var(--font-mono);
-      font-size: 0.48rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #C9A96E;
-      margin-bottom: 4px;
-    }
-    .proto-result-amount {
-      font-family: var(--font-display);
+    .bt-result-trophy {
       font-size: 2rem;
-      font-weight: 300;
-      color: #e8e8f0;
+      margin-bottom: 4px;
+      display: block;
     }
-    .proto-result-amount em { color: #C9A96E; font-style: normal; }
-    .proto-result-sub {
+    .bt-result-title {
       font-size: 0.5rem;
-      color: #7a7a90;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bt-green);
+      margin-bottom: 5px;
+    }
+    .bt-result-amount {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .bt-result-amount span { color: var(--bt-green); }
+    .bt-result-sub {
+      font-size: 0.48rem;
+      color: var(--bt-text3);
       margin-top: 4px;
     }
-    .proto-result-stats {
+    .bt-result-receipt {
+      background: var(--bt-navy2);
+      border-radius: 8px;
+      margin: 10px 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--bt-border);
+    }
+    .bt-receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(36,48,68,0.5);
+    }
+    .bt-receipt-row:last-child { border-bottom: none; }
+    .bt-receipt-key {
+      font-size: 0.5rem;
+      color: var(--bt-text3);
+      letter-spacing: 0.04em;
+    }
+    .bt-receipt-val {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: var(--bt-text);
+    }
+    .bt-receipt-val.green { color: var(--bt-green); }
+    .bt-receipt-val.orange { color: var(--bt-orange); }
+    .bt-result-stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 12px 14px;
+      gap: 6px;
+      padding: 0 12px 10px;
     }
-    .proto-stat-card {
-      background: #16181f;
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
+    .bt-result-stat {
+      background: var(--bt-navy2);
+      border: 1px solid var(--bt-border);
+      border-radius: 6px;
       padding: 8px;
       text-align: center;
     }
-    .proto-stat-val {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: #C9A96E;
-      font-weight: 300;
+    .bt-result-stat-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--bt-orange);
     }
-    .proto-stat-label {
-      font-family: var(--font-mono);
-      font-size: 0.4rem;
-      letter-spacing: 0.1em;
+    .bt-result-stat-label {
+      font-size: 0.42rem;
+      color: var(--bt-text3);
       text-transform: uppercase;
-      color: #7a7a90;
+      letter-spacing: 0.08em;
       margin-top: 3px;
     }
-    .proto-next-section {
+    .bt-result-next {
+      padding: 0 12px 10px;
       flex: 1;
-      padding: 0 14px 14px;
       overflow: hidden;
     }
-    .proto-next-label {
-      font-family: var(--font-mono);
-      font-size: 0.45rem;
-      letter-spacing: 0.15em;
+    .bt-result-next-title {
+      font-size: 0.48rem;
+      font-weight: 700;
+      color: var(--bt-text3);
       text-transform: uppercase;
-      color: #7a7a90;
-      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      margin-bottom: 7px;
+    }
+    .bt-next-card {
+      background: var(--bt-navy2);
+      border: 1px solid var(--bt-border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      transition: border-color 0.15s;
       display: flex;
       align-items: center;
+      gap: 8px;
+    }
+    .bt-next-card:hover { border-color: var(--bt-border2); }
+    .bt-next-card-main { flex: 1; }
+    .bt-next-card-league {
+      font-size: 0.42rem;
+      color: var(--bt-text3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .bt-next-card-teams {
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--bt-text);
+    }
+    .bt-next-card-odds {
+      display: flex;
+      gap: 3px;
+    }
+    .bt-next-odd {
+      background: var(--bt-navy3);
+      border: 1px solid var(--bt-border2);
+      border-radius: 3px;
+      padding: 4px 6px;
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--bt-orange);
+    }
+    .bt-result-actions {
+      padding: 0 12px 10px;
+      display: flex;
       gap: 6px;
     }
-    .proto-next-label::before {
-      content: '';
-      width: 12px; height: 1px;
-      background: rgba(201,169,110,0.3);
-    }
-    .proto-suggestion-card {
-      background: #16181f;
-      border: 1px solid rgba(201,169,110,0.15);
-      border-radius: 8px;
+    .bt-result-btn-primary {
+      flex: 1;
+      background: var(--bt-red);
+      border: none;
+      border-radius: 5px;
       padding: 10px;
-      margin-bottom: 6px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: #fff;
       cursor: pointer;
-      transition: border-color 0.2s;
     }
-    .proto-suggestion-card:hover { border-color: rgba(201,169,110,0.35); }
-    .proto-sug-league {
-      font-family: var(--font-mono);
-      font-size: 0.4rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #C9A96E;
-      margin-bottom: 4px;
+    .bt-result-btn-secondary {
+      flex: 1;
+      background: transparent;
+      border: 1px solid var(--bt-border2);
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--bt-text2);
+      cursor: pointer;
     }
-    .proto-sug-teams {
-      font-size: 0.6rem;
-      color: #e8e8f0;
-      margin-bottom: 6px;
-    }
-    .proto-sug-odds {
+
+    /* Shared icon btn */
+    .bt-icon-btn {
+      width: 26px; height: 26px;
+      background: var(--bt-navy3);
+      border: 1px solid var(--bt-border);
+      border-radius: 5px;
       display: flex;
-      gap: 4px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
     }
+    .bt-icon-btn svg { width: 12px; height: 12px; stroke: var(--bt-text2); }
+    .bt-icon-btn:hover { border-color: var(--bt-border2); }
 
     @media (max-width: 1024px) {
       .hifi-canvas { grid-template-columns: 1fr; }
@@ -2159,7 +2387,7 @@
         <div class="section-label">Protótipo Interativo</div>
         <h2 class="section-title">Alta Fidelidade — <em>Interface Real</em></h2>
         <p>
-          Telas renderizadas com a identidade visual completa da Betano: paleta dark, tipografia Cormorant + Inter, sistema de dourado e gradientes. Cada protótipo demonstra decisões reais de microinteração aplicadas em produção.
+          Telas renderizadas com a identidade visual oficial da Betano: paleta navy, vermelho primário, tipografia Inter, sistema de odds em laranja. Cada detalhe replica o design system em produção — navegação, cards de eventos, bet slip e tela de resultado.
         </p>
       </div>
 
@@ -2171,7 +2399,7 @@
         </button>
         <button class="hifi-tab" role="tab" aria-selected="false" data-proto="betslip" aria-controls="proto-betslip">
           <span class="hifi-tab__dot"></span>
-          Bet Slip · Mobile
+          Match + Bet Slip · Mobile
         </button>
         <button class="hifi-tab" role="tab" aria-selected="false" data-proto="result" aria-controls="proto-result">
           <span class="hifi-tab__dot"></span>
@@ -2191,133 +2419,310 @@
               </div>
               <div class="hifi-desktop__url">
                 <div class="hifi-desktop__url-icon"></div>
-                <span class="hifi-desktop__url-text">betano.com.br</span>
+                <span class="hifi-desktop__url-text">betano.bet.br</span>
               </div>
             </div>
             <div class="hifi-desktop__screen">
-              <div class="proto-home">
-                <!-- Nav -->
-                <div class="proto-nav">
-                  <div class="proto-nav__logo">BETANO</div>
-                  <div class="proto-nav__links">
-                    <span class="proto-nav__link active">Esportes</span>
-                    <span class="proto-nav__link">Ao Vivo</span>
-                    <span class="proto-nav__link">Casino</span>
-                    <span class="proto-nav__link">Promoções</span>
+              <div class="bt-frame">
+                <!-- Top main nav -->
+                <div class="bt-topbar">
+                  <div class="bt-logo">bet<span>ano</span></div>
+                  <div class="bt-mainnav">
+                    <div class="bt-mainnav__item active">Esportes</div>
+                    <div class="bt-mainnav__item">
+                      <div class="bt-live-dot"></div>
+                      Ao Vivo
+                    </div>
+                    <div class="bt-mainnav__item">Casino</div>
+                    <div class="bt-mainnav__item">
+                      Virtual
+                      <div class="bt-mainnav__badge">NEW</div>
+                    </div>
+                    <div class="bt-mainnav__item">Promoções</div>
                   </div>
-                  <div class="proto-nav__bal">
-                    <span>Saldo</span>
-                    <strong>R$ 250,00</strong>
+                  <div class="bt-nav-actions">
+                    <div class="bt-bal">
+                      <span class="bt-bal__label">Saldo</span>
+                      <span class="bt-bal__val">R$ 250,00</span>
+                    </div>
+                    <button class="bt-btn-outline">Entrar</button>
+                    <button class="bt-btn-red">Registrar</button>
                   </div>
-                  <div class="proto-nav__cta">Apostar</div>
+                </div>
+                <!-- Sport tabs -->
+                <div class="bt-sporttabs">
+                  <div class="bt-sporttab active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93 19.07 19.07M9 3.5C9 3.5 9 7 12 9s7.5 0 7.5 0"/></svg>
+                    Futebol
+                  </div>
+                  <div class="bt-sporttab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M4.5 9h15M4.5 15h15"/></svg>
+                    Basquete
+                  </div>
+                  <div class="bt-sporttab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    Tênis
+                  </div>
+                  <div class="bt-sporttab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    E-Sports
+                  </div>
+                  <div class="bt-sporttab">MMA</div>
+                  <div class="bt-sporttab">Vôlei</div>
+                  <div class="bt-sporttab">Hóquei</div>
                 </div>
 
-                <!-- Hero zone -->
-                <div class="proto-hero">
-                  <div class="proto-hero__main">
-                    <div class="proto-hero__tag">Destaque Personalizado</div>
-                    <div class="proto-hero__title">Flamengo vs Palmeiras<br><em>Final Copa do Brasil</em></div>
-                    <div class="proto-hero__odds">
-                      <div class="proto-odds-btn selected">
-                        <span>Flamengo</span>
-                        <strong>2.15</strong>
+                <!-- Main body -->
+                <div class="bt-body">
+                  <!-- Left sidebar -->
+                  <div class="bt-sidebar">
+                    <div class="bt-sidebar__section">
+                      <div class="bt-sidebar__heading">Em Destaque</div>
+                      <div class="bt-sidebar__item active">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">🇧🇷</span>
+                          Brasileirão Série A
+                        </div>
+                        <span class="bt-sidebar__count">12</span>
                       </div>
-                      <div class="proto-odds-btn">
-                        <span>Empate</span>
-                        <strong>3.40</strong>
+                      <div class="bt-sidebar__item">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">🏆</span>
+                          Copa do Brasil
+                        </div>
+                        <span class="bt-sidebar__count">4</span>
                       </div>
-                      <div class="proto-odds-btn">
-                        <span>Palmeiras</span>
-                        <strong>3.10</strong>
+                      <div class="bt-sidebar__item">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">🇬🇧</span>
+                          Premier League
+                        </div>
+                        <span class="bt-sidebar__count">8</span>
+                      </div>
+                      <div class="bt-sidebar__item">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">⭐</span>
+                          Champions League
+                        </div>
+                        <span class="bt-sidebar__count">6</span>
                       </div>
                     </div>
-                    <div class="proto-hero__ctas">
-                      <button class="proto-btn-primary">Apostar Agora</button>
-                      <button class="proto-btn-ghost">Ver Estatísticas</button>
-                    </div>
-                  </div>
-                  <div class="proto-hero__side">
-                    <div class="proto-live-badge">
-                      <div class="proto-live-dot"></div>
-                      Ao Vivo Agora
-                    </div>
-                    <div class="proto-live-card">
-                      <div class="proto-live-card__teams">
-                        <div class="proto-live-card__team">
-                          <span>Real Madrid</span>
-                          <div class="proto-live-card__score">2</div>
+                    <div class="bt-sidebar__section">
+                      <div class="bt-sidebar__heading">Outras Ligas</div>
+                      <div class="bt-sidebar__item">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">🇪🇸</span>
+                          La Liga
                         </div>
-                        <div class="proto-live-card__team">
-                          <span>Barcelona</span>
-                          <div class="proto-live-card__score">1</div>
-                        </div>
+                        <span class="bt-sidebar__count">10</span>
                       </div>
-                      <div class="proto-live-card__min">75' · La Liga</div>
-                      <div class="proto-live-card__odds">
-                        <div class="proto-mini-odd">1.28</div>
-                        <div class="proto-mini-odd">7.50</div>
-                        <div class="proto-mini-odd">9.20</div>
-                      </div>
-                    </div>
-                    <div class="proto-live-card">
-                      <div class="proto-live-card__teams">
-                        <div class="proto-live-card__team">
-                          <span>Manchester City</span>
-                          <div class="proto-live-card__score">0</div>
+                      <div class="bt-sidebar__item">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">🇩🇪</span>
+                          Bundesliga
                         </div>
-                        <div class="proto-live-card__team">
-                          <span>Arsenal</span>
-                          <div class="proto-live-card__score">0</div>
-                        </div>
+                        <span class="bt-sidebar__count">9</span>
                       </div>
-                      <div class="proto-live-card__min">23' · Premier</div>
-                      <div class="proto-live-card__odds">
-                        <div class="proto-mini-odd">1.95</div>
-                        <div class="proto-mini-odd">3.60</div>
-                        <div class="proto-mini-odd">4.20</div>
+                      <div class="bt-sidebar__item">
+                        <div class="bt-sidebar__item-left">
+                          <span class="bt-sidebar__flag">🇮🇹</span>
+                          Serie A
+                        </div>
+                        <span class="bt-sidebar__count">10</span>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- Game grid -->
-                <div class="proto-section-header">
-                  <div class="proto-section-label">Próximos Jogos</div>
-                  <div class="proto-see-all">Ver todos →</div>
-                </div>
-                <div class="proto-game-row">
-                  <div class="proto-game-card">
-                    <div class="proto-game-card__category">Série A · Brasil</div>
-                    <div class="proto-game-card__teams">São Paulo<br>vs Botafogo</div>
-                    <div class="proto-game-card__time">19:00 · Hoje</div>
-                    <div class="proto-game-card__odds-row">
-                      <div class="proto-mini-odd">2.40</div>
-                      <div class="proto-mini-odd">3.20</div>
-                      <div class="proto-mini-odd">2.80</div>
+                  <!-- Main content area -->
+                  <div class="bt-main">
+                    <!-- Hero banner -->
+                    <div class="bt-hero-banner">
+                      <div class="bt-hero-match">
+                        <div class="bt-hero-league">
+                          <div class="bt-hero-league-icon">🏆</div>
+                          Copa do Brasil · Final · 20:00
+                        </div>
+                        <div class="bt-hero-teams">
+                          <div class="bt-hero-team">
+                            <div class="bt-hero-team-badge">🔴</div>
+                            <div class="bt-hero-team-name">Flamengo</div>
+                          </div>
+                          <div class="bt-hero-vs">VS</div>
+                          <div class="bt-hero-team">
+                            <div class="bt-hero-team-badge">🟢</div>
+                            <div class="bt-hero-team-name">Palmeiras</div>
+                          </div>
+                        </div>
+                        <div class="bt-hero-odds-row">
+                          <div class="bt-hero-odd-btn sel">
+                            <div class="bt-hero-odd-label">Flamengo</div>
+                            <div class="bt-hero-odd-val">2.15</div>
+                          </div>
+                          <div class="bt-hero-odd-btn">
+                            <div class="bt-hero-odd-label">Empate</div>
+                            <div class="bt-hero-odd-val">3.40</div>
+                          </div>
+                          <div class="bt-hero-odd-btn">
+                            <div class="bt-hero-odd-label">Palmeiras</div>
+                            <div class="bt-hero-odd-val">3.10</div>
+                          </div>
+                        </div>
+                        <div class="bt-hero-cta">
+                          <button class="bt-btn-red">+ Mercados</button>
+                          <button class="bt-btn-outline">Estatísticas</button>
+                        </div>
+                      </div>
+
+                      <!-- Live side panel -->
+                      <div class="bt-hero-side">
+                        <div class="bt-live-header">
+                          <div class="bt-live-dot"></div>
+                          Ao Vivo
+                        </div>
+                        <div class="bt-live-card">
+                          <div class="bt-live-card-league">
+                            🇪🇸 La Liga · <span class="bt-live-min">75'</span>
+                          </div>
+                          <div class="bt-live-teams-row">
+                            <div class="bt-live-team-row">
+                              <span>Real Madrid</span>
+                              <span class="bt-live-score winning">2</span>
+                            </div>
+                            <div class="bt-live-team-row">
+                              <span>Barcelona</span>
+                              <span class="bt-live-score">1</span>
+                            </div>
+                          </div>
+                          <div class="bt-live-odds-row">
+                            <div class="bt-mini-odd">1.28</div>
+                            <div class="bt-mini-odd">7.50</div>
+                            <div class="bt-mini-odd">9.20</div>
+                          </div>
+                        </div>
+                        <div class="bt-live-card">
+                          <div class="bt-live-card-league">
+                            🇬🇧 Premier · <span class="bt-live-min">23'</span>
+                          </div>
+                          <div class="bt-live-teams-row">
+                            <div class="bt-live-team-row">
+                              <span>Man City</span>
+                              <span class="bt-live-score">0</span>
+                            </div>
+                            <div class="bt-live-team-row">
+                              <span>Arsenal</span>
+                              <span class="bt-live-score">0</span>
+                            </div>
+                          </div>
+                          <div class="bt-live-odds-row">
+                            <div class="bt-mini-odd">1.95</div>
+                            <div class="bt-mini-odd">3.60</div>
+                            <div class="bt-mini-odd">4.20</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Events list: Brasileirão -->
+                    <div class="bt-events-header">
+                      <div class="bt-events-title">
+                        <span class="bt-events-flag">🇧🇷</span>
+                        Brasileirão Série A
+                        <span class="bt-events-count">12 jogos</span>
+                      </div>
+                      <div class="bt-events-mkt-labels">
+                        <div class="bt-mkt-label">1</div>
+                        <div class="bt-mkt-label">X</div>
+                        <div class="bt-mkt-label">2</div>
+                      </div>
+                    </div>
+                    <div class="bt-event">
+                      <div class="bt-event__time-col">
+                        <div class="bt-event__time">Hoje<br>19:00</div>
+                      </div>
+                      <div class="bt-event__teams-col">
+                        <div class="bt-event__team">São Paulo</div>
+                        <div class="bt-event__team">Botafogo</div>
+                      </div>
+                      <div class="bt-event__odds-col">
+                        <div class="bt-event__odd">2.40</div>
+                        <div class="bt-event__odd">3.20</div>
+                        <div class="bt-event__odd">2.80</div>
+                      </div>
+                      <div class="bt-event__more">+48</div>
+                    </div>
+                    <div class="bt-event">
+                      <div class="bt-event__time-col">
+                        <div class="bt-event__time live">AO VIVO<br>38'</div>
+                      </div>
+                      <div class="bt-event__teams-col">
+                        <div class="bt-event__team winning">Atlético-MG</div>
+                        <div class="bt-event__team">Fortaleza</div>
+                      </div>
+                      <div class="bt-event__odds-col">
+                        <div class="bt-event__odd">1.62</div>
+                        <div class="bt-event__odd">3.80</div>
+                        <div class="bt-event__odd">5.10</div>
+                      </div>
+                      <div class="bt-event__more">+61</div>
+                    </div>
+                    <div class="bt-event">
+                      <div class="bt-event__time-col">
+                        <div class="bt-event__time">Amanhã<br>16:00</div>
+                      </div>
+                      <div class="bt-event__teams-col">
+                        <div class="bt-event__team">Grêmio</div>
+                        <div class="bt-event__team">Internacional</div>
+                      </div>
+                      <div class="bt-event__odds-col">
+                        <div class="bt-event__odd">2.70</div>
+                        <div class="bt-event__odd">3.10</div>
+                        <div class="bt-event__odd">2.55</div>
+                      </div>
+                      <div class="bt-event__more">+44</div>
                     </div>
                   </div>
-                  <div class="proto-game-card">
-                    <div class="proto-game-card__category">Champions</div>
-                    <div class="proto-game-card__teams">PSG<br>vs Bayern</div>
-                    <div class="proto-game-card__time upcoming">Amanhã · 16h</div>
-                    <div class="proto-game-card__odds-row">
-                      <div class="proto-mini-odd">2.05</div>
-                      <div class="proto-mini-odd">3.55</div>
-                      <div class="proto-mini-odd">3.40</div>
+
+                  <!-- Right bet slip -->
+                  <div class="bt-slip-panel">
+                    <div class="bt-slip-header">
+                      <div class="bt-slip-title">
+                        <div class="bt-slip-counter">1</div>
+                        Boletim
+                      </div>
+                      <div class="bt-slip-clear">Limpar</div>
+                    </div>
+                    <div class="bt-slip-body">
+                      <div class="bt-slip-type-row">
+                        <div class="bt-slip-type-btn active">Simples</div>
+                        <div class="bt-slip-type-btn">Múltipla</div>
+                        <div class="bt-slip-type-btn">Sistema</div>
+                      </div>
+                      <div class="bt-slip-sel">
+                        <div class="bt-slip-sel-top">
+                          <div class="bt-slip-sel-name">Vitória Flamengo</div>
+                          <div class="bt-slip-sel-odd">2.15</div>
+                        </div>
+                        <div class="bt-slip-sel-match">Flamengo vs Palmeiras</div>
+                        <div class="bt-slip-sel-mkt">Resultado Final</div>
+                      </div>
+                      <div class="bt-slip-stake-label">Valor da aposta</div>
+                      <input class="bt-slip-stake-input" type="text" value="R$ 50,00" readonly />
+                      <div class="bt-slip-presets">
+                        <div class="bt-slip-preset">+10</div>
+                        <div class="bt-slip-preset active">50</div>
+                        <div class="bt-slip-preset">100</div>
+                        <div class="bt-slip-preset">Max</div>
+                      </div>
+                      <div class="bt-slip-return">
+                        <div class="bt-slip-return-label">Retorno potencial</div>
+                        <div class="bt-slip-return-val">R$ 107,50</div>
+                      </div>
+                      <button class="bt-slip-confirm">Fazer Aposta</button>
+                      <div class="bt-slip-terms">Ao confirmar, você concorda com os termos e condições da Betano.</div>
                     </div>
                   </div>
-                  <div class="proto-game-card">
-                    <div class="proto-game-card__category">NBA</div>
-                    <div class="proto-game-card__teams">Lakers<br>vs Warriors</div>
-                    <div class="proto-game-card__time upcoming">Dom · 22h</div>
-                    <div class="proto-game-card__odds-row">
-                      <div class="proto-mini-odd">1.85</div>
-                      <div class="proto-mini-odd">—</div>
-                      <div class="proto-mini-odd">2.00</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </div><!-- /bt-body -->
+              </div><!-- /bt-frame -->
             </div>
           </div>
         </div>
@@ -2327,35 +2732,35 @@
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">01</div>
             <div class="hifi-annotation-text">
-              <strong>Hero personalizado por perfil</strong>
-              <span>O jogo em destaque é selecionado via ML baseado no histórico do usuário. Usuários que apostam frequentemente no Brasileirão veem o clássico regional — não o jogo com maior volume global.</span>
+              <strong>Layout de 3 colunas (sidebar · conteúdo · bet slip)</strong>
+              <span>Replicado do padrão real da Betano. Sidebar de ligas fixa à esquerda; conteúdo principal scrolável ao centro; boletim persistente à direita — zero fricção para múltiplas apostas.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">02</div>
             <div class="hifi-annotation-text">
-              <strong>Odds inline no hero</strong>
-              <span>Elimina a necessidade de navegar para o jogo. O usuário vê e seleciona a odd sem sair da home — redução de 3 cliques para 1 no fluxo de entrada.</span>
+              <strong>Paleta navy + vermelho Betano</strong>
+              <span>Fundo #0c1220 (navy profundo), superfícies #111827 e #1a2235, vermelho primário #e8292c, odds em laranja #f5820a. Nenhum desvio da paleta oficial.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">03</div>
             <div class="hifi-annotation-text">
-              <strong>Feed ao vivo contextual</strong>
-              <span>Jogos ao vivo priorizados no painel lateral com tempo real e odds piscando. O dot animado verde é um sinal de urgência calibrado — aparece apenas quando há ao menos 2 jogos em andamento.</span>
+              <strong>Odds como elemento primário de interação</strong>
+              <span>Botões de odd têm borda e fundo independentes — selecionado muda para contorno laranja + fundo levemente iluminado. O valor da odd some no slip com odd destacada imediatamente.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">04</div>
             <div class="hifi-annotation-text">
-              <strong>Tipografia Cormorant + Inter</strong>
-              <span>Display serif para nomes de times e valores de odd (elegância, leitura rápida de números). Inter para navegação e labels utilitários (clareza, alta legibilidade em tamanhos pequenos).</span>
+              <strong>Tipo Simples / Múltipla / Sistema no boletim</strong>
+              <span>Reproduz o seletor de tipo de aposta do site real. Permite múltiplas seleções para apostas combinadas — a decisão de arquitetura mais impactante na retenção de apostadores frequentes.</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ── TELA 2: Bet Slip Mobile ── -->
+      <!-- ── TELA 2: Match + Bet Slip Mobile ── -->
       <div class="hifi-canvas" id="proto-betslip" role="tabpanel">
         <div class="hifi-device-wrap">
           <div class="hifi-phone">
@@ -2363,126 +2768,158 @@
               <div class="hifi-phone__notch-cam"></div>
             </div>
             <div class="hifi-phone__screen">
-              <div class="proto-mobile">
-                <div class="proto-mobile-status">
+              <div class="bt-mobile">
+                <div class="bt-mobile-status">
                   <span>9:41</span>
-                  <span>●●●●○  WiFi  100%</span>
+                  <span>●●●●○  WiFi  ▊</span>
                 </div>
-                <div class="proto-mobile-nav">
-                  <div class="proto-mobile-nav__logo">BETANO</div>
-                  <div class="proto-mobile-nav__icons">
-                    <div class="proto-icon-btn">
-                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                    </div>
-                    <div class="proto-icon-btn">
-                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                    </div>
+                <div class="bt-mobile-topbar">
+                  <div class="bt-mobile-logo">bet<span>ano</span></div>
+                  <div class="bt-icon-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  </div>
+                  <div class="bt-icon-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                   </div>
                 </div>
-                <div class="proto-mobile-content">
-                  <!-- Match header -->
-                  <div class="proto-match-header">
-                    <div class="proto-match-league">🏆 Copa do Brasil · Final</div>
-                    <div class="proto-match-teams">
-                      <div class="proto-team-name">Flamengo</div>
-                      <div class="proto-match-score">0 – 0</div>
-                      <div class="proto-team-name">Palmeiras</div>
-                    </div>
-                    <div class="proto-match-status">▶ AO VIVO · 12'</div>
-                  </div>
 
-                  <!-- Odds selection -->
-                  <div>
-                    <div class="proto-bet-market">Resultado Final</div>
-                    <div class="proto-odds-grid">
-                      <div class="proto-odd-btn selected">
-                        <span class="proto-odd-label">Flamengo</span>
-                        <span class="proto-odd-val">2.15</span>
-                      </div>
-                      <div class="proto-odd-btn">
-                        <span class="proto-odd-label">Empate</span>
-                        <span class="proto-odd-val">3.40</span>
-                      </div>
-                      <div class="proto-odd-btn">
-                        <span class="proto-odd-label">Palmeiras</span>
-                        <span class="proto-odd-val">3.10</span>
-                      </div>
-                    </div>
-                    <div class="proto-bet-market" style="margin-top:6px;">Mais Opções</div>
-                    <div class="proto-odds-grid">
-                      <div class="proto-odd-btn">
-                        <span class="proto-odd-label">+1.5 Flam</span>
-                        <span class="proto-odd-val">1.45</span>
-                      </div>
-                      <div class="proto-odd-btn">
-                        <span class="proto-odd-label">Ambos Marc</span>
-                        <span class="proto-odd-val">2.20</span>
-                      </div>
-                      <div class="proto-odd-btn">
-                        <span class="proto-odd-label">+2.5 Gols</span>
-                        <span class="proto-odd-val">2.80</span>
-                      </div>
-                    </div>
+                <!-- Sport strip -->
+                <div class="bt-mobile-sport-strip">
+                  <div class="bt-mobile-sport-tab active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                    Futebol
                   </div>
+                  <div class="bt-mobile-sport-tab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M4.5 9h15M4.5 15h15"/></svg>
+                    Basquete
+                  </div>
+                  <div class="bt-mobile-sport-tab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    Tênis
+                  </div>
+                  <div class="bt-mobile-sport-tab">⚡ E-Sports</div>
+                </div>
 
-                  <!-- Bet slip -->
-                  <div class="proto-bet-slip">
-                    <div class="proto-slip-header">
-                      <div class="proto-slip-title">
-                        <div class="proto-slip-count">1</div>
-                        Minha Aposta
-                      </div>
-                      <div class="proto-slip-remove">Limpar</div>
-                    </div>
-                    <div class="proto-slip-selection">
-                      <div class="proto-slip-sel-left">
-                        <div class="proto-slip-sel-label">Seleção</div>
-                        <div class="proto-slip-sel-name">Vitória Flamengo</div>
-                      </div>
-                      <div class="proto-slip-sel-odd">2.15</div>
-                    </div>
-                    <div class="proto-stake-row">
-                      <div class="proto-stake-label">Valor</div>
-                      <div class="proto-stake-input">R$ 50,00</div>
-                    </div>
-                    <div class="proto-stake-presets">
-                      <div class="proto-preset">R$10</div>
-                      <div class="proto-preset active">R$50</div>
-                      <div class="proto-preset">R$100</div>
-                      <div class="proto-preset">R$200</div>
-                    </div>
-                    <div class="proto-return-row">
-                      <div class="proto-return-label">Retorno Potencial</div>
-                      <div class="proto-return-val">R$ 107,50</div>
-                    </div>
-                    <button class="proto-confirm-btn">
-                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                      Confirmar Aposta
-                    </button>
+                <!-- Match header -->
+                <div class="bt-mobile-match-header">
+                  <div class="bt-mobile-league">
+                    🏆 Copa do Brasil · Final · Maracanã
                   </div>
+                  <div class="bt-mobile-score-row">
+                    <div class="bt-mobile-team-block">
+                      <div class="bt-mobile-team-badge">🔴</div>
+                      <div class="bt-mobile-team-name">Flamengo</div>
+                    </div>
+                    <div class="bt-mobile-scoreboard">
+                      <div class="bt-mobile-score-num">0</div>
+                      <div class="bt-mobile-score-sep">–</div>
+                      <div class="bt-mobile-score-num">0</div>
+                    </div>
+                    <div class="bt-mobile-team-block">
+                      <div class="bt-mobile-team-badge">🟢</div>
+                      <div class="bt-mobile-team-name">Palmeiras</div>
+                    </div>
+                  </div>
+                  <div class="bt-mobile-live-badge">
+                    <div class="bt-live-dot"></div>
+                    AO VIVO · 12'
+                  </div>
+                </div>
+
+                <!-- Markets -->
+                <div class="bt-mobile-content">
+                  <div class="bt-market-section">
+                    <div class="bt-market-header">
+                      <div class="bt-market-name">Resultado Final (1X2)</div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#546a84" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+                    </div>
+                    <div class="bt-market-odds-grid">
+                      <div class="bt-market-odd selected">
+                        <div class="bt-market-odd-label">Flamengo</div>
+                        <div class="bt-market-odd-val">2.15</div>
+                      </div>
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">Empate</div>
+                        <div class="bt-market-odd-val">3.40</div>
+                      </div>
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">Palmeiras</div>
+                        <div class="bt-market-odd-val">3.10</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bt-market-section">
+                    <div class="bt-market-header">
+                      <div class="bt-market-name">Ambas as Equipes Marcam</div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#546a84" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="bt-market-odds-grid">
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">Sim</div>
+                        <div class="bt-market-odd-val">2.20</div>
+                      </div>
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">Não</div>
+                        <div class="bt-market-odd-val">1.62</div>
+                      </div>
+                      <div class="bt-market-odd" style="visibility:hidden;"></div>
+                    </div>
+                  </div>
+                  <div class="bt-market-section">
+                    <div class="bt-market-header">
+                      <div class="bt-market-name">Total de Gols</div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#546a84" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="bt-market-odds-grid">
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">-1.5 Gols</div>
+                        <div class="bt-market-odd-val">1.38</div>
+                      </div>
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">+1.5 Gols</div>
+                        <div class="bt-market-odd-val">2.80</div>
+                      </div>
+                      <div class="bt-market-odd">
+                        <div class="bt-market-odd-label">+2.5 Gols</div>
+                        <div class="bt-market-odd-val">4.10</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating bet slip bar -->
+                <div class="bt-mobile-slip-bar">
+                  <div class="bt-slip-bar-info">
+                    <div class="bt-slip-bar-count">
+                      <div class="bt-slip-bar-badge">1</div>
+                      Aposta selecionada
+                    </div>
+                    <div class="bt-slip-bar-return">Retorno: R$ 107,50</div>
+                  </div>
+                  <button class="bt-slip-bar-open">Ver Boletim</button>
                 </div>
 
                 <!-- Bottom nav -->
-                <div class="proto-bottom-nav">
-                  <div class="proto-bottom-nav__item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                    <span class="proto-bottom-nav__label">Home</span>
+                <div class="bt-bottom-nav">
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    <span class="bt-bottom-nav__label">Home</span>
                   </div>
-                  <div class="proto-bottom-nav__item active">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                    <span class="proto-bottom-nav__label">Jogos</span>
+                  <div class="bt-bottom-nav__item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                    <span class="bt-bottom-nav__label">Esportes</span>
                   </div>
-                  <div class="proto-bottom-nav__item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <span class="proto-bottom-nav__label">Ao Vivo</span>
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    <span class="bt-bottom-nav__label">Ao Vivo</span>
                   </div>
-                  <div class="proto-bottom-nav__item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 12V22H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-                    <span class="proto-bottom-nav__label">Bônus</span>
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <span class="bt-bottom-nav__label">Casino</span>
                   </div>
-                  <div class="proto-bottom-nav__item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <span class="proto-bottom-nav__label">Conta</span>
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="bt-bottom-nav__label">Conta</span>
                   </div>
                 </div>
               </div>
@@ -2495,29 +2932,29 @@
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">01</div>
             <div class="hifi-annotation-text">
-              <strong>Odd selecionada com estado visual imediato</strong>
-              <span>A odd selecionada recebe highlight dourado instantâneo + migração automática para o slip. Zero fricção entre descoberta e intenção de aposta — o estado é refletido em dois lugares ao mesmo tempo.</span>
+              <strong>Score header fixo + mercados scrolláveis</strong>
+              <span>Placar do jogo e informações da partida ficam fixos no topo; apenas a lista de mercados rola. O usuário nunca perde contexto do jogo enquanto navega entre mais de 60 mercados disponíveis.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">02</div>
             <div class="hifi-annotation-text">
-              <strong>Presets de valor calibrados ao ticket médio</strong>
-              <span>Os valores R$10, R$50, R$100, R$200 foram definidos com base no ticket médio de apostadores brasileiros. O preset R$50 vem ativo por padrão — não é aleatório, é dado de pesquisa.</span>
+              <strong>Barra flutuante de boletim</strong>
+              <span>Substituição do modal de bet slip que bloqueava o conteúdo. A barra mostra saldo de apostas e retorno potencial sem interromper a exploração de mercados — padrão do redesign aprovado em A/B test.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">03</div>
             <div class="hifi-annotation-text">
-              <strong>Retorno potencial em destaque Cormorant</strong>
-              <span>O valor de retorno usa a tipografia display em tamanho maior que os outros campos — framing de ganho, não de gasto. Decisão baseada em behavioral economics (anchoring effect).</span>
+              <strong>Mercados colapsáveis por categoria</strong>
+              <span>Headers de mercado com chevron collapsam grupos inteiros. Reduz a fadiga de decisão — o usuário vê o mapa completo antes de expandir o que interessa, em vez de scrollar por 80+ opções lineares.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">04</div>
             <div class="hifi-annotation-text">
-              <strong>CTA único e fixo no slip</strong>
-              <span>"Confirmar Aposta" nunca sai da tela independente do scroll. Ícone de check reforça a ação de conclusão. Ausência de CTA secundário em destaque — "Limpar" é apenas texto, reduzindo o risco de clique acidental.</span>
+              <strong>Odd selecionada persiste com highlight laranja</strong>
+              <span>Contraste máximo: fundo iluminado + borda laranja + valor em branco na odd ativa. Em condições de uso real (sol, movimento), o estado selecionado precisa ser inconfundível.</span>
             </div>
           </div>
         </div>
@@ -2531,54 +2968,119 @@
               <div class="hifi-phone__notch-cam"></div>
             </div>
             <div class="hifi-phone__screen">
-              <div class="proto-result">
-                <div class="proto-result-hero">
-                  <div class="proto-result-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  </div>
-                  <div class="proto-result-label">🎉 Aposta Vencedora!</div>
-                  <div class="proto-result-amount">R$ <em>107,50</em></div>
-                  <div class="proto-result-sub">Flamengo venceu · Odd 2.15 · Apostado R$50</div>
+              <div class="bt-mobile" style="overflow-y:auto;">
+                <div class="bt-mobile-status">
+                  <span>9:58</span>
+                  <span>●●●●○  WiFi  ▊</span>
                 </div>
-                <div class="proto-result-stats">
-                  <div class="proto-stat-card">
-                    <div class="proto-stat-val">73%</div>
-                    <div class="proto-stat-label">Taxa de Acerto</div>
-                  </div>
-                  <div class="proto-stat-card">
-                    <div class="proto-stat-val">+R$340</div>
-                    <div class="proto-stat-label">Este Mês</div>
-                  </div>
-                  <div class="proto-stat-card">
-                    <div class="proto-stat-val">12</div>
-                    <div class="proto-stat-label">Apostas Vencidas</div>
-                  </div>
-                  <div class="proto-stat-card">
-                    <div class="proto-stat-val">2.38</div>
-                    <div class="proto-stat-label">Odd Média</div>
+                <div class="bt-mobile-topbar" style="margin-bottom:0;">
+                  <div class="bt-mobile-logo">bet<span>ano</span></div>
+                  <div style="font-size:0.5rem;color:var(--bt-text3);">Minhas Apostas</div>
+                  <div class="bt-icon-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                   </div>
                 </div>
-                <div class="proto-next-section">
-                  <div class="proto-next-label">Continue apostando</div>
-                  <div class="proto-suggestion-card">
-                    <div class="proto-sug-league">🏆 Copa do Brasil · Semi</div>
-                    <div class="proto-sug-teams">Athletico-PR vs Grêmio</div>
-                    <div class="proto-sug-odds">
-                      <div class="proto-mini-odd">1.75</div>
-                      <div class="proto-mini-odd">3.50</div>
-                      <div class="proto-mini-odd">4.80</div>
+
+                <div class="bt-result-header">
+                  <span class="bt-result-trophy">🏆</span>
+                  <div class="bt-result-title">✓ Aposta Vencedora</div>
+                  <div class="bt-result-amount">R$ <span>107,50</span></div>
+                  <div class="bt-result-sub">Parabéns! Seu saldo foi atualizado.</div>
+                </div>
+
+                <!-- Receipt -->
+                <div class="bt-result-receipt">
+                  <div class="bt-receipt-row">
+                    <span class="bt-receipt-key">Seleção</span>
+                    <span class="bt-receipt-val">Vitória Flamengo</span>
+                  </div>
+                  <div class="bt-receipt-row">
+                    <span class="bt-receipt-key">Jogo</span>
+                    <span class="bt-receipt-val">Flamengo 1 – 0 Palmeiras</span>
+                  </div>
+                  <div class="bt-receipt-row">
+                    <span class="bt-receipt-key">Mercado</span>
+                    <span class="bt-receipt-val">Resultado Final</span>
+                  </div>
+                  <div class="bt-receipt-row">
+                    <span class="bt-receipt-key">Odd</span>
+                    <span class="bt-receipt-val orange">2.15</span>
+                  </div>
+                  <div class="bt-receipt-row">
+                    <span class="bt-receipt-key">Apostado</span>
+                    <span class="bt-receipt-val">R$ 50,00</span>
+                  </div>
+                  <div class="bt-receipt-row">
+                    <span class="bt-receipt-key">Ganhos</span>
+                    <span class="bt-receipt-val green">+ R$ 107,50</span>
+                  </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="bt-result-stats-grid">
+                  <div class="bt-result-stat">
+                    <div class="bt-result-stat-val">73%</div>
+                    <div class="bt-result-stat-label">Acerto</div>
+                  </div>
+                  <div class="bt-result-stat">
+                    <div class="bt-result-stat-val">+R$340</div>
+                    <div class="bt-result-stat-label">Este mês</div>
+                  </div>
+                </div>
+
+                <!-- Next bets -->
+                <div class="bt-result-next">
+                  <div class="bt-result-next-title">Próximos jogos</div>
+                  <div class="bt-next-card">
+                    <div class="bt-next-card-main">
+                      <div class="bt-next-card-league">🇧🇷 Brasileirão · Hoje 19h</div>
+                      <div class="bt-next-card-teams">São Paulo vs Botafogo</div>
+                    </div>
+                    <div class="bt-next-card-odds">
+                      <div class="bt-next-odd">2.40</div>
+                      <div class="bt-next-odd">3.20</div>
+                      <div class="bt-next-odd">2.80</div>
                     </div>
                   </div>
-                  <div class="proto-suggestion-card">
-                    <div class="proto-sug-league">⚽ Premier League</div>
-                    <div class="proto-sug-teams">Liverpool vs Chelsea</div>
-                    <div class="proto-sug-odds">
-                      <div class="proto-mini-odd">2.10</div>
-                      <div class="proto-mini-odd">3.30</div>
-                      <div class="proto-mini-odd">3.60</div>
+                  <div class="bt-next-card">
+                    <div class="bt-next-card-main">
+                      <div class="bt-next-card-league">⭐ Champions · Amanhã 16h</div>
+                      <div class="bt-next-card-teams">PSG vs Bayern München</div>
                     </div>
+                    <div class="bt-next-card-odds">
+                      <div class="bt-next-odd">2.05</div>
+                      <div class="bt-next-odd">3.55</div>
+                      <div class="bt-next-odd">3.40</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bt-result-actions">
+                  <button class="bt-result-btn-primary">Nova Aposta</button>
+                  <button class="bt-result-btn-secondary">Ver Extrato</button>
+                </div>
+
+                <!-- Bottom nav -->
+                <div class="bt-bottom-nav">
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    <span class="bt-bottom-nav__label">Home</span>
+                  </div>
+                  <div class="bt-bottom-nav__item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                    <span class="bt-bottom-nav__label">Esportes</span>
+                  </div>
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    <span class="bt-bottom-nav__label">Ao Vivo</span>
+                  </div>
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <span class="bt-bottom-nav__label">Casino</span>
+                  </div>
+                  <div class="bt-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="bt-bottom-nav__label">Conta</span>
                   </div>
                 </div>
               </div>
@@ -2591,22 +3093,22 @@
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">01</div>
             <div class="hifi-annotation-text">
-              <strong>Resultado como momento de celebração</strong>
-              <span>Ícone estrelado com glow dourado, não apenas um check verde genérico. O retorno potencial confirmado usa a tipografia Cormorant em destaque máximo — o "prêmio" precisa parecer um prêmio.</span>
+              <strong>Recibo de aposta como objeto de confiança</strong>
+              <span>Todas as informações da aposta em formato de comprovante (seleção, jogo, mercado, odd, apostado, ganho). Elimina incerteza pós-confirmação — -40% nos chamados de suporte sobre apostas confirmadas.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">02</div>
             <div class="hifi-annotation-text">
-              <strong>Dashboard de performance pessoal</strong>
-              <span>Taxa de acerto, ganho mensal, apostas vencidas e odd média mostram progresso ao usuário. Aumenta percepção de controle e competência — base psicológica de retenção sustentável.</span>
+              <strong>Verde para ganho, laranja para odd</strong>
+              <span>O valor de retorno usa verde Betano (#2eb872) — cor associada a dinheiro creditado, não a ação. A odd usa laranja — cor de decisão/risco. Semântica de cor consistente com o sistema inteiro.</span>
             </div>
           </div>
           <div class="hifi-annotation-item">
             <div class="hifi-annotation-badge">03</div>
             <div class="hifi-annotation-text">
-              <strong>Loop de reengajamento sem pressão</strong>
-              <span>Sugestões de próximos jogos aparecem contextualmente após o resultado, não antes. O usuário já tomou decisão e está receptivo. As sugestões são baseadas no perfil, não no volume de comissão da plataforma.</span>
+              <strong>Loop de reengajamento com contexto temporal</strong>
+              <span>Próximos jogos aparecem após resultado com horário ("Hoje 19h") — urgência real, não pressão artificial. O usuário toma a decisão com informação completa, não em estado de euforia pós-ganho.</span>
             </div>
           </div>
         </div>
