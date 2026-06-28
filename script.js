@@ -577,3 +577,72 @@ document.addEventListener('DOMContentLoaded', () => {
   new ReadingProgress();
   new StickyTOC();
 });
+
+/* ============= JOURNEY STEPPER (case pages) ============= */
+class JourneyStepper {
+  constructor() {
+    const sections = document.querySelectorAll('.journey-stepper');
+    sections.forEach(section => this.init(section));
+  }
+
+  init(section) {
+    const panels   = section.querySelectorAll('.screen-panel');
+    const dots     = section.querySelectorAll('.journey-step-dot');
+    const connectors = section.querySelectorAll('.journey-connector');
+    const prevBtn  = section.querySelector('.journey-btn--prev');
+    const nextBtn  = section.querySelector('.journey-btn--next');
+    const counter  = section.querySelector('.journey-counter');
+    let current    = 0;
+
+    const total = panels.length;
+
+    const go = (idx) => {
+      panels.forEach(p => { p.classList.remove('active'); });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+        d.classList.toggle('completed', i < idx);
+      });
+      connectors.forEach((c, i) => {
+        c.classList.toggle('completed', i < idx);
+      });
+      panels[idx]?.classList.add('active');
+      if (counter) counter.textContent = `${idx + 1} / ${total}`;
+      if (prevBtn) prevBtn.disabled = idx === 0;
+      if (nextBtn) nextBtn.disabled = idx === total - 1;
+      current = idx;
+
+      // Animate progress fills inside active panel
+      const fills = panels[idx]?.querySelectorAll('.ui-progress__fill');
+      fills?.forEach(fill => {
+        const target = fill.dataset.width || '70';
+        fill.style.width = '0%';
+        requestAnimationFrame(() => {
+          setTimeout(() => { fill.style.width = target + '%'; }, 100);
+        });
+      });
+    };
+
+    // Dot clicks
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => go(i));
+    });
+
+    // Prev/Next
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (current > 0) go(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (current < total - 1) go(current + 1); });
+
+    // Init
+    go(0);
+
+    // Keyboard navigation when section is focused area
+    section.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' && current < total - 1) go(current + 1);
+      if (e.key === 'ArrowLeft'  && current > 0)         go(current - 1);
+    });
+  }
+}
+
+// Add to init
+document.addEventListener('DOMContentLoaded', () => {
+  new JourneyStepper();
+});
