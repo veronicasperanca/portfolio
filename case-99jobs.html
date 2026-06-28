@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case 99Jobs — Verônica Sperança</title>
+  <meta name="description" content="Gamificação de processos seletivos: +60% engajamento, 97% retenção. Senior Product Designer — Verônica Sperança." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .case-hero {
+      position: relative; min-height: 70vh; display: flex; align-items: flex-end;
+      overflow: hidden; padding-bottom: var(--sp-24); background: var(--surface-1);
+    }
+    .case-hero__bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 70% 20%, rgba(109,79,194,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 90%, rgba(201,169,110,0.07) 0%, transparent 70%);
+    }
+    .case-hero__content {
+      position: relative; z-index: 2; width: 100%;
+      max-width: var(--container); margin: 0 auto;
+      padding: 140px var(--container-pad) 0;
+    }
+    .case-hero__back {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      font-family: var(--font-mono); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--text-3); transition: color var(--t-base);
+      margin-bottom: var(--sp-12);
+    }
+    .case-hero__back:hover { color: var(--gold); }
+    .case-hero__back svg { transition: transform var(--t-spring); }
+    .case-hero__back:hover svg { transform: translateX(-4px); }
+    .case-hero__tag { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--sp-6); }
+    .case-hero__title { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,5.5rem); font-weight: 300; line-height: 1.05; color: var(--text-1); margin-bottom: var(--sp-8); max-width: 900px; }
+    .case-hero__title em { color: var(--gold); font-style: italic; }
+    .case-hero__meta { display: flex; gap: var(--sp-8); flex-wrap: wrap; }
+    .case-hero__meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .case-hero__meta-label { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); }
+    .case-hero__meta-value { font-size: .9rem; color: var(--text-2); }
+    .case-metrics-bar { background: var(--surface-2); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); padding: var(--sp-12) 0; }
+    .case-metrics-bar .metrics__grid { grid-template-columns: repeat(3, 1fr); }
+    .case-article { max-width: var(--container); margin: 0 auto; padding: var(--sp-24) var(--container-pad); display: grid; grid-template-columns: 240px 1fr; gap: var(--sp-16); align-items: start; }
+    .case-toc { position: sticky; top: 120px; }
+    .case-toc__title { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: var(--sp-4); }
+    .case-content h2 { font-family: var(--font-display); font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 300; color: var(--text-1); margin-bottom: var(--sp-6); margin-top: var(--sp-16); padding-top: var(--sp-4); }
+    .case-content h2:first-child { margin-top: 0; }
+    .case-content h2 em { color: var(--gold); font-style: italic; }
+    .case-content h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-1); margin-bottom: var(--sp-4); margin-top: var(--sp-8); }
+    .case-content p { color: var(--text-2); font-size: 1rem; line-height: 1.9; margin-bottom: var(--sp-6); }
+    .case-content strong { color: var(--text-1); font-weight: 500; }
+    .case-content ul { list-style: none; margin-bottom: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-3); }
+    .case-content ul li { display: flex; gap: var(--sp-3); align-items: flex-start; font-size: .95rem; color: var(--text-2); line-height: 1.75; }
+    .case-content ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .case-highlight { background: var(--surface-2); border: 1px solid var(--border-card); border-left: 3px solid var(--violet-light); border-radius: 0 var(--r-md) var(--r-md) 0; padding: var(--sp-6) var(--sp-8); margin: var(--sp-8) 0; }
+    .case-highlight p { margin: 0; font-size: 1rem; font-style: italic; color: var(--text-1); }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-4); margin: var(--sp-8) 0; }
+    .result-card { background: var(--surface-2); border: 1px solid var(--border-card); border-radius: var(--r-lg); padding: var(--sp-6); text-align: center; transition: all var(--t-ease); }
+    .result-card:hover { border-color: var(--gold-border); background: var(--gold-glow); }
+    .result-card__value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: var(--sp-2); }
+    .result-card__label { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-3); }
+    .octalysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--sp-3); margin: var(--sp-8) 0; }
+    .octalysis-card { background: var(--surface-1); border: 1px solid var(--border-card); border-radius: var(--r-lg); padding: var(--sp-5); transition: all var(--t-base); }
+    .octalysis-card:hover { border-color: var(--violet-light); transform: translateY(-2px); }
+    .octalysis-card__num { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; color: var(--violet-light); margin-bottom: var(--sp-2); }
+    .octalysis-card__name { font-size: .875rem; font-weight: 600; color: var(--text-1); margin-bottom: var(--sp-2); }
+    .octalysis-card__desc { font-size: .78rem; color: var(--text-3); line-height: 1.6; }
+    .companies-row { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin: var(--sp-6) 0; }
+    .company-tag { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; padding: var(--sp-2) var(--sp-4); background: var(--surface-2); border: 1px solid var(--border-card); border-radius: var(--r-full); color: var(--text-2); }
+    @media (max-width:1024px) { .case-article { grid-template-columns: 1fr; } .case-toc { display: none; } .case-metrics-bar .metrics__grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:600px) { .case-metrics-bar .metrics__grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div id="readingProgress"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">VS<span class="nav__logo-dot">.</span></a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html#sobre"     class="nav__link">Sobre</a></li>
+      <li><a href="index.html#cases"     class="nav__link">Cases</a></li>
+      <li><a href="index.html#expertise" class="nav__link">Expertise</a></li>
+      <li><a href="index.html#ds"        class="nav__link">Design System</a></li>
+      <li><a href="index.html#contato"   class="nav__link">Contato</a></li>
+    </ul>
+    <a href="index.html#contato" class="nav__cta">Vamos conversar</a>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+    <ul role="list">
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#cases">Cases</a></li>
+      <li><a href="index.html#expertise">Expertise</a></li>
+      <li><a href="index.html#ds">Design System</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="case-hero" aria-label="Case 99Jobs">
+    <div class="case-hero__bg" aria-hidden="true"></div>
+    <div class="case-hero__content">
+      <a href="index.html#cases" class="case-hero__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar aos Cases
+      </a>
+      <div class="case-hero__tag">Gamificação · UX Research · Storytelling · Scrum</div>
+      <h1 class="case-hero__title">
+        Gamificação de Processos Seletivos<br>
+        em <em>Grandes Corporações</em>
+      </h1>
+      <div class="case-hero__meta">
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Empresa</span>
+          <span class="case-hero__meta-value">99Jobs</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Período</span>
+          <span class="case-hero__meta-value">2022 – 2023</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Papel</span>
+          <span class="case-hero__meta-value">Senior Product Designer</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Setor</span>
+          <span class="case-hero__meta-value">HRTech · Recrutamento & Seleção</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS BAR -->
+  <div class="case-metrics-bar" aria-label="Resultados do projeto">
+    <div class="container">
+      <div class="metrics__grid">
+        <div class="metric-item">
+          <div class="metric-item__number">+<span class="counter" data-target="60">0</span>%</div>
+          <div class="metric-item__label">Engajamento</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number"><span class="counter" data-target="97">0</span>%</div>
+          <div class="metric-item__label">Retenção no Processo</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">-<span class="counter" data-target="55">0</span>%</div>
+          <div class="metric-item__label">Tempo de Implementação</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="case-article">
+
+    <aside class="case-toc" aria-label="Índice do case">
+      <div class="case-toc__title">Neste case</div>
+      <nav id="caseTOC">
+        <a href="#contexto">Contexto</a>
+        <a href="#problema">O Problema</a>
+        <a href="#framework">Framework</a>
+        <a href="#solucao">Solução</a>
+        <a href="#empresas">Empresas</a>
+        <a href="#resultados">Resultados</a>
+      </nav>
+    </aside>
+
+    <article class="case-content" aria-label="Conteúdo do case 99Jobs">
+
+      <h2 id="contexto">Contexto & <em>Oportunidade</em></h2>
+      <p>
+        A 99Jobs é uma plataforma HRTech especializada em processos seletivos para grandes corporações. Em 2022, identificou uma oportunidade única: os processos seletivos tradicionais eram percebidos pelos candidatos como experiências passivas e ansiogênicas — formulários extensos, falta de feedback e nenhuma sensação de progresso ou conquista.
+      </p>
+      <p>
+        Ao mesmo tempo, as empresas clientes sofriam com taxas alarmantes de desistência durante os processos — candidatos qualificados abandonando o funil antes da fase final, representando perda de investimento e tempo de recrutadores.
+      </p>
+
+      <div class="case-highlight">
+        <p>"E se o processo seletivo fosse tão envolvente quanto um bom jogo? Não para ser trivial — mas para ser humano."</p>
+      </div>
+
+      <h2 id="problema">O <em>Problema Real</em></h2>
+      <p>Três dores centrais foram identificadas nas pesquisas iniciais com candidatos e RHs:</p>
+      <ul>
+        <li><strong>Candidatos:</strong> ausência de feedback durante o processo gerava ansiedade e desengajamento — "parece que estou falando com o vazio"</li>
+        <li><strong>Recrutadores:</strong> formulários longos afastavam candidatos qualificados mas introvertidos ou menos familiarizados com o formato tradicional</li>
+        <li><strong>Empresas:</strong> dados coletados pelo processo não refletiam comportamentos reais de trabalho — hard skills avaliadas, soft skills invisíveis</li>
+      </ul>
+
+      <h2 id="framework">O <em>Framework</em> de Gamificação</h2>
+      <p>
+        O projeto foi ancorado em dois frameworks complementares: o <strong>Octalysis Framework</strong> de Yu-kai Chou (que mapeia os 8 drivers fundamentais de motivação humana) e a <strong>Teoria da Autodeterminação</strong> (Deci & Ryan), que diferencia motivação extrínseca de intrínseca.
+      </p>
+      <p>A premissa era clara: gamificação superficial (pontos e badges sem propósito) seria contraproducente. Era preciso criar significado, não apenas estímulo.</p>
+
+      <div class="octalysis-grid">
+        <div class="octalysis-card">
+          <div class="octalysis-card__num">Drive 01</div>
+          <div class="octalysis-card__name">Significado Épico</div>
+          <div class="octalysis-card__desc">Candidatos entendem seu papel na história da empresa — não são um número</div>
+        </div>
+        <div class="octalysis-card">
+          <div class="octalysis-card__num">Drive 02</div>
+          <div class="octalysis-card__name">Realização</div>
+          <div class="octalysis-card__desc">Progresso visível, conquistas desbloqueadas, metas claras em cada etapa</div>
+        </div>
+        <div class="octalysis-card">
+          <div class="octalysis-card__num">Drive 03</div>
+          <div class="octalysis-card__name">Expressão Criativa</div>
+          <div class="octalysis-card__desc">Desafios que permitem mostrar personalidade além do currículo</div>
+        </div>
+        <div class="octalysis-card">
+          <div class="octalysis-card__num">Drive 04</div>
+          <div class="octalysis-card__name">Influência Social</div>
+          <div class="octalysis-card__desc">Referências, endossos e colaboração — recrutamento como rede</div>
+        </div>
+        <div class="octalysis-card">
+          <div class="octalysis-card__num">Drive 05</div>
+          <div class="octalysis-card__name">Imprevisibilidade</div>
+          <div class="octalysis-card__desc">Desafios surpresa que testam adaptabilidade de forma lúdica</div>
+        </div>
+        <div class="octalysis-card">
+          <div class="octalysis-card__num">Drive 06</div>
+          <div class="octalysis-card__name">Perda & Evitação</div>
+          <div class="octalysis-card__desc">Prazos com significado — não pressão vazia, mas oportunidade real</div>
+        </div>
+      </div>
+
+      <h2 id="solucao">A <em>Solução</em> de Design</h2>
+
+      <h3>Jornada como Narrativa</h3>
+      <p>
+        Redesenhamos o processo seletivo como uma <strong>narrativa em capítulos</strong>: cada etapa tem um nome, um propósito comunicado e um momento de reconhecimento. O candidato não "faz uma prova" — ele "completa a missão de descoberta de valores" ou "apresenta sua perspectiva no desafio criativo".
+      </p>
+
+      <h3>Feedback em Tempo Real</h3>
+      <p>
+        Criamos um sistema de micro-feedback que acompanha o candidato: indicadores de completude, animações de reconhecimento ao finalizar etapas e mensagens contextuais que humanizam o processo. O candidato sempre sabe onde está, o que vem a seguir e que foi notado.
+      </p>
+
+      <h3>Desafios Adaptativos</h3>
+      <p>
+        Desenvolvemos uma biblioteca de <strong>desafios adaptativos</strong> que as empresas podem customizar por posição e cultura. Eles avaliam raciocínio crítico, criatividade e fit cultural de forma muito mais reveladora que questões de múltipla escolha tradicionais.
+      </p>
+
+      <h2 id="empresas"><em>Empresas</em> Atendidas</h2>
+      <p>O sistema foi implementado em 10 empresas durante o período, incluindo:</p>
+      <div class="companies-row">
+        <span class="company-tag">Casa&Video</span>
+        <span class="company-tag">ABB</span>
+        <span class="company-tag">Pirelli</span>
+        <span class="company-tag">Honda</span>
+        <span class="company-tag">+ 6 empresas</span>
+      </div>
+      <p>
+        Cada implementação foi customizada para a cultura e posições em aberto, mas compartilhava o mesmo sistema de design e os mesmos princípios de motivação — garantindo consistência na experiência do candidato independente da empresa.
+      </p>
+
+      <h2 id="resultados"><em>Resultados</em> e Impacto</h2>
+
+      <div class="result-grid">
+        <div class="result-card reveal">
+          <div class="result-card__value">+60%</div>
+          <div class="result-card__label">Engajamento Médio</div>
+        </div>
+        <div class="result-card reveal" data-delay="100">
+          <div class="result-card__value">97%</div>
+          <div class="result-card__label">Retenção no Processo</div>
+        </div>
+        <div class="result-card reveal" data-delay="200">
+          <div class="result-card__value">-55%</div>
+          <div class="result-card__label">Tempo de Implementação</div>
+        </div>
+        <div class="result-card reveal" data-delay="300">
+          <div class="result-card__value">10</div>
+          <div class="result-card__label">Empresas Atendidas</div>
+        </div>
+      </div>
+
+      <p>
+        O resultado mais valioso foi qualitativo: candidatos relataram que o processo foi a primeira experiência seletiva em que se sentiram <em>vistos como pessoas</em>, não como candidaturas. Isso elevou significativamente a percepção de employer branding das empresas envolvidas.
+      </p>
+
+    </article>
+  </div>
+
+  <footer role="contentinfo">
+    <p class="footer__copy">© 2026 Verônica Sperança · Senior Product Designer</p>
+    <div class="footer__links">
+      <a href="case-betano.html">Betano</a>
+      <a href="case-99jobs.html" aria-current="page">99Jobs</a>
+      <a href="case-banking.html">Banking</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
