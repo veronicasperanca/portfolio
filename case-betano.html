@@ -398,6 +398,7 @@
         <a href="#desafio">O Desafio</a>
         <a href="#processo">Processo</a>
         <a href="#solucao">Solução</a>
+        <a href="#jornada">Jornada do Jogador</a>
         <a href="#resultados">Resultados</a>
         <a href="#aprendizados">Aprendizados</a>
       </nav>
@@ -539,6 +540,403 @@
         Além dos números, o projeto gerou um artefato duradouro: um Design System que passou a ser adotado por times de produto em outros mercados da Kaizen Gaming (grupo controlador da Betano), multiplicando o impacto original do trabalho.
       </p>
 
+      <h2 id="jornada">Jornada do <em>Jogador</em></h2>
+    </article>
+  </div>
+
+  <!-- ====== JOURNEY / SCREEN DEMO SECTION ====== -->
+  <section class="journey-section" id="jornada-demo" aria-label="Demonstração de telas e jornada do jogador">
+    <div class="container">
+      <div class="section-label">Demonstração de Telas</div>
+      <h2 class="section-title">Jornada do <em>Jogador</em></h2>
+      <p class="journey-intro">
+        Do primeiro acesso à confirmação da aposta: cada tela foi projetada para eliminar fricção e criar um estado de flow. Navegue pelas etapas para entender as decisões de design aplicadas em cada momento da jornada.
+      </p>
+
+      <div class="journey-stepper" role="region" aria-label="Stepper de jornada do jogador" tabindex="0">
+
+        <!-- Stepper dots -->
+        <div class="journey-steps-row" role="tablist" aria-label="Etapas da jornada">
+          <div class="journey-step-dot active" role="tab" aria-selected="true" tabindex="0" aria-label="Etapa 1: Acesso">
+            <div class="journey-step-dot__circle">01</div>
+            <div class="journey-step-dot__label">Acesso &amp; Home</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step-dot" role="tab" aria-selected="false" tabindex="-1" aria-label="Etapa 2: Descoberta">
+            <div class="journey-step-dot__circle">02</div>
+            <div class="journey-step-dot__label">Descoberta de Jogo</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step-dot" role="tab" aria-selected="false" tabindex="-1" aria-label="Etapa 3: Seleção">
+            <div class="journey-step-dot__circle">03</div>
+            <div class="journey-step-dot__label">Seleção de Aposta</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step-dot" role="tab" aria-selected="false" tabindex="-1" aria-label="Etapa 4: Confirmação">
+            <div class="journey-step-dot__circle">04</div>
+            <div class="journey-step-dot__label">Confirmação</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step-dot" role="tab" aria-selected="false" tabindex="-1" aria-label="Etapa 5: Feedback">
+            <div class="journey-step-dot__circle">05</div>
+            <div class="journey-step-dot__label">Feedback &amp; Loop</div>
+          </div>
+        </div>
+
+        <!-- ── PANEL 1: Acesso & Home ── -->
+        <div class="screen-panel active" role="tabpanel">
+          <div class="screen-viewer">
+            <div class="screen-info">
+              <div class="screen-step-num">Etapa 01 · Acesso & Home</div>
+              <h3 class="screen-title">Boas-vindas com <em>contexto imediato</em></h3>
+              <p class="screen-desc">A home foi redesenhada com hierarquia progressiva: o conteúdo mais relevante para o perfil do usuário aparece primeiro. Nenhuma ação é exigida — o sistema aprende e prioriza automaticamente.</p>
+              <div class="screen-principles">
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Lei de Hick aplicada</strong>
+                    Redução de 4 para 2 níveis de navegação — menos opções, decisão mais rápida.
+                  </div>
+                </div>
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Contexto progressivo</strong>
+                    Conteúdo personalizado baseado no histórico do jogador, sem configuração manual.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen-device screen-device--desktop">
+              <div class="device-frame">
+                <div class="device-bar">
+                  <div class="device-bar__dots"><div class="device-bar__dot"></div><div class="device-bar__dot"></div><div class="device-bar__dot"></div></div>
+                  <div class="device-bar__url"></div>
+                </div>
+                <div class="device-content">
+                  <div class="ui-nav">
+                    <div class="ui-nav__logo"></div>
+                    <div class="ui-nav__links">
+                      <div class="ui-nav__link"></div>
+                      <div class="ui-nav__link"></div>
+                      <div class="ui-nav__link"></div>
+                    </div>
+                    <div class="ui-nav__cta"></div>
+                  </div>
+                  <!-- Featured game banner -->
+                  <div style="background:linear-gradient(135deg,var(--violet-dim),var(--gold-glow));border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-3);border:1px solid var(--border-soft);">
+                    <div style="height:6px;width:70%;background:var(--gold-dim);border-radius:var(--r-full);margin-bottom:var(--sp-2);"></div>
+                    <div style="height:5px;width:45%;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:var(--sp-3);"></div>
+                    <div style="display:flex;gap:var(--sp-2);">
+                      <div style="height:20px;width:60px;background:var(--gold);border-radius:var(--r-full);opacity:0.8;"></div>
+                      <div style="height:20px;width:50px;background:transparent;border:1px solid var(--border);border-radius:var(--r-full);"></div>
+                    </div>
+                  </div>
+                  <!-- Quick bet chips -->
+                  <div style="margin-bottom:var(--sp-3);">
+                    <div style="height:5px;width:80px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:var(--sp-2);"></div>
+                    <div class="ui-chips">
+                      <div class="ui-chip selected"><div class="ui-chip__text" style="width:40px;"></div></div>
+                      <div class="ui-chip"><div class="ui-chip__text" style="width:30px;"></div></div>
+                      <div class="ui-chip"><div class="ui-chip__text" style="width:50px;"></div></div>
+                      <div class="ui-chip"><div class="ui-chip__text" style="width:35px;"></div></div>
+                    </div>
+                  </div>
+                  <!-- Game cards -->
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);">
+                    <div class="ui-card"><div class="ui-card__header"><div class="ui-card__avatar" style="background:var(--gold-dim);border-color:var(--gold-border);"></div><div class="ui-card__title"></div></div><div class="ui-card__body"><div class="ui-card__line"></div><div class="ui-card__line short"></div></div></div>
+                    <div class="ui-card"><div class="ui-card__header"><div class="ui-card__avatar"></div><div class="ui-card__title"></div></div><div class="ui-card__body"><div class="ui-card__line"></div><div class="ui-card__line short"></div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL 2: Descoberta ── -->
+        <div class="screen-panel" role="tabpanel">
+          <div class="screen-viewer">
+            <div class="screen-info">
+              <div class="screen-step-num">Etapa 02 · Descoberta de Jogo</div>
+              <h3 class="screen-title">Filtros que <em>reduzem ruído</em></h3>
+              <p class="screen-desc">O catálogo de jogos foi reorganizado com filtros contextuais e chips de seleção rápida. O usuário encontra o que quer em menos de 3 cliques — contra os 8 anteriores.</p>
+              <div class="screen-principles">
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Filtro progressivo</strong>
+                    Chips substituem dropdowns aninhados — a complexidade desaparece sem perder controle.
+                  </div>
+                </div>
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Search contextual</strong>
+                    Campo de busca com sugestões preditivas baseadas no histórico de apostas.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen-device screen-device--desktop">
+              <div class="device-frame">
+                <div class="device-bar"><div class="device-bar__dots"><div class="device-bar__dot"></div><div class="device-bar__dot"></div><div class="device-bar__dot"></div></div><div class="device-bar__url"></div></div>
+                <div class="device-content">
+                  <!-- Search bar -->
+                  <div style="background:var(--surface-3);border:1px solid var(--gold-border);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);margin-bottom:var(--sp-3);display:flex;align-items:center;gap:var(--sp-2);">
+                    <div style="width:10px;height:10px;border-radius:50%;border:1.5px solid var(--text-3);flex-shrink:0;"></div>
+                    <div style="flex:1;height:5px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                  </div>
+                  <!-- Filter chips -->
+                  <div class="ui-chips" style="margin-bottom:var(--sp-4);">
+                    <div class="ui-chip selected"><div class="ui-chip__text" style="width:50px;"></div></div>
+                    <div class="ui-chip"><div class="ui-chip__text" style="width:40px;"></div></div>
+                    <div class="ui-chip"><div class="ui-chip__text" style="width:55px;"></div></div>
+                    <div class="ui-chip"><div class="ui-chip__text" style="width:35px;"></div></div>
+                    <div class="ui-chip"><div class="ui-chip__text" style="width:45px;"></div></div>
+                  </div>
+                  <!-- Game grid -->
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2);">
+                    <div style="background:var(--surface-3);border-radius:var(--r-md);padding:var(--sp-3);border:1px solid var(--gold-border);">
+                      <div style="height:36px;background:var(--gold-dim);border-radius:var(--r-sm);margin-bottom:var(--sp-2);"></div>
+                      <div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:4px;"></div>
+                      <div style="height:4px;width:60%;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                    </div>
+                    <div style="background:var(--surface-3);border-radius:var(--r-md);padding:var(--sp-3);border:1px solid var(--border-soft);">
+                      <div style="height:36px;background:var(--violet-dim);border-radius:var(--r-sm);margin-bottom:var(--sp-2);"></div>
+                      <div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:4px;"></div>
+                      <div style="height:4px;width:70%;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                    </div>
+                    <div style="background:var(--surface-3);border-radius:var(--r-md);padding:var(--sp-3);border:1px solid var(--border-soft);">
+                      <div style="height:36px;background:var(--surface-4);border-radius:var(--r-sm);margin-bottom:var(--sp-2);"></div>
+                      <div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:4px;"></div>
+                      <div style="height:4px;width:50%;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL 3: Seleção ── -->
+        <div class="screen-panel" role="tabpanel">
+          <div class="screen-viewer">
+            <div class="screen-info">
+              <div class="screen-step-num">Etapa 03 · Seleção de Aposta</div>
+              <h3 class="screen-title">Bet slip com <em>feedback em tempo real</em></h3>
+              <p class="screen-desc">O painel lateral de apostas foi reconstruído com feedback instantâneo. Cada seleção confirma visualmente e o usuário nunca perde o contexto do quanto está apostando.</p>
+              <div class="screen-principles">
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Feedback imediato</strong>
+                    Teoria do Fluxo: resposta visual instantânea a cada ação mantém o jogador no estado de engajamento.
+                  </div>
+                </div>
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Bet slip persistente</strong>
+                    Painel sempre visível sem bloquear o conteúdo — layout de 2 colunas com z-index gerenciado.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen-device screen-device--desktop">
+              <div class="device-frame">
+                <div class="device-bar"><div class="device-bar__dots"><div class="device-bar__dot"></div><div class="device-bar__dot"></div><div class="device-bar__dot"></div></div><div class="device-bar__url"></div></div>
+                <div class="device-content" style="display:grid;grid-template-columns:1fr auto;gap:var(--sp-2);">
+                  <!-- Main content -->
+                  <div>
+                    <div class="ui-card" style="margin-bottom:var(--sp-2);">
+                      <div class="ui-card__header"><div class="ui-card__avatar" style="background:var(--violet-dim);border-color:var(--violet);"></div><div class="ui-card__title"></div></div>
+                      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:var(--sp-2);">
+                        <div style="height:24px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:var(--r-sm);"></div>
+                        <div style="height:24px;background:var(--surface-4);border-radius:var(--r-sm);"></div>
+                        <div style="height:24px;background:var(--surface-4);border-radius:var(--r-sm);"></div>
+                      </div>
+                    </div>
+                    <div class="ui-card">
+                      <div class="ui-card__header"><div class="ui-card__avatar"></div><div class="ui-card__title"></div></div>
+                      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:var(--sp-2);">
+                        <div style="height:24px;background:var(--surface-4);border-radius:var(--r-sm);"></div>
+                        <div style="height:24px;background:var(--surface-4);border-radius:var(--r-sm);"></div>
+                        <div style="height:24px;background:var(--surface-4);border-radius:var(--r-sm);"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Bet slip sidebar -->
+                  <div style="width:100px;background:var(--surface-2);border:1px solid var(--gold-border);border-radius:var(--r-md);padding:var(--sp-3);">
+                    <div style="height:5px;width:60px;background:var(--gold-dim);border-radius:var(--r-full);margin-bottom:var(--sp-3);"></div>
+                    <div style="background:var(--surface-3);border-radius:var(--r-sm);padding:var(--sp-2);margin-bottom:var(--sp-2);border:1px solid var(--border-soft);">
+                      <div style="height:4px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:4px;"></div>
+                      <div style="height:4px;width:60%;background:var(--gold-dim);border-radius:var(--r-full);"></div>
+                    </div>
+                    <div style="height:4px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:var(--sp-2);"></div>
+                    <div style="height:4px;width:70%;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:var(--sp-3);"></div>
+                    <div style="height:22px;background:var(--gold);border-radius:var(--r-full);opacity:0.85;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL 4: Confirmação ── -->
+        <div class="screen-panel" role="tabpanel">
+          <div class="screen-viewer">
+            <div class="screen-info">
+              <div class="screen-step-num">Etapa 04 · Confirmação</div>
+              <h3 class="screen-title">Um clique, <em>zero dúvida</em></h3>
+              <p class="screen-desc">A tela de confirmação foi projetada para eliminar ansiedade: resume os dados da aposta de forma clara, com botão de ação principal centralizado e opção de edição sempre acessível.</p>
+              <div class="screen-principles">
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Clareza antes do compromisso</strong>
+                    Resumo visual dos dados elimina erros e reduz suporte — -40% chamados de confirmação.
+                  </div>
+                </div>
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Edição não-destrutiva</strong>
+                    O usuário pode alterar qualquer dado sem perder a seleção já feita.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen-device screen-device--mobile">
+              <div class="device-frame">
+                <div class="device-notch"></div>
+                <div class="device-content">
+                  <!-- Confirm modal -->
+                  <div style="background:var(--surface-2);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-3);border:1px solid var(--gold-border);">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3);">
+                      <div style="height:6px;width:80px;background:var(--text-1);border-radius:var(--r-full);opacity:0.7;"></div>
+                      <div style="height:16px;width:30px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:var(--sp-3);">
+                      <div style="display:flex;justify-content:space-between;"><div style="height:5px;width:60px;background:var(--surface-4);border-radius:var(--r-full);"></div><div style="height:5px;width:40px;background:var(--gold-dim);border-radius:var(--r-full);"></div></div>
+                      <div style="display:flex;justify-content:space-between;"><div style="height:5px;width:70px;background:var(--surface-4);border-radius:var(--r-full);"></div><div style="height:5px;width:30px;background:var(--surface-4);border-radius:var(--r-full);"></div></div>
+                      <div style="display:flex;justify-content:space-between;"><div style="height:5px;width:50px;background:var(--surface-4);border-radius:var(--r-full);"></div><div style="height:5px;width:45px;background:var(--gold-dim);border-radius:var(--r-full);"></div></div>
+                    </div>
+                    <div style="border-top:1px solid var(--border-soft);padding-top:var(--sp-3);margin-bottom:var(--sp-3);">
+                      <div style="display:flex;justify-content:space-between;"><div style="height:7px;width:60px;background:var(--text-1);border-radius:var(--r-full);opacity:0.5;"></div><div style="height:7px;width:50px;background:var(--gold);border-radius:var(--r-full);opacity:0.8;"></div></div>
+                    </div>
+                    <div style="height:28px;background:var(--gold);border-radius:var(--r-full);margin-bottom:var(--sp-2);opacity:0.9;"></div>
+                    <div style="height:20px;background:transparent;border:1px solid var(--border);border-radius:var(--r-full);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL 5: Feedback & Loop ── -->
+        <div class="screen-panel" role="tabpanel">
+          <div class="screen-viewer">
+            <div class="screen-info">
+              <div class="screen-step-num">Etapa 05 · Feedback & Loop de Engajamento</div>
+              <h3 class="screen-title">Resultado que <em>convida ao próximo jogo</em></h3>
+              <p class="screen-desc">A tela de resultado foi redesenhada para ser um ponto de re-engajamento. Independente do resultado, o usuário recebe contexto, sugestões relevantes e estímulos para continuar — sem pressão.</p>
+              <div class="screen-principles">
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Loop variável de recompensa</strong>
+                    Inspirado em game design: recompensas inesperadas mantêm o engajamento sem manipulação.
+                  </div>
+                </div>
+                <div class="screen-principle">
+                  <div class="screen-principle-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                  </div>
+                  <div class="screen-principle-text">
+                    <strong>Contexto de performance</strong>
+                    O jogador vê seu histórico imediato — aumentando a percepção de progresso e controle.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen-device screen-device--mobile">
+              <div class="device-frame">
+                <div class="device-notch"></div>
+                <div class="device-content">
+                  <!-- Result screen -->
+                  <div style="text-align:center;padding:var(--sp-3) 0;margin-bottom:var(--sp-3);">
+                    <div style="width:40px;height:40px;border-radius:50%;background:var(--gold-dim);border:2px solid var(--gold);margin:0 auto var(--sp-2);display:flex;align-items:center;justify-content:center;">
+                      <div style="width:12px;height:12px;border-radius:50%;background:var(--gold);"></div>
+                    </div>
+                    <div style="height:7px;width:80px;background:var(--gold-dim);border-radius:var(--r-full);margin:0 auto var(--sp-1);"></div>
+                    <div style="height:5px;width:50px;background:var(--surface-4);border-radius:var(--r-full);margin:0 auto;"></div>
+                  </div>
+                  <!-- Stats -->
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-bottom:var(--sp-3);">
+                    <div style="background:var(--surface-2);border-radius:var(--r-sm);padding:var(--sp-2);text-align:center;border:1px solid var(--border-soft);">
+                      <div style="height:10px;background:var(--gold-dim);border-radius:var(--r-full);margin-bottom:4px;"></div>
+                      <div style="height:4px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                    </div>
+                    <div style="background:var(--surface-2);border-radius:var(--r-sm);padding:var(--sp-2);text-align:center;border:1px solid var(--border-soft);">
+                      <div style="height:10px;background:var(--violet-dim);border-radius:var(--r-full);margin-bottom:4px;"></div>
+                      <div style="height:4px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+                    </div>
+                  </div>
+                  <!-- Next bet suggestion -->
+                  <div style="background:var(--surface-2);border:1px solid var(--gold-border);border-radius:var(--r-md);padding:var(--sp-3);">
+                    <div style="height:5px;width:90px;background:var(--gold-dim);border-radius:var(--r-full);margin-bottom:var(--sp-2);"></div>
+                    <div class="ui-card" style="margin-bottom:0;"><div class="ui-card__header"><div class="ui-card__avatar" style="background:var(--violet-dim);border-color:var(--violet);"></div><div class="ui-card__title"></div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="journey-controls">
+          <button class="journey-btn journey-btn--prev" aria-label="Etapa anterior" disabled>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Anterior
+          </button>
+          <span class="journey-counter">1 / 5</span>
+          <button class="journey-btn journey-btn--next" aria-label="Próxima etapa">
+            Próxima
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+      </div><!-- /journey-stepper -->
+    </div>
+  </section>
+
+  <!-- CONTINUE ARTICLE -->
+  <div class="case-article">
+    <aside class="case-toc" aria-label="Índice do case">
+      <div class="case-toc__title">Neste case</div>
+      <nav id="caseTOC-2">
+        <a href="#aprendizados">Aprendizados</a>
+      </nav>
+    </aside>
+    <article class="case-content" aria-label="Aprendizados do case Betano">
       <h2 id="aprendizados"><em>Aprendizados</em> & Reflexões</h2>
       <p>
         Trabalhar em plataformas com milhões de usuários ativos ensina que o design não é sobre preferências pessoais — é sobre dados, hipóteses e iteração responsável. Cada mudança de UI, por menor que pareça, tem consequências em escala.
