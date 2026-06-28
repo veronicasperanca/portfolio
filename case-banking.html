@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Banking — Verônica Sperança</title>
+  <meta name="description" content="Voice UX & Service Design para sistemas bancários críticos: -55% tempo de interação, -30% erros. Senior Product Designer — Verônica Sperança." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .case-hero { position:relative;min-height:70vh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:var(--sp-24);background:var(--surface-1); }
+    .case-hero__bg { position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 75% 25%, rgba(201,169,110,0.1) 0%, transparent 70%),radial-gradient(ellipse 50% 60% at 15% 85%, rgba(109,79,194,0.12) 0%, transparent 70%); }
+    .case-hero__content { position:relative;z-index:2;width:100%;max-width:var(--container);margin:0 auto;padding:140px var(--container-pad) 0; }
+    .case-hero__back { display:inline-flex;align-items:center;gap:var(--sp-2);font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);transition:color var(--t-base);margin-bottom:var(--sp-12); }
+    .case-hero__back:hover { color:var(--gold); }
+    .case-hero__back svg { transition:transform var(--t-spring); }
+    .case-hero__back:hover svg { transform:translateX(-4px); }
+    .case-hero__tag { font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--sp-6); }
+    .case-hero__title { font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;line-height:1.05;color:var(--text-1);margin-bottom:var(--sp-8);max-width:900px; }
+    .case-hero__title em { color:var(--gold);font-style:italic; }
+    .case-hero__meta { display:flex;gap:var(--sp-8);flex-wrap:wrap; }
+    .case-hero__meta-item { display:flex;flex-direction:column;gap:4px; }
+    .case-hero__meta-label { font-family:var(--font-mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3); }
+    .case-hero__meta-value { font-size:.9rem;color:var(--text-2); }
+    .case-metrics-bar { background:var(--surface-2);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);padding:var(--sp-12) 0; }
+    .case-metrics-bar .metrics__grid { grid-template-columns:repeat(3,1fr); }
+    .case-article { max-width:var(--container);margin:0 auto;padding:var(--sp-24) var(--container-pad);display:grid;grid-template-columns:240px 1fr;gap:var(--sp-16);align-items:start; }
+    .case-toc { position:sticky;top:120px; }
+    .case-toc__title { font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:var(--sp-4); }
+    .case-content h2 { font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--text-1);margin-bottom:var(--sp-6);margin-top:var(--sp-16);padding-top:var(--sp-4); }
+    .case-content h2:first-child { margin-top:0; }
+    .case-content h2 em { color:var(--gold);font-style:italic; }
+    .case-content h3 { font-family:var(--font-body);font-size:1.1rem;font-weight:600;color:var(--text-1);margin-bottom:var(--sp-4);margin-top:var(--sp-8); }
+    .case-content p { color:var(--text-2);font-size:1rem;line-height:1.9;margin-bottom:var(--sp-6); }
+    .case-content strong { color:var(--text-1);font-weight:500; }
+    .case-content ul { list-style:none;margin-bottom:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3); }
+    .case-content ul li { display:flex;gap:var(--sp-3);align-items:flex-start;font-size:.95rem;color:var(--text-2);line-height:1.75; }
+    .case-content ul li::before { content:'→';color:var(--gold);flex-shrink:0;margin-top:2px; }
+    .case-highlight { background:var(--surface-2);border:1px solid var(--border-card);border-left:3px solid var(--gold);border-radius:0 var(--r-md) var(--r-md) 0;padding:var(--sp-6) var(--sp-8);margin:var(--sp-8) 0; }
+    .case-highlight p { margin:0;font-size:1rem;font-style:italic;color:var(--text-1); }
+    .result-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-4);margin:var(--sp-8) 0; }
+    .result-card { background:var(--surface-2);border:1px solid var(--border-card);border-radius:var(--r-lg);padding:var(--sp-6);text-align:center;transition:all var(--t-ease); }
+    .result-card:hover { border-color:var(--gold-border);background:var(--gold-glow); }
+    .result-card__value { font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:var(--sp-2); }
+    .result-card__label { font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3); }
+    /* URA flow visual */
+    .ura-flow { display:flex;flex-direction:column;gap:var(--sp-3);margin:var(--sp-8) 0; }
+    .ura-flow__step { display:flex;align-items:center;gap:var(--sp-4);background:var(--surface-1);border:1px solid var(--border-card);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-6);transition:all var(--t-base); }
+    .ura-flow__step:hover { border-color:var(--gold-border); }
+    .ura-flow__step--problem { border-left:3px solid rgba(255,80,80,.4); }
+    .ura-flow__step--solution { border-left:3px solid rgba(201,169,110,.6); }
+    .ura-flow__label { font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;flex-shrink:0;width:80px; }
+    .ura-flow__step--problem .ura-flow__label { color:rgba(255,100,100,.8); }
+    .ura-flow__step--solution .ura-flow__label { color:var(--gold); }
+    .ura-flow__text { font-size:.875rem;color:var(--text-2);line-height:1.6; }
+    /* Blueprint visual */
+    .blueprint-visual { background:var(--surface-2);border:1px solid var(--border-card);border-radius:var(--r-xl);padding:var(--sp-8);margin:var(--sp-8) 0;position:relative;overflow:hidden; }
+    .blueprint-visual::before { content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow),transparent); }
+    .blueprint-row { position:relative;z-index:1;display:grid;grid-template-columns:120px 1fr 1fr 1fr;gap:var(--sp-3);margin-bottom:var(--sp-3);align-items:center; }
+    .blueprint-row:first-child { border-bottom:1px solid var(--border-soft);padding-bottom:var(--sp-3);margin-bottom:var(--sp-4); }
+    .blueprint-cell { font-family:var(--font-mono);font-size:.62rem;letter-spacing:.05em;color:var(--text-3);padding:var(--sp-2) var(--sp-3);background:var(--surface-3);border-radius:var(--r-sm);text-align:center; }
+    .blueprint-cell--header { color:var(--gold);background:transparent;font-weight:500; }
+    .blueprint-cell--highlight { color:var(--text-1);background:var(--surface-4); }
+    @media (max-width:1024px) { .case-article { grid-template-columns:1fr; } .case-toc { display:none; } .case-metrics-bar .metrics__grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:600px) { .case-metrics-bar .metrics__grid { grid-template-columns:1fr; } .blueprint-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div id="readingProgress"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">VS<span class="nav__logo-dot">.</span></a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html#sobre"     class="nav__link">Sobre</a></li>
+      <li><a href="index.html#cases"     class="nav__link">Cases</a></li>
+      <li><a href="index.html#expertise" class="nav__link">Expertise</a></li>
+      <li><a href="index.html#ds"        class="nav__link">Design System</a></li>
+      <li><a href="index.html#contato"   class="nav__link">Contato</a></li>
+    </ul>
+    <a href="index.html#contato" class="nav__cta">Vamos conversar</a>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+    <ul role="list">
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#cases">Cases</a></li>
+      <li><a href="index.html#expertise">Expertise</a></li>
+      <li><a href="index.html#ds">Design System</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="case-hero" aria-label="Case Banking">
+    <div class="case-hero__bg" aria-hidden="true"></div>
+    <div class="case-hero__content">
+      <a href="index.html#cases" class="case-hero__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar aos Cases
+      </a>
+      <div class="case-hero__tag">Banking · Service Design · Voice UX · GOMS</div>
+      <h1 class="case-hero__title">
+        Voice UX & Service Design para<br>
+        <em>Sistemas Bancários Críticos</em>
+      </h1>
+      <div class="case-hero__meta">
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Empresas</span>
+          <span class="case-hero__meta-value">NOOVI · Paraná Banco · Banco Original</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Período</span>
+          <span class="case-hero__meta-value">2022</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Papel</span>
+          <span class="case-hero__meta-value">Senior Product Designer</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Setor</span>
+          <span class="case-hero__meta-value">Banking · Fintech · Voice UX</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS BAR -->
+  <div class="case-metrics-bar" aria-label="Resultados do projeto">
+    <div class="container">
+      <div class="metrics__grid">
+        <div class="metric-item">
+          <div class="metric-item__number">-<span class="counter" data-target="55">0</span>%</div>
+          <div class="metric-item__label">Tempo de Interação</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">+<span class="counter" data-target="30">0</span>%</div>
+          <div class="metric-item__label">Compreensão das Opções</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">-<span class="counter" data-target="30">0</span>%</div>
+          <div class="metric-item__label">Erros e Chamadas Repetidas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="case-article">
+
+    <aside class="case-toc" aria-label="Índice do case">
+      <div class="case-toc__title">Neste case</div>
+      <nav id="caseTOC">
+        <a href="#contexto">Contexto</a>
+        <a href="#problema">O Problema</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#solucao">Solução</a>
+        <a href="#blueprint">Service Blueprint</a>
+        <a href="#resultados">Resultados</a>
+      </nav>
+    </aside>
+
+    <article class="case-content" aria-label="Conteúdo do case Banking">
+
+      <h2 id="contexto">Contexto & <em>Setor</em></h2>
+      <p>
+        O projeto envolveu o redesenho completo de sistemas de URA (Unidade de Resposta Audível) — as famosas "centrais de atendimento por voz" — para três instituições do setor bancário. URAs são sistemas críticos: são o primeiro ponto de contato de milhões de clientes com o banco, e seu design impacta diretamente indicadores de custo operacional, satisfação e resolução de problemas.
+      </p>
+      <p>
+        O desafio do Voice UX é único: sem feedback visual, sem possibilidade de "escanear" a interface, sem uma segunda chance de ler o que ficou confuso. <strong>A cognição do usuário opera em modo linear e altamente dependente da memória de trabalho</strong> — um contexto radicalmente diferente do design de interfaces visuais.
+      </p>
+
+      <div class="case-highlight">
+        <p>"Voice UX não é sobre voz. É sobre memória. É sobre projetar para a mente humana no seu estado mais sobrecarregado: falando ao telefone, provavelmente preocupada, querendo resolver algo rápido."</p>
+      </div>
+
+      <h2 id="problema">O <em>Diagnóstico</em></h2>
+      <p>A auditoria inicial revelou três padrões recorrentes de falha:</p>
+
+      <div class="ura-flow" aria-label="Análise de problemas e soluções da URA">
+        <div class="ura-flow__step ura-flow__step--problem">
+          <span class="ura-flow__label">Problema 1</span>
+          <span class="ura-flow__text"><strong style="color:var(--text-1)">Menus longos demais:</strong> menus com 7–9 opções violavam os limites da memória de trabalho (princípio de Miller: 7 ± 2). Usuários esqueciam as primeiras opções ao ouvir as últimas.</span>
+        </div>
+        <div class="ura-flow__step ura-flow__step--solution">
+          <span class="ura-flow__label">Solução 1</span>
+          <span class="ura-flow__text">Reestruturação para máximo de 4 opções por nível, com hierarquização baseada em análise de frequência de chamadas e modelo GOMS.</span>
+        </div>
+        <div class="ura-flow__step ura-flow__step--problem">
+          <span class="ura-flow__label">Problema 2</span>
+          <span class="ura-flow__text"><strong style="color:var(--text-1)">Linguagem técnica e formal:</strong> termos como "renegociação de passivo" em vez de "renegociar dívida" criavam confusão e aumentavam erros de navegação.</span>
+        </div>
+        <div class="ura-flow__step ura-flow__step--solution">
+          <span class="ura-flow__label">Solução 2</span>
+          <span class="ura-flow__text">Reescrita completa dos scripts de UX Writing com princípios de Plain Language e testes de compreensão com usuários reais antes da implementação.</span>
+        </div>
+        <div class="ura-flow__step ura-flow__step--problem">
+          <span class="ura-flow__label">Problema 3</span>
+          <span class="ura-flow__text"><strong style="color:var(--text-1)">Falta de feedback de progresso:</strong> usuários não sabiam em que parte da jornada estavam — gerando ansiedade e chamadas repetidas para confirmar informações.</span>
+        </div>
+        <div class="ura-flow__step ura-flow__step--solution">
+          <span class="ura-flow__label">Solução 3</span>
+          <span class="ura-flow__text">Introdução de confirmações contextuais e sumários de progresso: "Certo. Você escolheu X. Agora vamos para Y." — adaptando o conceito de breadcrumb para o contexto de voz.</span>
+        </div>
+      </div>
+
+      <h2 id="metodologia"><em>Metodologia</em> Aplicada</h2>
+
+      <h3>Modelo Cognitivo GOMS</h3>
+      <p>
+        O modelo <strong>GOMS</strong> (Goals, Operators, Methods, Selection Rules) foi aplicado para mapear cada tarefa do usuário em suas unidades cognitivas mínimas — identificando onde o sistema exigia mais esforço mental do que o necessário. Essa análise revelou que 40% do tempo de interação era gasto em ações de orientação (tentando entender onde estava), não em ações de resolução.
+      </p>
+
+      <h3>Service Blueprinting</h3>
+      <p>
+        Para além da URA em si, realizamos um Service Blueprint completo da jornada bancária — mapeando todos os canais e pontos de contato, identificando onde a URA se conectava (ou desconectava) com o atendimento humano, o app e o internet banking. Isso revelou redundâncias e rupturas invisíveis na jornada do cliente.
+      </p>
+
+      <h3>Pesquisa com Usuários Reais</h3>
+      <p>
+        Conduzimos testes de usabilidade de voz com 24 participantes em 3 perfis demográficos distintos (diferente do esperado: o perfil mais impactado pelos problemas era usuários acima de 55 anos, não os mais jovens). Os testes foram gravados e analisados com foco em erros de navegação e compreensão.
+      </p>
+
+      <h2 id="solucao">A <em>Nova Arquitetura</em> de Voz</h2>
+
+      <h3>Hierarquia Baseada em Dados</h3>
+      <p>
+        Em parceria com as equipes de dados das instituições, analisamos os 1.000 motivos de chamada mais frequentes dos últimos 12 meses. A nova estrutura de menus foi construída com base na frequência real — não na organização interna dos departamentos (um erro clássico de design centrado na empresa, não no usuário).
+      </p>
+
+      <h3>UX Writing para Voz</h3>
+      <p>
+        Desenvolvemos um guia de <strong>Voice UX Writing</strong> com princípios específicos: frases curtas (máx. 15 palavras), verbo antes do objeto ("Para pagar sua fatura, aperte 1" — não "Aperte 1 para pagar sua fatura"), e confirmações que fecham loops cognitivos abertos.
+      </p>
+
+      <h2 id="blueprint"><em>Service Blueprint</em> — Visão Macro</h2>
+
+      <div class="blueprint-visual" aria-label="Representação do Service Blueprint bancário">
+        <div class="blueprint-row">
+          <div class="blueprint-cell blueprint-cell--header">Camada</div>
+          <div class="blueprint-cell blueprint-cell--header">Evidências</div>
+          <div class="blueprint-cell blueprint-cell--header">Ações do Usuário</div>
+          <div class="blueprint-cell blueprint-cell--header">Sistema / Backstage</div>
+        </div>
+        <div class="blueprint-row">
+          <div class="blueprint-cell blueprint-cell--highlight">Canal Voz</div>
+          <div class="blueprint-cell">Script de URA · tom de espera</div>
+          <div class="blueprint-cell">Liga · ouve menu · navega</div>
+          <div class="blueprint-cell">IVR engine · autenticação</div>
+        </div>
+        <div class="blueprint-row">
+          <div class="blueprint-cell blueprint-cell--highlight">Transição</div>
+          <div class="blueprint-cell">Transferência anunciada</div>
+          <div class="blueprint-cell">Aguarda atendente</div>
+          <div class="blueprint-cell">CRM → contexto passado</div>
+        </div>
+        <div class="blueprint-row">
+          <div class="blueprint-cell blueprint-cell--highlight">Humano</div>
+          <div class="blueprint-cell">Saudação + contexto</div>
+          <div class="blueprint-cell">Explica novamente (ou não)</div>
+          <div class="blueprint-cell">Atendente com tela de resumo</div>
+        </div>
+      </div>
+
+      <p>
+        O blueprint revelou que o maior atrito não estava na URA em si — estava na <strong>ruptura entre a URA e o atendente humano</strong>. O cliente passava pelo processo de autenticação na URA, mas ao ser transferido, precisava se autenticar novamente. Essa fricção foi eliminada com integração sistêmica, reduzindo em 40% as chamadas transferidas sem contexto.
+      </p>
+
+      <h2 id="resultados"><em>Resultados</em> e Legado</h2>
+
+      <div class="result-grid">
+        <div class="result-card reveal">
+          <div class="result-card__value">-55%</div>
+          <div class="result-card__label">Tempo de Interação</div>
+        </div>
+        <div class="result-card reveal" data-delay="100">
+          <div class="result-card__value">+30%</div>
+          <div class="result-card__label">Compreensão das Opções</div>
+        </div>
+        <div class="result-card reveal" data-delay="200">
+          <div class="result-card__value">-30%</div>
+          <div class="result-card__label">Erros de Navegação</div>
+        </div>
+        <div class="result-card reveal" data-delay="300">
+          <div class="result-card__value">3</div>
+          <div class="result-card__label">Instituições Atendidas</div>
+        </div>
+      </div>
+
+      <p>
+        O projeto gerou um artefato metodológico que transcendeu as três instituições: um <strong>guia de boas práticas de Voice UX para o setor bancário</strong>, posteriormente compartilhado com outras equipes de produto. É o tipo de entrega que multiplica valor além do escopo original — e que revela a diferença entre um designer que resolve o problema e um designer que documenta o aprendizado para que outros também resolvam os seus.
+      </p>
+
+    </article>
+  </div>
+
+  <footer role="contentinfo">
+    <p class="footer__copy">© 2026 Verônica Sperança · Senior Product Designer</p>
+    <div class="footer__links">
+      <a href="case-betano.html">Betano</a>
+      <a href="case-99jobs.html">99Jobs</a>
+      <a href="case-banking.html" aria-current="page">Banking</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
