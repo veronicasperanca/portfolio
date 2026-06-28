@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Betano — Verônica Sperança</title>
+  <meta name="description" content="Reestruturação do ecossistema digital Betano: +25% retenção, +18% performance, fluxo 40% mais rápido. Senior Product Designer — Verônica Sperança." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Case page specifics ── */
+    .case-hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding-bottom: var(--sp-24);
+      background: var(--surface-1);
+    }
+    .case-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 30%, rgba(109,79,194,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,169,110,0.08) 0%, transparent 70%);
+    }
+    .case-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+      padding-top: 140px;
+    }
+    .case-hero__back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      transition: color var(--t-base);
+      margin-bottom: var(--sp-12);
+    }
+    .case-hero__back:hover { color: var(--gold); }
+    .case-hero__back svg { transition: transform var(--t-spring); }
+    .case-hero__back:hover svg { transform: translateX(-4px); }
+    .case-hero__tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--sp-6);
+    }
+    .case-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--text-1);
+      margin-bottom: var(--sp-8);
+      max-width: 900px;
+    }
+    .case-hero__title em { color: var(--gold); font-style: italic; }
+    .case-hero__meta {
+      display: flex;
+      gap: var(--sp-8);
+      flex-wrap: wrap;
+    }
+    .case-hero__meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .case-hero__meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .case-hero__meta-value {
+      font-size: 0.9rem;
+      color: var(--text-2);
+    }
+
+    /* Metrics bar */
+    .case-metrics-bar {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      padding: var(--sp-12) 0;
+    }
+    .case-metrics-bar .metrics__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Article layout */
+    .case-article {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: var(--sp-24) var(--container-pad);
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--sp-16);
+      align-items: start;
+    }
+
+    /* TOC sidebar */
+    .case-toc {
+      position: sticky;
+      top: 120px;
+    }
+    .case-toc__title {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: var(--sp-4);
+    }
+
+    /* Content */
+    .case-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      color: var(--text-1);
+      margin-bottom: var(--sp-6);
+      margin-top: var(--sp-16);
+      padding-top: var(--sp-4);
+    }
+    .case-content h2:first-child { margin-top: 0; }
+    .case-content h2 em { color: var(--gold); font-style: italic; }
+    .case-content h3 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: var(--sp-4);
+      margin-top: var(--sp-8);
+    }
+    .case-content p {
+      color: var(--text-2);
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: var(--sp-6);
+    }
+    .case-content strong { color: var(--text-1); font-weight: 500; }
+    .case-content ul {
+      list-style: none;
+      margin-bottom: var(--sp-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .case-content ul li {
+      display: flex;
+      gap: var(--sp-3);
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .case-content ul li::before {
+      content: '→';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Highlight box */
+    .case-highlight {
+      background: var(--surface-2);
+      border: 1px solid var(--border-card);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: var(--sp-6) var(--sp-8);
+      margin: var(--sp-8) 0;
+    }
+    .case-highlight p {
+      margin: 0;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-1);
+    }
+
+    /* Result cards */
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-4);
+      margin: var(--sp-8) 0;
+    }
+    .result-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-card);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      transition: all var(--t-ease);
+    }
+    .result-card:hover {
+      border-color: var(--gold-border);
+      background: var(--gold-glow);
+    }
+    .result-card__value {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: var(--sp-2);
+    }
+    .result-card__label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    /* Visual mockup block */
+    .case-visual-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border-card);
+      border-radius: var(--r-xl);
+      padding: var(--sp-12);
+      margin: var(--sp-8) 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-visual-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-glow), var(--violet-dim));
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      margin: var(--sp-8) 0;
+    }
+    .process-step {
+      display: flex;
+      gap: var(--sp-6);
+      align-items: flex-start;
+      background: var(--surface-1);
+      border: 1px solid var(--border-card);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6) var(--sp-8);
+      transition: all var(--t-base);
+    }
+    .process-step:hover { border-color: var(--gold-border); }
+    .process-step__num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 40px;
+    }
+    .process-step__title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: var(--sp-2);
+    }
+    .process-step__desc {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .case-article { grid-template-columns: 1fr; }
+      .case-toc { display: none; }
+      .case-metrics-bar .metrics__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .case-hero__title { font-size: clamp(2rem, 8vw, 3rem); }
+      .case-metrics-bar .metrics__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div id="readingProgress"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">VS<span class="nav__logo-dot">.</span></a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html#sobre"     class="nav__link">Sobre</a></li>
+      <li><a href="index.html#cases"     class="nav__link">Cases</a></li>
+      <li><a href="index.html#expertise" class="nav__link">Expertise</a></li>
+      <li><a href="index.html#ds"        class="nav__link">Design System</a></li>
+      <li><a href="index.html#contato"   class="nav__link">Contato</a></li>
+    </ul>
+    <a href="index.html#contato" class="nav__cta">Vamos conversar</a>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+    <ul role="list">
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#cases">Cases</a></li>
+      <li><a href="index.html#expertise">Expertise</a></li>
+      <li><a href="index.html#ds">Design System</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="case-hero" aria-label="Case Betano">
+    <div class="case-hero__bg" aria-hidden="true"></div>
+    <div class="case-hero__content">
+      <a href="index.html#cases" class="case-hero__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar aos Cases
+      </a>
+      <div class="case-hero__tag">iGaming · UX/UI · Game Design · Design System</div>
+      <h1 class="case-hero__title">
+        Reestruturação do Ecossistema Digital<br>
+        para <em>Milhões de Usuários</em>
+      </h1>
+      <div class="case-hero__meta">
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Empresa</span>
+          <span class="case-hero__meta-value">Betano</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Período</span>
+          <span class="case-hero__meta-value">2024 – 2026</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Papel</span>
+          <span class="case-hero__meta-value">Senior Product Designer</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="case-hero__meta-label">Setor</span>
+          <span class="case-hero__meta-value">iGaming · Plataforma de Apostas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS BAR -->
+  <div class="case-metrics-bar" aria-label="Resultados do projeto">
+    <div class="container">
+      <div class="metrics__grid">
+        <div class="metric-item">
+          <div class="metric-item__number">+<span class="counter" data-target="25">0</span>%</div>
+          <div class="metric-item__label">Retenção Mensal</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number">+<span class="counter" data-target="18">0</span>%</div>
+          <div class="metric-item__label">Performance do Jogo</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-item__number"><span class="counter" data-target="40">0</span>%</div>
+          <div class="metric-item__label">Fluxo Mais Rápido</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="case-article">
+
+    <!-- TOC -->
+    <aside class="case-toc" aria-label="Índice do case">
+      <div class="case-toc__title">Neste case</div>
+      <nav id="caseTOC">
+        <a href="#contexto">Contexto</a>
+        <a href="#desafio">O Desafio</a>
+        <a href="#processo">Processo</a>
+        <a href="#solucao">Solução</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#aprendizados">Aprendizados</a>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <article class="case-content" aria-label="Conteúdo do case Betano">
+
+      <h2 id="contexto">Contexto & <em>Cenário</em></h2>
+      <p>
+        A Betano é uma das maiores plataformas de apostas esportivas e jogos de cassino da Europa e América Latina, com milhões de usuários ativos mensalmente. Em 2024, a empresa identificou oportunidades críticas de melhoria na plataforma digital — uma interface que havia crescido organicamente ao longo dos anos, acumulando inconsistências visuais, fluxos fragmentados e uma arquitetura de informação que não acompanhava o crescimento da base de usuários.
+      </p>
+      <p>
+        O projeto nasceu da necessidade de escalar a experiência sem perder a essência que tornava a plataforma familiar aos usuários existentes — uma das tarefas mais delicadas do design de produto: <strong>evoluir sem alienar</strong>.
+      </p>
+
+      <div class="case-highlight">
+        <p>"O maior risco não era redesenhar. Era redesenhar sem entender profundamente por que os usuários ficavam — e o que os fazia sair."</p>
+      </div>
+
+      <h2 id="desafio">O <em>Desafio</em></h2>
+      <p>A plataforma enfrentava três tensões centrais:</p>
+      <ul>
+        <li><strong>Carga cognitiva elevada:</strong> menus profundos com até 4 níveis de navegação tornavam a busca por jogos uma tarefa de esforço, não de prazer.</li>
+        <li><strong>Inconsistência visual sistêmica:</strong> mais de 40 variações de botão identificadas em auditoria inicial — cada time havia criado seus próprios padrões ao longo do tempo.</li>
+        <li><strong>Fluxo de apostas fragmentado:</strong> o caminho entre descoberta e confirmação de uma aposta tinha fricção desnecessária em 3 pontos críticos identificados via análise de funil.</li>
+      </ul>
+
+      <h2 id="processo">Processo de <em>Design</em></h2>
+
+      <h3>1. Research e Diagnóstico</h3>
+      <p>O projeto começou com uma fase intensiva de descoberta — combinando dados quantitativos com escuta qualitativa profunda:</p>
+      <ul>
+        <li>Análise de 6 meses de dados de comportamento (Mixpanel + Hotjar) para mapear pontos de abandono e fricção</li>
+        <li>12 entrevistas contextuais com usuários em diferentes estágios de engajamento (novos, regulares, power users)</li>
+        <li>Benchmarking comparativo com 8 plataformas do setor, avaliando padrões de IA de acordo com heurísticas de Nielsen</li>
+        <li>Auditoria completa da interface existente — catalogando 340+ telas e identificando 87 inconsistências críticas</li>
+      </ul>
+
+      <div class="process-steps">
+        <div class="process-step timeline-step">
+          <div class="process-step__num">01</div>
+          <div>
+            <div class="process-step__title">Discovery & Research</div>
+            <p class="process-step__desc">6 semanas · Entrevistas, análise quantitativa, benchmarking e auditoria de UX</p>
+          </div>
+        </div>
+        <div class="process-step timeline-step">
+          <div class="process-step__num">02</div>
+          <div>
+            <div class="process-step__title">Síntese & Definição de Problemas</div>
+            <p class="process-step__desc">3 semanas · Jobs-to-be-done, mapeamento de jornada, priorização com stakeholders</p>
+          </div>
+        </div>
+        <div class="process-step timeline-step">
+          <div class="process-step__num">03</div>
+          <div>
+            <div class="process-step__title">Design System Foundation</div>
+            <p class="process-step__desc">4 semanas · Tokens, componentes base, guidelines — construídos antes das telas</p>
+          </div>
+        </div>
+        <div class="process-step timeline-step">
+          <div class="process-step__num">04</div>
+          <div>
+            <div class="process-step__title">Prototipagem & Validação Iterativa</div>
+            <p class="process-step__desc">8 semanas · 3 ciclos de teste com usuários reais, refinamento contínuo</p>
+          </div>
+        </div>
+        <div class="process-step timeline-step">
+          <div class="process-step__num">05</div>
+          <div>
+            <div class="process-step__title">Implementação & Handoff</div>
+            <p class="process-step__desc">Ongoing · Documentação técnica, suporte ao dev, QA de UI, métricas de acompanhamento</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="solucao">A <em>Solução</em></h2>
+
+      <h3>Arquitetura de Informação Repensada</h3>
+      <p>
+        Aplicando a <strong>Lei de Hick</strong> (quanto mais opções, mais tempo para decidir), redesenhamos a navegação de um modelo de mega-menu para uma arquitetura de contexto progressivo: o usuário vê apenas o necessário para o momento — e a plataforma aprende com ele ao longo do tempo.
+      </p>
+
+      <div class="case-visual-block" aria-label="Mockup de arquitetura de navegação" style="min-height:220px;">
+        <div style="position:relative;z-index:1;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;justify-content:center;">
+          <div style="background:var(--surface-3);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem 2rem;text-align:center;">
+            <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:var(--text-3);margin-bottom:.5rem;">ANTES</div>
+            <div style="font-size:.85rem;color:var(--text-2);">4 níveis de navegação</div>
+            <div style="font-size:.75rem;color:var(--text-3);margin-top:.25rem;">~12 cliques para apostar</div>
+          </div>
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none" aria-hidden="true"><path d="M0 8h28M20 1l11 7-11 7" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="background:var(--surface-3);border:1px solid var(--gold-border);border-radius:var(--r-lg);padding:1.5rem 2rem;text-align:center;box-shadow:var(--shadow-gold);">
+            <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:var(--gold);margin-bottom:.5rem;">DEPOIS</div>
+            <div style="font-size:.85rem;color:var(--text-1);">2 níveis + contexto inteligente</div>
+            <div style="font-size:.75rem;color:var(--gold);margin-top:.25rem;">~7 cliques para apostar</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Design System como Fundação</h3>
+      <p>
+        Antes de redesenhar uma única tela, construímos o alicerce: um Design System com 68 componentes documentados, tokens de design em 3 níveis de abstração e guidelines de uso. Isso garantiu que cada decisão visual fosse replicável, auditável e escalável por times distribuídos em 4 países.
+      </p>
+      <ul>
+        <li>68 componentes com documentação de variantes, estados e acessibilidade</li>
+        <li>Sistema de tokens em 3 camadas: primitivos, semânticos e por domínio</li>
+        <li>Biblioteca Figma com 1.200+ estilos e componentes versionados</li>
+        <li>Guidelines de acessibilidade (WCAG 2.1 AA) integradas ao processo</li>
+      </ul>
+
+      <h3>Fluxo de Apostas Remodelado</h3>
+      <p>
+        Aplicando a <strong>Teoria do Fluxo de Csikszentmihalyi</strong>, redesenhamos o fluxo principal de apostas para criar um estado de engajamento sem atrito: desafio calibrado à habilidade do usuário, feedback imediato e sensação de controle em cada etapa.
+      </p>
+
+      <h2 id="resultados"><em>Resultados</em> Mensuráveis</h2>
+
+      <div class="result-grid">
+        <div class="result-card reveal">
+          <div class="result-card__value">+25%</div>
+          <div class="result-card__label">Retenção Mensal</div>
+        </div>
+        <div class="result-card reveal" data-delay="100">
+          <div class="result-card__value">+18%</div>
+          <div class="result-card__label">Performance do Jogo</div>
+        </div>
+        <div class="result-card reveal" data-delay="200">
+          <div class="result-card__value">40%</div>
+          <div class="result-card__label">Fluxo Mais Rápido</div>
+        </div>
+        <div class="result-card reveal" data-delay="300">
+          <div class="result-card__value">-60%</div>
+          <div class="result-card__label">Inconsistências UI</div>
+        </div>
+      </div>
+
+      <p>
+        Além dos números, o projeto gerou um artefato duradouro: um Design System que passou a ser adotado por times de produto em outros mercados da Kaizen Gaming (grupo controlador da Betano), multiplicando o impacto original do trabalho.
+      </p>
+
+      <h2 id="aprendizados"><em>Aprendizados</em> & Reflexões</h2>
+      <p>
+        Trabalhar em plataformas com milhões de usuários ativos ensina que o design não é sobre preferências pessoais — é sobre dados, hipóteses e iteração responsável. Cada mudança de UI, por menor que pareça, tem consequências em escala.
+      </p>
+      <p>
+        O aprendizado mais profundo deste projeto: um Design System não começa pelos componentes. Ele começa por uma <strong>decisão de linguagem</strong> — e requer tanto cuidado semântico quanto visual para durar mais de 6 meses em produção.
+      </p>
+
+    </article>
+  </div>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p class="footer__copy">© 2026 Verônica Sperança · Senior Product Designer</p>
+    <div class="footer__links">
+      <a href="case-betano.html" aria-current="page">Betano</a>
+      <a href="case-99jobs.html">99Jobs</a>
+      <a href="case-banking.html">Banking</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
