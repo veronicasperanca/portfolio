@@ -1505,6 +1505,373 @@
       .hifi-phone { width: 240px; }
       .hifi-phone__screen { height: 480px; }
     }
+
+    /* ── Full Prototype CTA Section ── */
+    .proto-full-section {
+      background: var(--surface-2);
+      padding: var(--sp-24) 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .proto-full-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 70% at 100% 50%, rgba(201,169,110,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 0% 30%, rgba(109,79,194,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .proto-full-section .container { position: relative; z-index: 1; }
+
+    .proto-full-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-16);
+      align-items: center;
+    }
+
+    .proto-full-desc {
+      color: var(--text-2);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: var(--sp-8);
+      margin-top: var(--sp-4);
+    }
+
+    .proto-full-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-10);
+    }
+    .proto-full-features li {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: 0.875rem;
+      color: var(--text-2);
+    }
+    .proto-full-feature-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--r-sm);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .proto-full-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding: var(--sp-4) var(--sp-8);
+      background: var(--gold);
+      color: #0a0a0f;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--r-full);
+      transition: all var(--t-spring);
+      box-shadow: 0 4px 20px rgba(201,169,110,0.3);
+    }
+    .proto-full-cta:hover {
+      background: var(--gold-light, #d4b87a);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,169,110,0.4);
+    }
+    .proto-full-cta svg { transition: transform var(--t-spring); }
+    .proto-full-cta:hover svg { transform: translate(2px, -2px); }
+
+    .proto-full-note {
+      margin-top: var(--sp-4) !important;
+      font-family: var(--font-mono) !important;
+      font-size: 0.58rem !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3) !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Preview mockup */
+    .proto-full-preview {
+      position: relative;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-card);
+      background: var(--surface-1);
+      box-shadow: var(--shadow-lg, 0 20px 60px rgba(0,0,0,0.4));
+    }
+    .proto-full-preview__tabs {
+      display: flex;
+      background: var(--surface-3);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 0 var(--sp-4);
+      gap: 0;
+      overflow: hidden;
+    }
+    .proto-full-preview__tab {
+      padding: var(--sp-2) var(--sp-4);
+      font-family: var(--font-mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .proto-full-preview__tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .proto-full-preview__screen {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      min-height: 280px;
+    }
+
+    /* Sidebar */
+    .proto-full-preview__sidebar {
+      background: var(--surface-2);
+      border-right: 1px solid var(--border-soft);
+      padding: var(--sp-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .proto-prev-label {
+      font-family: var(--font-mono);
+      font-size: 0.48rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .proto-prev-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-1);
+      line-height: 1.2;
+    }
+    .proto-prev-title em { color: var(--gold); font-style: italic; }
+    .proto-prev-desc-lines {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .proto-prev-decisions {
+      display: flex;
+      gap: var(--sp-2);
+      margin-top: auto;
+    }
+    .proto-prev-badge {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Device */
+    .proto-full-preview__device {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-1);
+      overflow: hidden;
+    }
+    .proto-full-preview__device-bar {
+      background: #0a101c;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-soft);
+      flex-shrink: 0;
+    }
+    .pfp-dots { display: flex; gap: 4px; }
+    .pfp-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .pfp-url {
+      font-family: var(--font-mono);
+      font-size: 0.45rem;
+      color: var(--text-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border-soft);
+      border-radius: 3px;
+      padding: 2px 6px;
+    }
+    .proto-full-preview__device-screen {
+      flex: 1;
+      overflow: hidden;
+      padding: var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    /* Simulated nav */
+    .pfp-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .pfp-nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+    .pfp-nav-links { display: flex; gap: var(--sp-2); }
+    .pfp-nav-link {
+      font-size: 0.5rem;
+      color: var(--text-3);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .pfp-nav-link.active {
+      color: var(--text-1);
+      background: var(--surface-3);
+    }
+
+    /* Simulated hero */
+    .pfp-hero {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
+    }
+    .pfp-hero-left { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .pfp-tag {
+      font-family: var(--font-mono);
+      font-size: 0.45rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pfp-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-1);
+      line-height: 1.2;
+    }
+    .pfp-odds-row {
+      display: flex;
+      gap: 4px;
+      margin-top: var(--sp-1);
+    }
+    .pfp-odd {
+      flex: 1;
+      background: var(--surface-3);
+      border: 1px solid var(--border-soft);
+      border-radius: 3px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: var(--text-2);
+      text-align: center;
+      padding: 3px 2px;
+    }
+    .pfp-odd.sel {
+      background: var(--gold-dim);
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+    .pfp-cta {
+      margin-top: var(--sp-2);
+      background: var(--gold);
+      color: #0a0a0f;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-align: center;
+      padding: 4px 8px;
+      border-radius: var(--r-full);
+    }
+
+    .pfp-hero-right { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .pfp-live-badge {
+      font-family: var(--font-mono);
+      font-size: 0.45rem;
+      color: #2eb872;
+      letter-spacing: 0.1em;
+    }
+    .pfp-live-card {
+      background: var(--surface-3);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--r-sm);
+      padding: var(--sp-2);
+    }
+    .pfp-lc-team {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.5rem;
+      color: var(--text-2);
+      margin-bottom: 2px;
+    }
+    .pfp-lc-score {
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .pfp-lc-min {
+      font-family: var(--font-mono);
+      font-size: 0.42rem;
+      color: var(--text-3);
+      margin-top: 2px;
+    }
+
+    /* Overlay CTA */
+    .proto-full-preview__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.7);
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--t-base);
+      text-decoration: none;
+    }
+    .proto-full-preview:hover .proto-full-preview__overlay { opacity: 1; }
+    .proto-full-preview__overlay-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      background: var(--gold);
+      color: #0a0a0f;
+      padding: var(--sp-3) var(--sp-6);
+      border-radius: var(--r-full);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 30px rgba(201,169,110,0.4);
+    }
+
+    @media (max-width: 1024px) {
+      .proto-full-inner { grid-template-columns: 1fr; }
+      .proto-full-right { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -1606,6 +1973,7 @@
         <a href="#processo">Processo</a>
         <a href="#solucao">Solução</a>
         <a href="#wireframes">Wireframes</a>
+        <a href="#prototipo-completo">Protótipo Alta Fidelidade</a>
         <a href="#jornada">Jornada do Jogador</a>
         <a href="#resultados">Resultados</a>
         <a href="#aprendizados">Aprendizados</a>
@@ -2608,6 +2976,132 @@
               <strong>Loop de reengajamento sem pressão</strong>
               <span>Sugestões de próximos jogos aparecem contextualmente após o resultado, não antes. O usuário já tomou decisão e está receptivo. As sugestões são baseadas no perfil, não no volume de comissão da plataforma.</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== FULL PROTOTYPE CTA SECTION ====== -->
+  <section class="proto-full-section" id="prototipo-completo" aria-label="Protótipo interativo completo">
+    <div class="container">
+
+      <div class="proto-full-inner">
+        <div class="proto-full-left">
+          <div class="section-label">Protótipo de Alta Fidelidade</div>
+          <h2 class="section-title">Experimente o <em>Protótipo Completo</em></h2>
+          <p class="proto-full-desc">
+            O protótipo interativo de alta fidelidade reproduz o fluxo real da plataforma Betano redesenhada — com todas as microinterações, transições e decisões de UI aplicadas. Navegue pelas telas como um usuário real e explore as anotações de design em cada etapa.
+          </p>
+          <ul class="proto-full-features">
+            <li>
+              <span class="proto-full-feature-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </span>
+              Home Desktop com hero personalizado e feed ao vivo
+            </li>
+            <li>
+              <span class="proto-full-feature-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              </span>
+              Bet Slip mobile com seleção de odds e presets de valor
+            </li>
+            <li>
+              <span class="proto-full-feature-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+              Tela de confirmação com revisão e jogo responsável
+            </li>
+            <li>
+              <span class="proto-full-feature-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+              Resultado com dashboard de performance e reengajamento
+            </li>
+          </ul>
+          <a href="prototipo.html" class="proto-full-cta" target="_blank" rel="noopener" aria-label="Abrir protótipo interativo em nova aba">
+            <span>Abrir Protótipo Interativo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <p class="proto-full-note">Abre em nova aba · Interface completa com anotações</p>
+        </div>
+
+        <div class="proto-full-right" aria-hidden="true">
+          <!-- Decorative preview of prototype -->
+          <div class="proto-full-preview">
+            <div class="proto-full-preview__tabs">
+              <div class="proto-full-preview__tab active">Home · Desktop</div>
+              <div class="proto-full-preview__tab">Bet Slip · Mobile</div>
+              <div class="proto-full-preview__tab">Resultado</div>
+            </div>
+            <div class="proto-full-preview__screen">
+              <!-- Simulated left panel -->
+              <div class="proto-full-preview__sidebar">
+                <div class="proto-prev-label">ETAPA 01</div>
+                <div class="proto-prev-title">Home &amp; <em>Descoberta</em></div>
+                <div class="proto-prev-desc-lines">
+                  <div style="height:4px;width:100%;background:var(--text-3);opacity:.2;border-radius:4px;"></div>
+                  <div style="height:4px;width:80%;background:var(--text-3);opacity:.15;border-radius:4px;"></div>
+                  <div style="height:4px;width:90%;background:var(--text-3);opacity:.15;border-radius:4px;"></div>
+                </div>
+                <div class="proto-prev-decisions">
+                  <div class="proto-prev-badge">01</div>
+                  <div class="proto-prev-badge">02</div>
+                  <div class="proto-prev-badge">03</div>
+                </div>
+              </div>
+              <!-- Simulated device -->
+              <div class="proto-full-preview__device">
+                <div class="proto-full-preview__device-bar">
+                  <div class="pfp-dots">
+                    <div class="pfp-dot" style="background:#ff5f57"></div>
+                    <div class="pfp-dot" style="background:#febc2e"></div>
+                    <div class="pfp-dot" style="background:#28c840"></div>
+                  </div>
+                  <div class="pfp-url">betano.com.br</div>
+                </div>
+                <div class="proto-full-preview__device-screen">
+                  <!-- Nav mockup -->
+                  <div class="pfp-nav">
+                    <div class="pfp-nav-logo">BETANO</div>
+                    <div class="pfp-nav-links">
+                      <div class="pfp-nav-link active">Esportes</div>
+                      <div class="pfp-nav-link">Ao Vivo</div>
+                      <div class="pfp-nav-link">Casino</div>
+                    </div>
+                  </div>
+                  <!-- Hero mockup -->
+                  <div class="pfp-hero">
+                    <div class="pfp-hero-left">
+                      <div class="pfp-tag">Destaque · Final</div>
+                      <div class="pfp-title">Fla <span style="color:var(--gold-border)">vs</span> Pal</div>
+                      <div class="pfp-odds-row">
+                        <div class="pfp-odd sel">2.15</div>
+                        <div class="pfp-odd">3.40</div>
+                        <div class="pfp-odd">3.10</div>
+                      </div>
+                      <div class="pfp-cta">Apostar Agora</div>
+                    </div>
+                    <div class="pfp-hero-right">
+                      <div class="pfp-live-badge">● Ao Vivo</div>
+                      <div class="pfp-live-card">
+                        <div class="pfp-lc-team">Real Madrid <span class="pfp-lc-score">2</span></div>
+                        <div class="pfp-lc-team">Barcelona <span class="pfp-lc-score">1</span></div>
+                        <div class="pfp-lc-min">75' · La Liga</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- CTA overlay -->
+            <a href="prototipo.html" class="proto-full-preview__overlay" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+              <div class="proto-full-preview__overlay-inner">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Abrir Protótipo</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
