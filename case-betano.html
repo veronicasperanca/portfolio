@@ -1872,6 +1872,297 @@
       .proto-full-inner { grid-template-columns: 1fr; }
       .proto-full-right { display: none; }
     }
+
+    /* ════════════════════════════════
+       DESIGN SYSTEM ENTRY SECTION
+       ════════════════════════════════ */
+    .ds-entry-section {
+      background: var(--surface-1);
+      padding: var(--sp-24) 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .ds-entry-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 0% 50%, rgba(232,41,44,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 100% 30%, rgba(201,169,110,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .ds-entry-section .container { position: relative; z-index: 1; }
+
+    .ds-entry-header { margin-bottom: var(--sp-12); }
+    .ds-entry-desc {
+      color: var(--text-2); font-size: .95rem; line-height: 1.8;
+      max-width: 680px; margin-top: var(--sp-4);
+    }
+
+    /* ── Token color strip ── */
+    .ds-token-strip {
+      display: flex; gap: var(--sp-6); flex-wrap: wrap;
+      background: var(--surface-2); border: 1px solid var(--border-card);
+      border-radius: var(--r-xl); padding: var(--sp-6) var(--sp-8);
+      margin-bottom: var(--sp-10);
+      align-items: center;
+    }
+    .ds-token-strip__group {
+      display: flex; flex-direction: column; gap: var(--sp-2);
+      flex: 1; min-width: 120px;
+    }
+    .ds-ts-label {
+      font-family: var(--font-mono); font-size: .5rem;
+      letter-spacing: .15em; text-transform: uppercase; color: var(--text-3);
+    }
+    .ds-ts-swatches { display: flex; gap: 4px; }
+    .ds-ts-swatch {
+      width: 28px; height: 28px; border-radius: var(--r-sm);
+      border: 1px solid rgba(255,255,255,.06);
+      transition: transform var(--t-spring);
+      cursor: default;
+    }
+    .ds-ts-swatch:hover { transform: translateY(-3px) scale(1.1); }
+    .ds-ts-type-pair {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .ds-ts-font-display {
+      font-family: 'Barlow Condensed', 'Inter', sans-serif;
+      font-size: 1.1rem; font-weight: 800; text-transform: uppercase;
+      color: var(--text-1); letter-spacing: .02em; line-height: 1;
+    }
+    .ds-ts-font-body {
+      font-size: .72rem; color: var(--text-3);
+      font-family: 'DM Mono', monospace; letter-spacing: .06em;
+    }
+
+    /* ── Component preview grid ── */
+    .ds-comp-preview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-10);
+    }
+    .ds-comp-card {
+      background: var(--surface-2); border: 1px solid var(--border-card);
+      border-radius: var(--r-xl); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color var(--t-base);
+    }
+    .ds-comp-card:hover { border-color: var(--border-soft); }
+    .ds-comp-card--wide { grid-column: span 2; }
+    .ds-comp-card__label {
+      font-family: var(--font-mono); font-size: .5rem;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--text-3);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--surface-3); border-bottom: 1px solid var(--border-soft);
+    }
+    .ds-comp-card__body {
+      padding: var(--sp-4); flex: 1;
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+
+    /* mini button styles */
+    .ds-comp-card__body--buttons { gap: var(--sp-2); }
+    .ds-mini-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .72rem; font-weight: 600; letter-spacing: .02em;
+      padding: 6px 14px; border-radius: 999px;
+      width: fit-content; cursor: default;
+    }
+    .ds-mini-btn--primary  { background: #e8292c; color: #fff; }
+    .ds-mini-btn--secondary{ background: transparent; color: var(--text-1); border: 1.5px solid var(--border-soft); }
+    .ds-mini-btn--gold     { background: var(--gold); color: #0a0f1a; }
+    .ds-mini-btn--live     { background: linear-gradient(90deg,#e8292c,#ff4f52); color: #fff; animation: pulse-mini 2s ease-in-out infinite; }
+    @keyframes pulse-mini {
+      0%,100%{box-shadow:0 0 0 0 rgba(232,41,44,.3)}
+      50%{box-shadow:0 0 0 5px rgba(232,41,44,.08)}
+    }
+
+    /* live dot */
+    .ds-mini-live-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: currentColor; animation: blink-ds 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink-ds { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* mini match card */
+    .ds-comp-card__body--match { padding: var(--sp-3); }
+    .ds-mini-match {
+      background: var(--surface-3); border-radius: var(--r-md);
+      border: 1px solid var(--border-soft); overflow: hidden;
+    }
+    .ds-mini-match__header {
+      background: rgba(255,255,255,.03); padding: 5px 8px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .ds-mini-match__league { font-family: var(--font-mono); font-size: .48rem; letter-spacing: .1em; color: var(--text-3); }
+    .ds-mini-match__live   { font-family: var(--font-mono); font-size: .48rem; color: #e8292c; display: flex; align-items: center; gap: 3px; }
+    .ds-mini-match__teams  { padding: 6px 8px; display: flex; flex-direction: column; gap: 2px; }
+    .ds-mini-match__teams span { font-size: .78rem; font-weight: 600; color: var(--text-1); }
+    .ds-mini-match__odds   { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; padding: 0 6px 6px; }
+    .ds-mini-odd {
+      background: var(--surface-1); border: 1px solid var(--border-soft);
+      border-radius: var(--r-sm); text-align: center; padding: 4px 2px;
+      font-size: .75rem; font-weight: 700; color: var(--text-1); cursor: default;
+    }
+    .ds-mini-odd--sel { background: rgba(232,41,44,.12); border-color: rgba(232,41,44,.3); color: #e8292c; }
+
+    /* mini betslip */
+    .ds-comp-card__body--betslip { padding: var(--sp-3); }
+    .ds-mini-betslip {
+      background: var(--surface-3); border-radius: var(--r-md);
+      border: 1px solid var(--border-soft); overflow: hidden;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ds-mini-betslip__header {
+      background: rgba(255,255,255,.03); padding: 5px 8px;
+      display: flex; align-items: center; gap: 6px;
+      font-size: .72rem; font-weight: 600; color: var(--text-1);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .ds-mini-betslip__count {
+      width: 16px; height: 16px; border-radius: 50%; background: #e8292c;
+      color: #fff; font-size: .5rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ds-mini-betslip__sel {
+      padding: 6px 8px; border-bottom: 1px solid var(--border-soft);
+      border-left: 2px solid #e8292c;
+    }
+    .ds-mini-betslip__match { font-size: .58rem; color: var(--text-3); margin-bottom: 2px; }
+    .ds-mini-betslip__pick  { font-size: .7rem; font-weight: 600; color: var(--text-1); }
+    .ds-mini-betslip__row {
+      display: flex; justify-content: space-between;
+      padding: 4px 8px; font-size: .65rem; color: var(--text-2);
+    }
+    .ds-mini-betslip__row--win span:last-child { color: #2eb872; font-weight: 700; }
+    .ds-mini-betslip__cta {
+      margin: 6px; background: #e8292c; color: #fff; border-radius: 999px;
+      padding: 7px; text-align: center; font-size: .68rem; font-weight: 700;
+      cursor: default;
+    }
+
+    /* badges & toasts */
+    .ds-comp-card__body--badges { gap: var(--sp-2); }
+    .ds-mini-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+    .ds-mini-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--font-mono); font-size: .46rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      border-radius: 999px; padding: 2px 7px; border: 1px solid;
+    }
+    .ds-mini-badge--live  { background: rgba(232,41,44,.12); border-color: rgba(232,41,44,.3); color: #e8292c; }
+    .ds-mini-badge--new   { background: rgba(46,184,114,.12); border-color: rgba(46,184,114,.3); color: #2eb872; }
+    .ds-mini-badge--promo { background: rgba(245,130,10,.12); border-color: rgba(245,130,10,.3); color: #f5820a; }
+    .ds-mini-badge--gold  { background: rgba(201,169,110,.12); border-color: rgba(201,169,110,.28); color: var(--gold); }
+    .ds-mini-toast {
+      display: flex; align-items: flex-start; gap: 6px;
+      background: var(--surface-3); border: 1px solid var(--border-soft);
+      border-radius: var(--r-sm); padding: 6px 8px;
+    }
+    .ds-mini-toast--success { border-left: 2px solid #2eb872; }
+    .ds-mini-toast--warn    { border-left: 2px solid #f5820a; }
+    .ds-mini-toast__icon {
+      font-size: .7rem; flex-shrink: 0; margin-top: 1px;
+    }
+    .ds-mini-toast--success .ds-mini-toast__icon { color: #2eb872; }
+    .ds-mini-toast--warn    .ds-mini-toast__icon { color: #f5820a; }
+    .ds-mini-toast__title { font-size: .65rem; font-weight: 600; color: var(--text-1); }
+    .ds-mini-toast__msg   { font-size: .6rem; color: var(--text-3); }
+
+    /* motion tokens */
+    .ds-comp-card__body--motion { gap: var(--sp-3); }
+    .ds-motion-item { display: flex; flex-direction: column; gap: 4px; }
+    .ds-motion-track {
+      height: 28px; background: var(--surface-3); border-radius: var(--r-sm);
+      position: relative; overflow: hidden;
+    }
+    .ds-motion-dot {
+      width: 16px; height: 16px; border-radius: 50%; background: #e8292c;
+      position: absolute; top: 50%; transform: translateY(-50%);
+    }
+    .ds-motion-dot--base   { animation: mbase   2s ease           infinite; }
+    .ds-motion-dot--spring { animation: mspring 2s cubic-bezier(.34,1.56,.64,1) infinite; }
+    .ds-motion-dot--slow   { animation: mslow   2s ease-in-out    infinite; }
+    .ds-motion-dot--pulse  { animation: mpulse  1.4s ease-in-out  infinite; left: 50%; transform: translate(-50%,-50%); background: #e8292c; }
+    @keyframes mbase   { 0%{left:0%}   50%{left:calc(100% - 16px)} 100%{left:0%} }
+    @keyframes mspring { 0%{left:0%}   50%{left:calc(100% - 16px)} 100%{left:0%} }
+    @keyframes mslow   { 0%{left:0%}   50%{left:calc(100% - 16px)} 100%{left:0%} }
+    @keyframes mpulse  { 0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)} 50%{opacity:.3;transform:translate(-50%,-50%) scale(.6)} }
+    .ds-motion-meta { display: flex; justify-content: space-between; align-items: baseline; }
+    .ds-motion-name { font-family: var(--font-mono); font-size: .55rem; color: var(--gold); letter-spacing: .1em; }
+    .ds-motion-val  { font-size: .62rem; color: var(--text-3); }
+
+    /* platform split */
+    .ds-comp-card__body--platforms {
+      flex-direction: row; gap: 0; padding: 0; align-items: stretch;
+    }
+    .ds-platform-item {
+      flex: 1; padding: var(--sp-5); display: flex; align-items: flex-start; gap: var(--sp-3);
+    }
+    .ds-platform-divider {
+      width: 1px; background: var(--border-soft); flex-shrink: 0;
+    }
+    .ds-platform-icon {
+      width: 36px; height: 36px; border-radius: var(--r-sm);
+      background: rgba(232,41,44,.1); border: 1px solid rgba(232,41,44,.2);
+      color: #e8292c; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ds-platform-name { font-size: .85rem; font-weight: 600; color: var(--text-1); margin-bottom: 4px; }
+    .ds-platform-desc { font-size: .75rem; color: var(--text-3); line-height: 1.6; }
+
+    /* CTA strip */
+    .ds-entry-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--sp-8); flex-wrap: wrap;
+      background: var(--surface-2); border: 1px solid var(--border-card);
+      border-radius: var(--r-xl); padding: var(--sp-6) var(--sp-8);
+      position: relative; overflow: hidden;
+    }
+    .ds-entry-cta::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232,41,44,.4), transparent);
+    }
+    .ds-entry-cta__title {
+      font-size: 1rem; font-weight: 600; color: var(--text-1); margin-bottom: 4px;
+    }
+    .ds-entry-cta__desc { font-size: .82rem; color: var(--text-2); }
+    .ds-entry-cta__btn {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-4) var(--sp-8);
+      background: #e8292c; color: #fff;
+      font-family: var(--font-mono); font-size: .62rem;
+      font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      border-radius: var(--r-full); white-space: nowrap;
+      transition: all var(--t-spring);
+      box-shadow: 0 4px 20px rgba(232,41,44,.25);
+      flex-shrink: 0;
+    }
+    .ds-entry-cta__btn:hover {
+      background: #ff3b3e; transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232,41,44,.35);
+    }
+    .ds-entry-cta__btn:hover svg { transform: translate(2px,-2px); }
+    .ds-entry-cta__btn svg { transition: transform var(--t-spring); }
+
+    @media (max-width: 900px) {
+      .ds-comp-preview { grid-template-columns: 1fr 1fr; }
+      .ds-comp-card--wide { grid-column: span 2; }
+      .ds-token-strip { gap: var(--sp-4); }
+    }
+    @media (max-width: 600px) {
+      .ds-comp-preview { grid-template-columns: 1fr; }
+      .ds-comp-card--wide { grid-column: span 1; }
+      .ds-comp-card__body--platforms { flex-direction: column; }
+      .ds-platform-divider { width: 100%; height: 1px; }
+      .ds-entry-cta { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -1973,6 +2264,7 @@
         <a href="#processo">Processo</a>
         <a href="#solucao">Solução</a>
         <a href="#wireframes">Wireframes</a>
+        <a href="#design-system">Design System</a>
         <a href="#prototipo-completo">Protótipo Alta Fidelidade</a>
         <a href="#jornada">Jornada do Jogador</a>
         <a href="#resultados">Resultados</a>
@@ -2520,6 +2812,706 @@
   </section>
 
   <!-- ====== HIGH-FIDELITY PROTOTYPE SECTION ====== -->
+  <section class="hifi-section" id="prototipo" aria-label="Protótipo de alta fidelidade">
+    <div class="container">
+
+      <div class="hifi-intro">
+        <div class="section-label">Protótipo Interativo</div>
+        <h2 class="section-title">Alta Fidelidade — <em>Interface Real</em></h2>
+        <p>
+          Telas renderizadas com a identidade visual completa da Betano: paleta dark, tipografia Cormorant + Inter, sistema de dourado e gradientes. Cada protótipo demonstra decisões reais de microinteração aplicadas em produção.
+        </p>
+      </div>
+
+      <!-- Tab navigation -->
+      <nav class="hifi-tabs" role="tablist" aria-label="Telas do protótipo">
+        <button class="hifi-tab active" role="tab" aria-selected="true" data-proto="home" aria-controls="proto-home">
+          <span class="hifi-tab__dot"></span>
+          Home · Desktop
+        </button>
+        <button class="hifi-tab" role="tab" aria-selected="false" data-proto="betslip" aria-controls="proto-betslip">
+          <span class="hifi-tab__dot"></span>
+          Bet Slip · Mobile
+        </button>
+        <button class="hifi-tab" role="tab" aria-selected="false" data-proto="result" aria-controls="proto-result">
+          <span class="hifi-tab__dot"></span>
+          Resultado · Mobile
+        </button>
+      </nav>
+
+      <!-- ── TELA 1: Home Desktop ── -->
+      <div class="hifi-canvas active" id="proto-home" role="tabpanel">
+        <div class="hifi-device-wrap">
+          <div class="hifi-desktop">
+            <div class="hifi-desktop__bar">
+              <div class="hifi-desktop__dots">
+                <div class="hifi-desktop__dot"></div>
+                <div class="hifi-desktop__dot"></div>
+                <div class="hifi-desktop__dot"></div>
+              </div>
+              <div class="hifi-desktop__url">
+                <div class="hifi-desktop__url-icon"></div>
+                <span class="hifi-desktop__url-text">betano.com.br</span>
+              </div>
+            </div>
+            <div class="hifi-desktop__screen">
+              <div class="proto-home">
+                <!-- Nav -->
+                <div class="proto-nav">
+                  <div class="proto-nav__logo">BETANO</div>
+                  <div class="proto-nav__links">
+                    <span class="proto-nav__link active">Esportes</span>
+                    <span class="proto-nav__link">Ao Vivo</span>
+                    <span class="proto-nav__link">Casino</span>
+                    <span class="proto-nav__link">Promoções</span>
+                  </div>
+                  <div class="proto-nav__bal">
+                    <span>Saldo</span>
+                    <strong>R$ 250,00</strong>
+                  </div>
+                  <div class="proto-nav__cta">Apostar</div>
+                </div>
+
+                <!-- Hero zone -->
+                <div class="proto-hero">
+                  <div class="proto-hero__main">
+                    <div class="proto-hero__tag">Destaque Personalizado</div>
+                    <div class="proto-hero__title">Flamengo vs Palmeiras<br><em>Final Copa do Brasil</em></div>
+                    <div class="proto-hero__odds">
+                      <div class="proto-odds-btn selected">
+                        <span>Flamengo</span>
+                        <strong>2.15</strong>
+                      </div>
+                      <div class="proto-odds-btn">
+                        <span>Empate</span>
+                        <strong>3.40</strong>
+                      </div>
+                      <div class="proto-odds-btn">
+                        <span>Palmeiras</span>
+                        <strong>3.10</strong>
+                      </div>
+                    </div>
+                    <div class="proto-hero__ctas">
+                      <button class="proto-btn-primary">Apostar Agora</button>
+                      <button class="proto-btn-ghost">Ver Estatísticas</button>
+                    </div>
+                  </div>
+                  <div class="proto-hero__side">
+                    <div class="proto-live-badge">
+                      <div class="proto-live-dot"></div>
+                      Ao Vivo Agora
+                    </div>
+                    <div class="proto-live-card">
+                      <div class="proto-live-card__teams">
+                        <div class="proto-live-card__team">
+                          <span>Real Madrid</span>
+                          <div class="proto-live-card__score">2</div>
+                        </div>
+                        <div class="proto-live-card__team">
+                          <span>Barcelona</span>
+                          <div class="proto-live-card__score">1</div>
+                        </div>
+                      </div>
+                      <div class="proto-live-card__min">75' · La Liga</div>
+                      <div class="proto-live-card__odds">
+                        <div class="proto-mini-odd">1.28</div>
+                        <div class="proto-mini-odd">7.50</div>
+                        <div class="proto-mini-odd">9.20</div>
+                      </div>
+                    </div>
+                    <div class="proto-live-card">
+                      <div class="proto-live-card__teams">
+                        <div class="proto-live-card__team">
+                          <span>Manchester City</span>
+                          <div class="proto-live-card__score">0</div>
+                        </div>
+                        <div class="proto-live-card__team">
+                          <span>Arsenal</span>
+                          <div class="proto-live-card__score">0</div>
+                        </div>
+                      </div>
+                      <div class="proto-live-card__min">23' · Premier</div>
+                      <div class="proto-live-card__odds">
+                        <div class="proto-mini-odd">1.95</div>
+                        <div class="proto-mini-odd">3.60</div>
+                        <div class="proto-mini-odd">4.20</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Game grid -->
+                <div class="proto-section-header">
+                  <div class="proto-section-label">Próximos Jogos</div>
+                  <div class="proto-see-all">Ver todos →</div>
+                </div>
+                <div class="proto-game-row">
+                  <div class="proto-game-card">
+                    <div class="proto-game-card__category">Série A · Brasil</div>
+                    <div class="proto-game-card__teams">São Paulo<br>vs Botafogo</div>
+                    <div class="proto-game-card__time">19:00 · Hoje</div>
+                    <div class="proto-game-card__odds-row">
+                      <div class="proto-mini-odd">2.40</div>
+                      <div class="proto-mini-odd">3.20</div>
+                      <div class="proto-mini-odd">2.80</div>
+                    </div>
+                  </div>
+                  <div class="proto-game-card">
+                    <div class="proto-game-card__category">Champions</div>
+                    <div class="proto-game-card__teams">PSG<br>vs Bayern</div>
+                    <div class="proto-game-card__time upcoming">Amanhã · 16h</div>
+                    <div class="proto-game-card__odds-row">
+                      <div class="proto-mini-odd">2.05</div>
+                      <div class="proto-mini-odd">3.55</div>
+                      <div class="proto-mini-odd">3.40</div>
+                    </div>
+                  </div>
+                  <div class="proto-game-card">
+                    <div class="proto-game-card__category">NBA</div>
+                    <div class="proto-game-card__teams">Lakers<br>vs Warriors</div>
+                    <div class="proto-game-card__time upcoming">Dom · 22h</div>
+                    <div class="proto-game-card__odds-row">
+                      <div class="proto-mini-odd">1.85</div>
+                      <div class="proto-mini-odd">—</div>
+                      <div class="proto-mini-odd">2.00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hifi-annotations">
+          <div class="hifi-annotation-title">Decisões de Design</div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">01</div>
+            <div class="hifi-annotation-text">
+              <strong>Hero personalizado por perfil</strong>
+              <span>O jogo em destaque é selecionado via ML baseado no histórico do usuário. Usuários que apostam frequentemente no Brasileirão veem o clássico regional — não o jogo com maior volume global.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">02</div>
+            <div class="hifi-annotation-text">
+              <strong>Odds inline no hero</strong>
+              <span>Elimina a necessidade de navegar para o jogo. O usuário vê e seleciona a odd sem sair da home — redução de 3 cliques para 1 no fluxo de entrada.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">03</div>
+            <div class="hifi-annotation-text">
+              <strong>Feed ao vivo contextual</strong>
+              <span>Jogos ao vivo priorizados no painel lateral com tempo real e odds piscando. O dot animado verde é um sinal de urgência calibrado — aparece apenas quando há ao menos 2 jogos em andamento.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">04</div>
+            <div class="hifi-annotation-text">
+              <strong>Tipografia Cormorant + Inter</strong>
+              <span>Display serif para nomes de times e valores de odd (elegância, leitura rápida de números). Inter para navegação e labels utilitários (clareza, alta legibilidade em tamanhos pequenos).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TELA 2: Bet Slip Mobile ── -->
+      <div class="hifi-canvas" id="proto-betslip" role="tabpanel">
+        <div class="hifi-device-wrap">
+          <div class="hifi-phone">
+            <div class="hifi-phone__notch">
+              <div class="hifi-phone__notch-cam"></div>
+            </div>
+            <div class="hifi-phone__screen">
+              <div class="proto-mobile">
+                <div class="proto-mobile-status">
+                  <span>9:41</span>
+                  <span>●●●●○  WiFi  100%</span>
+                </div>
+                <div class="proto-mobile-nav">
+                  <div class="proto-mobile-nav__logo">BETANO</div>
+                  <div class="proto-mobile-nav__icons">
+                    <div class="proto-icon-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    </div>
+                    <div class="proto-icon-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="proto-mobile-content">
+                  <!-- Match header -->
+                  <div class="proto-match-header">
+                    <div class="proto-match-league">🏆 Copa do Brasil · Final</div>
+                    <div class="proto-match-teams">
+                      <div class="proto-team-name">Flamengo</div>
+                      <div class="proto-match-score">0 – 0</div>
+                      <div class="proto-team-name">Palmeiras</div>
+                    </div>
+                    <div class="proto-match-status">▶ AO VIVO · 12'</div>
+                  </div>
+
+                  <!-- Odds selection -->
+                  <div>
+                    <div class="proto-bet-market">Resultado Final</div>
+                    <div class="proto-odds-grid">
+                      <div class="proto-odd-btn selected">
+                        <span class="proto-odd-label">Flamengo</span>
+                        <span class="proto-odd-val">2.15</span>
+                      </div>
+                      <div class="proto-odd-btn">
+                        <span class="proto-odd-label">Empate</span>
+                        <span class="proto-odd-val">3.40</span>
+                      </div>
+                      <div class="proto-odd-btn">
+                        <span class="proto-odd-label">Palmeiras</span>
+                        <span class="proto-odd-val">3.10</span>
+                      </div>
+                    </div>
+                    <div class="proto-bet-market" style="margin-top:6px;">Mais Opções</div>
+                    <div class="proto-odds-grid">
+                      <div class="proto-odd-btn">
+                        <span class="proto-odd-label">+1.5 Flam</span>
+                        <span class="proto-odd-val">1.45</span>
+                      </div>
+                      <div class="proto-odd-btn">
+                        <span class="proto-odd-label">Ambos Marc</span>
+                        <span class="proto-odd-val">2.20</span>
+                      </div>
+                      <div class="proto-odd-btn">
+                        <span class="proto-odd-label">+2.5 Gols</span>
+                        <span class="proto-odd-val">2.80</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Bet slip -->
+                  <div class="proto-bet-slip">
+                    <div class="proto-slip-header">
+                      <div class="proto-slip-title">
+                        <div class="proto-slip-count">1</div>
+                        Minha Aposta
+                      </div>
+                      <div class="proto-slip-remove">Limpar</div>
+                    </div>
+                    <div class="proto-slip-selection">
+                      <div class="proto-slip-sel-left">
+                        <div class="proto-slip-sel-label">Seleção</div>
+                        <div class="proto-slip-sel-name">Vitória Flamengo</div>
+                      </div>
+                      <div class="proto-slip-sel-odd">2.15</div>
+                    </div>
+                    <div class="proto-stake-row">
+                      <div class="proto-stake-label">Valor</div>
+                      <div class="proto-stake-input">R$ 50,00</div>
+                    </div>
+                    <div class="proto-stake-presets">
+                      <div class="proto-preset">R$10</div>
+                      <div class="proto-preset active">R$50</div>
+                      <div class="proto-preset">R$100</div>
+                      <div class="proto-preset">R$200</div>
+                    </div>
+                    <div class="proto-return-row">
+                      <div class="proto-return-label">Retorno Potencial</div>
+                      <div class="proto-return-val">R$ 107,50</div>
+                    </div>
+                    <button class="proto-confirm-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                      Confirmar Aposta
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Bottom nav -->
+                <div class="proto-bottom-nav">
+                  <div class="proto-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    <span class="proto-bottom-nav__label">Home</span>
+                  </div>
+                  <div class="proto-bottom-nav__item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <span class="proto-bottom-nav__label">Jogos</span>
+                  </div>
+                  <div class="proto-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <span class="proto-bottom-nav__label">Ao Vivo</span>
+                  </div>
+                  <div class="proto-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 12V22H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                    <span class="proto-bottom-nav__label">Bônus</span>
+                  </div>
+                  <div class="proto-bottom-nav__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="proto-bottom-nav__label">Conta</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hifi-annotations">
+          <div class="hifi-annotation-title">Decisões de Design</div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">01</div>
+            <div class="hifi-annotation-text">
+              <strong>Odd selecionada com estado visual imediato</strong>
+              <span>A odd selecionada recebe highlight dourado instantâneo + migração automática para o slip. Zero fricção entre descoberta e intenção de aposta — o estado é refletido em dois lugares ao mesmo tempo.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">02</div>
+            <div class="hifi-annotation-text">
+              <strong>Presets de valor calibrados ao ticket médio</strong>
+              <span>Os valores R$10, R$50, R$100, R$200 foram definidos com base no ticket médio de apostadores brasileiros. O preset R$50 vem ativo por padrão — não é aleatório, é dado de pesquisa.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">03</div>
+            <div class="hifi-annotation-text">
+              <strong>Retorno potencial em destaque Cormorant</strong>
+              <span>O valor de retorno usa a tipografia display em tamanho maior que os outros campos — framing de ganho, não de gasto. Decisão baseada em behavioral economics (anchoring effect).</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">04</div>
+            <div class="hifi-annotation-text">
+              <strong>CTA único e fixo no slip</strong>
+              <span>"Confirmar Aposta" nunca sai da tela independente do scroll. Ícone de check reforça a ação de conclusão. Ausência de CTA secundário em destaque — "Limpar" é apenas texto, reduzindo o risco de clique acidental.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TELA 3: Resultado Mobile ── -->
+      <div class="hifi-canvas" id="proto-result" role="tabpanel">
+        <div class="hifi-device-wrap">
+          <div class="hifi-phone">
+            <div class="hifi-phone__notch">
+              <div class="hifi-phone__notch-cam"></div>
+            </div>
+            <div class="hifi-phone__screen">
+              <div class="proto-result">
+                <div class="proto-result-hero">
+                  <div class="proto-result-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="proto-result-label">🎉 Aposta Vencedora!</div>
+                  <div class="proto-result-amount">R$ <em>107,50</em></div>
+                  <div class="proto-result-sub">Flamengo venceu · Odd 2.15 · Apostado R$50</div>
+                </div>
+                <div class="proto-result-stats">
+                  <div class="proto-stat-card">
+                    <div class="proto-stat-val">73%</div>
+                    <div class="proto-stat-label">Taxa de Acerto</div>
+                  </div>
+                  <div class="proto-stat-card">
+                    <div class="proto-stat-val">+R$340</div>
+                    <div class="proto-stat-label">Este Mês</div>
+                  </div>
+                  <div class="proto-stat-card">
+                    <div class="proto-stat-val">12</div>
+                    <div class="proto-stat-label">Apostas Vencidas</div>
+                  </div>
+                  <div class="proto-stat-card">
+                    <div class="proto-stat-val">2.38</div>
+                    <div class="proto-stat-label">Odd Média</div>
+                  </div>
+                </div>
+                <div class="proto-next-section">
+                  <div class="proto-next-label">Continue apostando</div>
+                  <div class="proto-suggestion-card">
+                    <div class="proto-sug-league">🏆 Copa do Brasil · Semi</div>
+                    <div class="proto-sug-teams">Athletico-PR vs Grêmio</div>
+                    <div class="proto-sug-odds">
+                      <div class="proto-mini-odd">1.75</div>
+                      <div class="proto-mini-odd">3.50</div>
+                      <div class="proto-mini-odd">4.80</div>
+                    </div>
+                  </div>
+                  <div class="proto-suggestion-card">
+                    <div class="proto-sug-league">⚽ Premier League</div>
+                    <div class="proto-sug-teams">Liverpool vs Chelsea</div>
+                    <div class="proto-sug-odds">
+                      <div class="proto-mini-odd">2.10</div>
+                      <div class="proto-mini-odd">3.30</div>
+                      <div class="proto-mini-odd">3.60</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hifi-annotations">
+          <div class="hifi-annotation-title">Decisões de Design</div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">01</div>
+            <div class="hifi-annotation-text">
+              <strong>Resultado como momento de celebração</strong>
+              <span>Ícone estrelado com glow dourado, não apenas um check verde genérico. O retorno potencial confirmado usa a tipografia Cormorant em destaque máximo — o "prêmio" precisa parecer um prêmio.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">02</div>
+            <div class="hifi-annotation-text">
+              <strong>Dashboard de performance pessoal</strong>
+              <span>Taxa de acerto, ganho mensal, apostas vencidas e odd média mostram progresso ao usuário. Aumenta percepção de controle e competência — base psicológica de retenção sustentável.</span>
+            </div>
+          </div>
+          <div class="hifi-annotation-item">
+            <div class="hifi-annotation-badge">03</div>
+            <div class="hifi-annotation-text">
+              <strong>Loop de reengajamento sem pressão</strong>
+              <span>Sugestões de próximos jogos aparecem contextualmente após o resultado, não antes. O usuário já tomou decisão e está receptivo. As sugestões são baseadas no perfil, não no volume de comissão da plataforma.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== DESIGN SYSTEM SECTION ====== -->
+  <section class="ds-entry-section" id="design-system" aria-label="Design System Betano">
+    <div class="container">
+
+      <div class="ds-entry-header">
+        <div class="section-label">Design System</div>
+        <h2 class="section-title">O <em>Alicerce</em> Visual</h2>
+        <p class="ds-entry-desc">
+          Antes de redesenhar uma única tela, construímos a fundação: 68 componentes documentados, 340+ tokens em três camadas de abstração — primitivos, semânticos e por domínio. Esse sistema garantiu consistência em Web, iOS e Android, e foi adotado por times em outros quatro mercados do grupo Kaizen Gaming.
+        </p>
+      </div>
+
+      <!-- Token preview strip -->
+      <div class="ds-token-strip">
+        <div class="ds-token-strip__group">
+          <div class="ds-ts-label">Cor · Primária</div>
+          <div class="ds-ts-swatches">
+            <div class="ds-ts-swatch" style="background:#e8292c" title="#e8292c — Red / Primary"></div>
+            <div class="ds-ts-swatch" style="background:#c82226" title="#c82226 — Red Dark"></div>
+            <div class="ds-ts-swatch" style="background:rgba(232,41,44,.25)" title="Red Glow"></div>
+            <div class="ds-ts-swatch" style="background:rgba(232,41,44,.12)" title="Red Dim"></div>
+          </div>
+        </div>
+        <div class="ds-token-strip__group">
+          <div class="ds-ts-label">Cor · Acento</div>
+          <div class="ds-ts-swatches">
+            <div class="ds-ts-swatch" style="background:#c9a96e" title="#c9a96e — Gold / Accent"></div>
+            <div class="ds-ts-swatch" style="background:#d4b87a" title="#d4b87a — Gold Light"></div>
+            <div class="ds-ts-swatch" style="background:rgba(201,169,110,.28)" title="Gold Border"></div>
+            <div class="ds-ts-swatch" style="background:rgba(201,169,110,.12)" title="Gold Dim"></div>
+          </div>
+        </div>
+        <div class="ds-token-strip__group">
+          <div class="ds-ts-label">Superfícies</div>
+          <div class="ds-ts-swatches">
+            <div class="ds-ts-swatch" style="background:#0c1220;border:1px solid #243044" title="#0c1220 — Navy Base"></div>
+            <div class="ds-ts-swatch" style="background:#111827" title="#111827 — Surface 1"></div>
+            <div class="ds-ts-swatch" style="background:#1a2235" title="#1a2235 — Surface 2"></div>
+            <div class="ds-ts-swatch" style="background:#1f2d44" title="#1f2d44 — Surface 3"></div>
+            <div class="ds-ts-swatch" style="background:#243044" title="#243044 — Surface 4"></div>
+          </div>
+        </div>
+        <div class="ds-token-strip__group">
+          <div class="ds-ts-label">Feedback</div>
+          <div class="ds-ts-swatches">
+            <div class="ds-ts-swatch" style="background:#2eb872" title="#2eb872 — Success"></div>
+            <div class="ds-ts-swatch" style="background:#f5820a" title="#f5820a — Warning"></div>
+            <div class="ds-ts-swatch" style="background:#6d4fc2" title="#6d4fc2 — Info"></div>
+            <div class="ds-ts-swatch" style="background:#f5c842" title="#f5c842 — Yellow"></div>
+          </div>
+        </div>
+        <div class="ds-token-strip__group">
+          <div class="ds-ts-label">Tipografia</div>
+          <div class="ds-ts-type-pair">
+            <span class="ds-ts-font-display">Barlow Condensed</span>
+            <span class="ds-ts-font-body">Inter + DM Mono</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Component preview grid -->
+      <div class="ds-comp-preview">
+
+        <!-- Buttons preview -->
+        <div class="ds-comp-card">
+          <div class="ds-comp-card__label">Botões · 5 variantes</div>
+          <div class="ds-comp-card__body ds-comp-card__body--buttons">
+            <div class="ds-mini-btn ds-mini-btn--primary">Apostar Agora</div>
+            <div class="ds-mini-btn ds-mini-btn--secondary">Ver Estatísticas</div>
+            <div class="ds-mini-btn ds-mini-btn--gold">Bônus</div>
+            <div class="ds-mini-btn ds-mini-btn--live">
+              <span class="ds-mini-live-dot"></span>Ao Vivo
+            </div>
+          </div>
+        </div>
+
+        <!-- Match card preview -->
+        <div class="ds-comp-card">
+          <div class="ds-comp-card__label">Match Card · Com odds</div>
+          <div class="ds-comp-card__body ds-comp-card__body--match">
+            <div class="ds-mini-match">
+              <div class="ds-mini-match__header">
+                <span class="ds-mini-match__league">⚽ Copa do Brasil</span>
+                <span class="ds-mini-match__live">
+                  <span class="ds-mini-live-dot"></span>67'
+                </span>
+              </div>
+              <div class="ds-mini-match__teams">
+                <span>Flamengo</span>
+                <span>Palmeiras</span>
+              </div>
+              <div class="ds-mini-match__odds">
+                <div class="ds-mini-odd ds-mini-odd--sel">2.15</div>
+                <div class="ds-mini-odd">3.40</div>
+                <div class="ds-mini-odd">3.10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bet slip preview -->
+        <div class="ds-comp-card">
+          <div class="ds-comp-card__label">Bet Slip · Mobile</div>
+          <div class="ds-comp-card__body ds-comp-card__body--betslip">
+            <div class="ds-mini-betslip">
+              <div class="ds-mini-betslip__header">
+                <div class="ds-mini-betslip__count">1</div>
+                <span>Minha Aposta</span>
+              </div>
+              <div class="ds-mini-betslip__sel">
+                <div class="ds-mini-betslip__match">Flamengo vs Palmeiras</div>
+                <div class="ds-mini-betslip__pick">Vitória Flamengo · 2.15</div>
+              </div>
+              <div class="ds-mini-betslip__row">
+                <span>Aposta</span><span>R$ 50,00</span>
+              </div>
+              <div class="ds-mini-betslip__row ds-mini-betslip__row--win">
+                <span>Retorno</span><span>R$ 107,50</span>
+              </div>
+              <div class="ds-mini-betslip__cta">Confirmar Aposta</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges & feedback -->
+        <div class="ds-comp-card">
+          <div class="ds-comp-card__label">Badges · Feedback · Toasts</div>
+          <div class="ds-comp-card__body ds-comp-card__body--badges">
+            <div class="ds-mini-badges">
+              <span class="ds-mini-badge ds-mini-badge--live"><span class="ds-mini-live-dot"></span>Ao Vivo</span>
+              <span class="ds-mini-badge ds-mini-badge--new">Novo</span>
+              <span class="ds-mini-badge ds-mini-badge--promo">Promoção</span>
+              <span class="ds-mini-badge ds-mini-badge--gold">Premium</span>
+            </div>
+            <div class="ds-mini-toast ds-mini-toast--success">
+              <span class="ds-mini-toast__icon">✓</span>
+              <div>
+                <div class="ds-mini-toast__title">Aposta Confirmada!</div>
+                <div class="ds-mini-toast__msg">Retorno potencial: R$ 107,50</div>
+              </div>
+            </div>
+            <div class="ds-mini-toast ds-mini-toast--warn">
+              <span class="ds-mini-toast__icon">▲</span>
+              <div>
+                <div class="ds-mini-toast__title">Odd Alterada</div>
+                <div class="ds-mini-toast__msg">2.15 → 2.30 (+7%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Motion tokens -->
+        <div class="ds-comp-card ds-comp-card--wide">
+          <div class="ds-comp-card__label">Motion Design · Tokens de Animação</div>
+          <div class="ds-comp-card__body ds-comp-card__body--motion">
+            <div class="ds-motion-item">
+              <div class="ds-motion-track">
+                <div class="ds-motion-dot ds-motion-dot--base"></div>
+              </div>
+              <div class="ds-motion-meta">
+                <span class="ds-motion-name">t-base</span>
+                <span class="ds-motion-val">0.2s ease · hover states</span>
+              </div>
+            </div>
+            <div class="ds-motion-item">
+              <div class="ds-motion-track">
+                <div class="ds-motion-dot ds-motion-dot--spring"></div>
+              </div>
+              <div class="ds-motion-meta">
+                <span class="ds-motion-name">t-spring</span>
+                <span class="ds-motion-val">0.25s cubic-bezier(.34,1.56,.64,1) · seleções</span>
+              </div>
+            </div>
+            <div class="ds-motion-item">
+              <div class="ds-motion-track">
+                <div class="ds-motion-dot ds-motion-dot--slow"></div>
+              </div>
+              <div class="ds-motion-meta">
+                <span class="ds-motion-name">t-slow</span>
+                <span class="ds-motion-val">0.35s ease-in-out · modais, painéis</span>
+              </div>
+            </div>
+            <div class="ds-motion-item">
+              <div class="ds-motion-track ds-motion-track--pulse">
+                <div class="ds-motion-dot ds-motion-dot--pulse"></div>
+              </div>
+              <div class="ds-motion-meta">
+                <span class="ds-motion-name">pulse · live</span>
+                <span class="ds-motion-val">1.4s ease-in-out · badges ao vivo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform split -->
+        <div class="ds-comp-card ds-comp-card--wide">
+          <div class="ds-comp-card__label">Plataformas · Web & Mobile</div>
+          <div class="ds-comp-card__body ds-comp-card__body--platforms">
+            <div class="ds-platform-item">
+              <div class="ds-platform-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="ds-platform-info">
+                <div class="ds-platform-name">Web Desktop</div>
+                <div class="ds-platform-desc">Grid 12 cols · max-width 1280px · sidebar bet slip · dense information architecture</div>
+              </div>
+            </div>
+            <div class="ds-platform-divider"></div>
+            <div class="ds-platform-item">
+              <div class="ds-platform-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              </div>
+              <div class="ds-platform-info">
+                <div class="ds-platform-name">Mobile App</div>
+                <div class="ds-platform-desc">Grid 4 cols · bottom tab nav · gestos nativos · bet slip como bottom sheet</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA to full DS -->
+      <div class="ds-entry-cta">
+        <div class="ds-entry-cta__left">
+          <div class="ds-entry-cta__title">Design System Completo</div>
+          <div class="ds-entry-cta__desc">Tokens, componentes, animações, guia de uso Web & Mobile — tudo documentado interativamente.</div>
+        </div>
+        <a href="design-system-betano.html" class="ds-entry-cta__btn" target="_blank" rel="noopener">
+          <span>Ver Design System Completo</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ====== FULL PROTOTYPE CTA SECTION ====== -->
   <section class="proto-full-section" id="prototipo-completo" aria-label="Protótipo interativo completo">
     <div class="container">
