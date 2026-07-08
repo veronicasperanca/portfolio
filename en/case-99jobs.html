@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>99Jobs Case Study — Verônica Sperança</title>
+<meta content="Gamifying hiring processes: +60% engagement, 97% retention. Senior Product Designer — Verônica Sperança." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&amp;family=Inter:wght@300;400;500;600;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .case-hero {
+      position: relative; min-height: 70vh; display: flex; align-items: flex-end;
+      overflow: hidden; padding-bottom: var(--sp-24); background: var(--surface-1);
+    }
+    .case-hero__bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 70% 20%, rgba(109,79,194,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 90%, rgba(201,169,110,0.07) 0%, transparent 70%);
+    }
+    .case-hero__content {
+      position: relative; z-index: 2; width: 100%;
+      max-width: var(--container); margin: 0 auto;
+      padding: 140px var(--container-pad) 0;
+    }
+    .case-hero__back {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      font-family: var(--font-mono); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--text-3); transition: color var(--t-base);
+      margin-bottom: var(--sp-12);
+    }
+    .case-hero__back:hover { color: var(--gold); }
+    .case-hero__back svg { transition: transform var(--t-spring); }
+    .case-hero__back:hover svg { transform: translateX(-4px); }
+    .case-hero__tag { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--sp-6); }
+    .case-hero__title { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,5.5rem); font-weight: 300; line-height: 1.05; color: var(--text-1); margin-bottom: var(--sp-8); max-width: 900px; }
+    .case-hero__title em { color: var(--gold); font-style: italic; }
+    .case-hero__meta { display: flex; gap: var(--sp-8); flex-wrap: wrap; }
+    .case-hero__meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .case-hero__meta-label { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); }
+    .case-hero__meta-value { font-size: .9rem; color: var(--text-2); }
+    .case-metrics-bar { background: var(--surface-2); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); padding: var(--sp-12) 0; }
+    .case-metrics-bar .metrics__grid { grid-template-columns: repeat(3, 1fr); }
+    .case-article { max-width: var(--container); margin: 0 auto; padding: var(--sp-24) var(--container-pad); display: grid; grid-template-columns: 240px 1fr; gap: var(--sp-16); align-items: start; }
+    .case-toc { position: sticky; top: 120px; }
+    .case-toc__title { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: var(--sp-4); }
+    .case-content h2 { font-family: var(--font-display); font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 300; color: var(--text-1); margin-bottom: var(--sp-6); margin-top: var(--sp-16); padding-top: var(--sp-4); }
+    .case-content h2:first-child { margin-top: 0; }
+    .case-content h2 em { color: var(--gold); font-style: italic; }
+    .case-content h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-1); margin-bottom: var(--sp-4); margin-top: var(--sp-8); }
+    .case-content p { color: var(--text-2); font-size: 1rem; line-height: 1.9; margin-bottom: var(--sp-6); }
+    .case-content strong { color: var(--text-1); font-weight: 500; }
+    .case-content ul { list-style: none; margin-bottom: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-3); }
+    .case-content ul li { display: flex; gap: var(--sp-3); align-items: flex-start; font-size: .95rem; color: var(--text-2); line-height: 1.75; }
+    .case-content ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .case-highlight { background: var(--surface-2); border: 1px solid var(--border-card); border-left: 3px solid var(--violet-light); border-radius: 0 var(--r-md) var(--r-md) 0; padding: var(--sp-6) var(--sp-8); margin: var(--sp-8) 0; }
+    .case-highlight p { margin: 0; font-size: 1rem; font-style: italic; color: var(--text-1); }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-4); margin: var(--sp-8) 0; }
+    .result-card { background: var(--surface-2); border: 1px solid var(--border-card); border-radius: var(--r-lg); padding: var(--sp-6); text-align: center; transition: all var(--t-ease); }
+    .result-card:hover { border-color: var(--gold-border); background: var(--gold-glow); }
+    .result-card__value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: var(--sp-2); }
+    .result-card__label { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-3); }
+    .octalysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--sp-3); margin: var(--sp-8) 0; }
+    .octalysis-card { background: var(--surface-1); border: 1px solid var(--border-card); border-radius: var(--r-lg); padding: var(--sp-5); transition: all var(--t-base); }
+    .octalysis-card:hover { border-color: var(--violet-light); transform: translateY(-2px); }
+    .octalysis-card__num { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; color: var(--violet-light); margin-bottom: var(--sp-2); }
+    .octalysis-card__name { font-size: .875rem; font-weight: 600; color: var(--text-1); margin-bottom: var(--sp-2); }
+    .octalysis-card__desc { font-size: .78rem; color: var(--text-3); line-height: 1.6; }
+    .companies-row { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin: var(--sp-6) 0; }
+    .company-tag { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; padding: var(--sp-2) var(--sp-4); background: var(--surface-2); border: 1px solid var(--border-card); border-radius: var(--r-full); color: var(--text-2); }
+    @media (max-width:1024px) { .case-article { grid-template-columns: 1fr; } .case-toc { display: none; } .case-metrics-bar .metrics__grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:600px) { .case-metrics-bar .metrics__grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<style>
+.lang-toggle{position:fixed;bottom:20px;right:20px;z-index:99999;background:rgba(20,20,25,0.9);backdrop-filter:blur(6px);color:#F0EDE6;padding:8px 18px;border-radius:999px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-decoration:none;border:1px solid rgba(255,255,255,0.15);box-shadow:0 4px 14px rgba(0,0,0,0.35);transition:background .2s ease,transform .2s ease;}
+.lang-toggle:hover{background:rgba(201,169,110,0.9);color:#111;transform:translateY(-1px);}
+@media (max-width:640px){.lang-toggle{bottom:16px;right:16px;padding:7px 14px;font-size:11px;}}
+</style>
+
+<a href="../case-99jobs.html" class="lang-toggle" aria-label="Mudar para versão em português">PT 🇧🇷</a>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+<div id="readingProgress"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
+<a aria-label="Home" class="nav__logo" href="index.html">VS<span class="nav__logo-dot">.</span></a>
+<ul class="nav__links" role="list">
+<li><a class="nav__link" href="index.html#sobre">About</a></li>
+<li><a class="nav__link" href="index.html#cases">Case Studies</a></li>
+<li><a class="nav__link" href="index.html#expertise">Expertise</a></li>
+<li><a class="nav__link" href="index.html#ds">Design System</a></li>
+<li><a class="nav__link" href="index.html#contato">Contact</a></li>
+</ul>
+<a class="nav__cta" href="index.html#contato">Let's talk</a>
+<button aria-expanded="false" aria-label="Menu" class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+</nav>
+<div aria-modal="true" class="mobile-menu" id="mobileMenu" role="dialog">
+<ul role="list">
+<li><a href="index.html#sobre">About</a></li>
+<li><a href="index.html#cases">Case Studies</a></li>
+<li><a href="index.html#expertise">Expertise</a></li>
+<li><a href="index.html#ds">Design System</a></li>
+<li><a href="index.html#contato">Contact</a></li>
+</ul>
+</div>
+<!-- HERO -->
+<section aria-label="Case 99Jobs" class="case-hero">
+<div aria-hidden="true" class="case-hero__bg"></div>
+<div class="case-hero__content">
+<a class="case-hero__back" href="index.html#cases">
+<svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        Voltar aos Cases
+      </a>
+<div class="case-hero__tag">Gamification · UX Research · Storytelling · Scrum</div>
+<h1 class="case-hero__title">
+        Gamifying Hiring Processes<br/>
+        em <em>Major Corporations</em>
+</h1>
+<div class="case-hero__meta">
+<div class="case-hero__meta-item">
+<span class="case-hero__meta-label">Empresa</span>
+<span class="case-hero__meta-value">99Jobs</span>
+</div>
+<div class="case-hero__meta-item">
+<span class="case-hero__meta-label">Period</span>
+<span class="case-hero__meta-value">2022 – 2023</span>
+</div>
+<div class="case-hero__meta-item">
+<span class="case-hero__meta-label">Papel</span>
+<span class="case-hero__meta-value">Senior Product Designer</span>
+</div>
+<div class="case-hero__meta-item">
+<span class="case-hero__meta-label">Setor</span>
+<span class="case-hero__meta-value">HRTech · Recruitment &amp; Selection</span>
+</div>
+</div>
+</div>
+</section>
+<!-- METRICS BAR -->
+<div aria-label="Project results" class="case-metrics-bar">
+<div class="container">
+<div class="metrics__grid">
+<div class="metric-item">
+<div class="metric-item__number">+<span class="counter" data-target="60">0</span>%</div>
+<div class="metric-item__label">Engagement</div>
+</div>
+<div class="metric-item">
+<div class="metric-item__number"><span class="counter" data-target="97">0</span>%</div>
+<div class="metric-item__label">Process Retention</div>
+</div>
+<div class="metric-item">
+<div class="metric-item__number">-<span class="counter" data-target="55">0</span>%</div>
+<div class="metric-item__label">Implementation Time</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ARTICLE -->
+<div class="case-article">
+<aside aria-label="Case study index" class="case-toc">
+<div class="case-toc__title">Neste case</div>
+<nav id="caseTOC">
+<a href="#contexto">Contexto</a>
+<a href="#problema">O Problema</a>
+<a href="#framework">Framework</a>
+<a href="#solucao">Solution</a>
+<a href="#jornada">User Journey</a>
+<a href="#empresas">Empresas</a>
+<a href="#resultados">Results</a>
+</nav>
+</aside>
+<article aria-label="99Jobs case study content" class="case-content">
+<h2 id="contexto">Contexto &amp; <em>Oportunidade</em></h2>
+<p>
+        99Jobs is an HRTech platform specialized in hiring processes for major corporations. In 2022, it identified a unique opportunity: traditional hiring processes were perceived by candidates as passive, anxiety-inducing experiences — lengthy forms, no feedback, and no sense of progress or accomplishment.
+      </p>
+<p>
+        At the same time, client companies were suffering alarming drop-out rates during the process — qualified candidates abandoning the funnel before the final stage, representing lost investment and recruiter time.
+      </p>
+<div class="case-highlight">
+<p>"What if the hiring process were as engaging as a good game? Not to make it trivial — but to make it human."</p>
+</div>
+<h2 id="problema">O <em>Problema Real</em></h2>
+<p>Three core pain points were identified in initial research with candidates and HR teams:</p>
+<ul>
+<li><strong>Candidatos:</strong> the absence of feedback during the process generated anxiety and disengagement — "it feels like I'm talking into a void"</li>
+<li><strong>Recrutadores:</strong> long forms discouraged qualified candidates who were introverted or less familiar with the traditional format</li>
+<li><strong>Empresas:</strong> data collected by the process didn't reflect real work behaviors — hard skills were assessed, soft skills stayed invisible</li>
+</ul>
+<h2 id="framework">O <em>Framework</em> of Gamification</h2>
+<p>
+        The project was anchored in two complementary frameworks: <strong>Octalysis Framework</strong> by Yu-Kai Chou (which maps the 8 core drivers of human motivation) and <strong>Self-Determination Theory</strong> (Deci &amp; Ryan), which differentiates extrinsic from intrinsic motivation.
+      </p>
+<p>The premise was clear: superficial gamification (points and badges with no purpose) would be counterproductive. What was needed was meaning, not just stimulus.</p>
+<div class="octalysis-grid">
+<div class="octalysis-card">
+<div class="octalysis-card__num">Drive 01</div>
+<div class="octalysis-card__name">Epic Meaning</div>
+<div class="octalysis-card__desc">Candidates understand their role in the company's story — they're not a number</div>
+</div>
+<div class="octalysis-card">
+<div class="octalysis-card__num">Drive 02</div>
+<div class="octalysis-card__name">Achievement</div>
+<div class="octalysis-card__desc">Visible progress, unlocked achievements, clear goals at every stage</div>
+</div>
+<div class="octalysis-card">
+<div class="octalysis-card__num">Drive 03</div>
+<div class="octalysis-card__name">Creative Expression</div>
+<div class="octalysis-card__desc">Challenges that let personality shine beyond the resume</div>
+</div>
+<div class="octalysis-card">
+<div class="octalysis-card__num">Drive 04</div>
+<div class="octalysis-card__name">Social Influence</div>
+<div class="octalysis-card__desc">References, endorsements, and collaboration — recruitment as a network</div>
+</div>
+<div class="octalysis-card">
+<div class="octalysis-card__num">Drive 05</div>
+<div class="octalysis-card__name">Imprevisibilidade</div>
+<div class="octalysis-card__desc">Surprise challenges that playfully test adaptability</div>
+</div>
+<div class="octalysis-card">
+<div class="octalysis-card__num">Drive 06</div>
+<div class="octalysis-card__name">Loss &amp; Avoidance</div>
+<div class="octalysis-card__desc">Deadlines with meaning — not empty pressure, but real opportunity</div>
+</div>
+</div>
+<h2 id="solucao">A <em>Solution</em> of Design</h2>
+<h3>Journey as Narrative</h3>
+<p>
+        We redesigned the hiring process as a <strong>narrative told in chapters</strong>: each stage has a name, a communicated purpose, and a moment of recognition. The candidate doesn't "take a test" — they "complete the values-discovery mission" or "present their perspective in the creative challenge."
+      </p>
+<h3>Feedback em Tempo Real</h3>
+<p>
+        We created a micro-feedback system that accompanies the candidate: completion indicators, recognition animations when finishing stages, and contextual messages that humanize the process. Candidates always know where they stand, what's next, and that they've been noticed.
+      </p>
+<h3>Desafios Adaptativos</h3>
+<p>
+        We developed a library of <strong>desafios adaptativos</strong> that companies can customize by position and culture. They assess critical reasoning, creativity, and cultural fit far more revealingly than traditional multiple-choice questions.
+      </p>
+<h2 id="empresas"><em>Empresas</em> Atendidas</h2>
+<p>The system was implemented at 10 companies during the period, including:</p>
+<div class="companies-row">
+<span class="company-tag">Casa&amp;Video</span>
+<span class="company-tag">ABB</span>
+<span class="company-tag">Pirelli</span>
+<span class="company-tag">Honda</span>
+<span class="company-tag">+ 6 empresas</span>
+</div>
+<p>
+        Each implementation was customized to the company's culture and open roles, but shared the same design system and motivational principles — ensuring a consistent candidate experience regardless of company.
+      </p>
+<h2 id="resultados"><em>Results</em> e Impacto</h2>
+<div class="result-grid">
+<div class="result-card reveal">
+<div class="result-card__value">+60%</div>
+<div class="result-card__label">Average Engagement</div>
+</div>
+<div class="result-card reveal" data-delay="100">
+<div class="result-card__value">97%</div>
+<div class="result-card__label">Process Retention</div>
+</div>
+<div class="result-card reveal" data-delay="200">
+<div class="result-card__value">-55%</div>
+<div class="result-card__label">Implementation Time</div>
+</div>
+<div class="result-card reveal" data-delay="300">
+<div class="result-card__value">10</div>
+<div class="result-card__label">Empresas Atendidas</div>
+</div>
+</div>
+<p>
+        The most valuable result was qualitative: candidates reported that this was the first hiring experience where they felt <em>vistos como pessoas</em>, not applications. This significantly elevated the employer-branding perception of the companies involved.
+      </p>
+</article>
+</div>
+<!-- ====== JOURNEY / SCREEN DEMO SECTION ====== -->
+<section aria-label="Screen walkthrough and candidate journey" class="journey-section" id="jornada">
+<div class="container">
+<div class="section-label">Screen Walkthrough</div>
+<h2 class="section-title">Journey of <em>Candidato</em></h2>
+<p class="journey-intro">
+        From sign-up to final feedback: every stage of the gamified hiring process was designed to turn anxiety into engagement. Browse the screens to see how game mechanics were integrated in a non-intrusive way.
+      </p>
+<div aria-label="Candidate journey stepper" class="journey-stepper" role="region" tabindex="0">
+<div class="journey-steps-row" role="tablist">
+<div aria-selected="true" class="journey-step-dot active" role="tab" tabindex="0">
+<div class="journey-step-dot__circle">01</div>
+<div class="journey-step-dot__label">Sign-Up &amp; Onboarding</div>
+</div>
+<div class="journey-connector"></div>
+<div aria-selected="false" class="journey-step-dot" role="tab" tabindex="-1">
+<div class="journey-step-dot__circle">02</div>
+<div class="journey-step-dot__label">Mission Dashboard</div>
+</div>
+<div class="journey-connector"></div>
+<div aria-selected="false" class="journey-step-dot" role="tab" tabindex="-1">
+<div class="journey-step-dot__circle">03</div>
+<div class="journey-step-dot__label">Desafio Adaptativo</div>
+</div>
+<div class="journey-connector"></div>
+<div aria-selected="false" class="journey-step-dot" role="tab" tabindex="-1">
+<div class="journey-step-dot__circle">04</div>
+<div class="journey-step-dot__label">Conquistas &amp; Progresso</div>
+</div>
+</div>
+<!-- ── PANEL 1: Inscrição ── -->
+<div class="screen-panel active" role="tabpanel">
+<div class="screen-viewer">
+<div class="screen-info">
+<div class="screen-step-num">Stage 01 · Sign-Up &amp; Onboarding</div>
+<h3 class="screen-title">A first impression that <em>invites, doesn't intimidate</em></h3>
+<p class="screen-desc">The sign-up screen was redesigned as a welcome letter. The candidate chooses their "journey" — they don't fill out a form. The narrative tone replaces bureaucratic fields from the very first moment.</p>
+<div class="screen-principles">
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"></path><path d="M8 12s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Drive: Epic Meaning (Octalysis)</strong>
+                    The candidate doesn't "apply for a job" — they "start their mission at [Company]."
+                  </div>
+</div>
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Progressive disclosure</strong>
+                    Only 3 initial fields. Complexity is introduced gradually as engagement increases.
+                  </div>
+</div>
+</div>
+</div>
+<div class="screen-device screen-device--mobile">
+<div class="device-frame">
+<div class="device-notch"></div>
+<div class="device-content">
+<!-- Welcome narrative -->
+<div style="text-align:center;margin-bottom:var(--sp-4);">
+<div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--violet-dim),var(--gold-dim));border:2px solid var(--violet);margin:0 auto var(--sp-2);"></div>
+<div style="height:7px;width:100px;background:var(--text-1);border-radius:var(--r-full);margin:0 auto var(--sp-1);opacity:0.6;"></div>
+<div style="height:5px;width:140px;background:var(--surface-4);border-radius:var(--r-full);margin:0 auto;"></div>
+</div>
+<!-- Fields -->
+<div style="display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-3);">
+<div style="background:var(--surface-3);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);">
+<div style="height:4px;width:50px;background:var(--gold-dim);border-radius:var(--r-full);margin-bottom:4px;"></div>
+<div style="height:5px;width:80%;background:var(--surface-4);border-radius:var(--r-full);"></div>
+</div>
+<div style="background:var(--surface-3);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);">
+<div style="height:4px;width:40px;background:var(--gold-dim);border-radius:var(--r-full);margin-bottom:4px;"></div>
+<div style="height:5px;width:60%;background:var(--surface-4);border-radius:var(--r-full);"></div>
+</div>
+</div>
+<div class="ui-progress">
+<div class="ui-progress__label"><span></span><span style="width:35px;"></span></div>
+<div class="ui-progress__track">
+<div class="ui-progress__fill" data-width="33" style="width:33%;"></div>
+</div>
+</div>
+<div style="height:26px;background:var(--violet);border-radius:var(--r-full);margin-top:var(--sp-3);opacity:0.8;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ── PANEL 2: Dashboard ── -->
+<div class="screen-panel" role="tabpanel">
+<div class="screen-viewer">
+<div class="screen-info">
+<div class="screen-step-num">Stage 02 · Mission Dashboard</div>
+<h3 class="screen-title">Progresso sempre <em>visible and motivating</em></h3>
+<p class="screen-desc">The dashboard replaces the "pending steps" list with a mission map. The candidate clearly sees where they are, what they've already accomplished, and what's coming next — eliminating the anxiety of uncertainty.</p>
+<div class="screen-principles">
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Drive: Accomplishment (Octalysis)</strong>
+                    Real-time progress bars and scoring continuously activate the achievement drive.
+                  </div>
+</div>
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Radical transparency</strong>
+                    Estimated timeline, evaluation criteria, and recruiter contact visible to everyone.
+                  </div>
+</div>
+</div>
+</div>
+<div class="screen-device screen-device--desktop">
+<div class="device-frame">
+<div class="device-bar"><div class="device-bar__dots"><div class="device-bar__dot"></div><div class="device-bar__dot"></div><div class="device-bar__dot"></div></div><div class="device-bar__url"></div></div>
+<div class="device-content">
+<div class="ui-nav"><div class="ui-nav__logo"></div><div class="ui-nav__links"><div class="ui-nav__link"></div></div><div class="ui-nav__cta" style="background:var(--violet-dim);border-color:var(--violet);"></div></div>
+<!-- Progress header -->
+<div style="background:linear-gradient(135deg,var(--violet-dim),transparent);border-radius:var(--r-md);padding:var(--sp-3);margin-bottom:var(--sp-3);border:1px solid var(--border-soft);">
+<div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-2);">
+<div style="width:32px;height:32px;border-radius:50%;background:var(--violet-dim);border:2px solid var(--violet);flex-shrink:0;"></div>
+<div style="flex:1;"><div style="height:6px;width:80px;background:var(--text-1);border-radius:var(--r-full);margin-bottom:4px;opacity:0.6;"></div><div style="height:4px;width:50px;background:var(--surface-4);border-radius:var(--r-full);"></div></div>
+<div style="height:20px;width:40px;background:var(--violet-dim);border:1px solid var(--violet);border-radius:var(--r-full);"></div>
+</div>
+<div class="ui-progress__track"><div class="ui-progress__fill" data-width="60" style="width:60%;background:linear-gradient(90deg,var(--violet),var(--violet-light));"></div></div>
+</div>
+<!-- Mission cards -->
+<div style="display:flex;flex-direction:column;gap:var(--sp-2);">
+<div style="display:flex;align-items:center;gap:var(--sp-3);background:var(--surface-3);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);border:1px solid var(--border-soft);">
+<div style="width:20px;height:20px;border-radius:50%;background:var(--gold-dim);border:1.5px solid var(--gold);flex-shrink:0;"></div>
+<div style="flex:1;height:5px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+<div style="height:14px;width:35px;background:var(--gold-dim);border-radius:var(--r-full);border:1px solid var(--gold-border);"></div>
+</div>
+<div style="display:flex;align-items:center;gap:var(--sp-3);background:var(--surface-2);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);border:1px solid var(--violet);box-shadow:0 0 8px rgba(109,79,194,0.2);">
+<div style="width:20px;height:20px;border-radius:50%;background:var(--violet);flex-shrink:0;"></div>
+<div style="flex:1;height:5px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+<div style="height:14px;width:50px;background:var(--violet-dim);border-radius:var(--r-full);border:1px solid var(--violet);"></div>
+</div>
+<div style="display:flex;align-items:center;gap:var(--sp-3);background:var(--surface-3);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);border:1px solid var(--border-soft);opacity:0.5;">
+<div style="width:20px;height:20px;border-radius:50%;background:var(--surface-4);border:1.5px solid var(--border-soft);flex-shrink:0;"></div>
+<div style="flex:1;height:5px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+<div style="height:14px;width:30px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+</div>
+</div>
+<!-- Badges -->
+<div class="ui-badges" style="margin-top:var(--sp-3);">
+<div class="ui-badge earned"></div>
+<div class="ui-badge earned"></div>
+<div class="ui-badge"></div>
+<div class="ui-badge"></div>
+<div style="font-family:var(--font-mono);font-size:.55rem;color:var(--text-3);align-self:center;margin-left:var(--sp-1);">2/4 conquistados</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ── PANEL 3: Desafio ── -->
+<div class="screen-panel" role="tabpanel">
+<div class="screen-viewer">
+<div class="screen-info">
+<div class="screen-step-num">Etapa 03 · Desafio Adaptativo</div>
+<h3 class="screen-title">Evaluation as <em>an experience, not a test</em></h3>
+<p class="screen-desc">Challenges are presented as timed missions with narrative context. The candidate solves real work situations — not abstract questions — which reveals soft skills organically.</p>
+<div class="screen-principles">
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"></path><path d="M12 6v6l4 2"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Drive: Unpredictability (Octalysis)</strong>
+                    Every process has unique, adaptively generated challenges — with no possibility of "memorizing answers."
+                  </div>
+</div>
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Real situations</strong>
+                    "How would you handle..." — assesses contextual reasoning, not memorization of correct answers.
+                  </div>
+</div>
+</div>
+</div>
+<div class="screen-device screen-device--desktop">
+<div class="device-frame">
+<div class="device-bar"><div class="device-bar__dots"><div class="device-bar__dot"></div><div class="device-bar__dot"></div><div class="device-bar__dot"></div></div><div class="device-bar__url"></div></div>
+<div class="device-content">
+<!-- Challenge header -->
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3);">
+<div style="display:flex;gap:var(--sp-2);">
+<div style="height:16px;width:55px;background:var(--violet-dim);border:1px solid var(--violet);border-radius:var(--r-full);"></div>
+<div style="height:16px;width:40px;background:var(--surface-4);border-radius:var(--r-full);"></div>
+</div>
+<div style="display:flex;align-items:center;gap:4px;">
+<div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:badgePulse 1.5s ease-in-out infinite;"></div>
+<div style="height:5px;width:30px;background:var(--gold-dim);border-radius:var(--r-full);"></div>
+</div>
+</div>
+<!-- Scenario text mockup -->
+<div style="background:var(--surface-2);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:var(--sp-3);margin-bottom:var(--sp-3);">
+<div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:6px;"></div>
+<div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:6px;width:90%;"></div>
+<div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:6px;width:75%;"></div>
+<div style="height:5px;background:var(--surface-4);border-radius:var(--r-full);width:85%;"></div>
+</div>
+<!-- Options -->
+<div style="display:flex;flex-direction:column;gap:var(--sp-2);">
+<div style="background:var(--violet-dim);border:1px solid var(--violet);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);display:flex;align-items:center;gap:var(--sp-2);">
+<div style="width:12px;height:12px;border-radius:50%;background:var(--violet);flex-shrink:0;"></div>
+<div style="height:4px;flex:1;background:var(--violet-light);border-radius:var(--r-full);opacity:0.4;"></div>
+</div>
+<div style="background:var(--surface-3);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);display:flex;align-items:center;gap:var(--sp-2);">
+<div style="width:12px;height:12px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;"></div>
+<div style="height:4px;flex:1;background:var(--surface-4);border-radius:var(--r-full);"></div>
+</div>
+<div style="background:var(--surface-3);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:var(--sp-2) var(--sp-3);display:flex;align-items:center;gap:var(--sp-2);">
+<div style="width:12px;height:12px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;"></div>
+<div style="height:4px;flex:1;background:var(--surface-4);border-radius:var(--r-full);width:70%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ── PANEL 4: Conquistas ── -->
+<div class="screen-panel" role="tabpanel">
+<div class="screen-viewer">
+<div class="screen-info">
+<div class="screen-step-num">Stage 04 · Achievements &amp; Progression Loop</div>
+<h3 class="screen-title">Reconhecimento que <em>keeps the candidate invested</em></h3>
+<p class="screen-desc">When completing each mission, the candidate receives immediate feedback, badges, and points. It's not decoration — it's the achievement drive in action. Every unlocked achievement increases the likelihood of completing the next stage.</p>
+<div class="screen-principles">
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Feedback positivo imediato</strong>
+                    An achievement animation celebrates every stage — 97% of candidates completed the process after earning their first badge.
+                  </div>
+</div>
+<div class="screen-principle">
+<div aria-hidden="true" class="screen-principle-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="14"><path d="M12 4v16m8-8H4"></path></svg>
+</div>
+<div class="screen-principle-text">
+<strong>Next challenge always visible</strong>
+                    The achievement screen immediately shows what comes next — the "next step" is one click away.
+                  </div>
+</div>
+</div>
+</div>
+<div class="screen-device screen-device--mobile">
+<div class="device-frame">
+<div class="device-notch"></div>
+<div class="device-content">
+<!-- Achievement unlock -->
+<div style="text-align:center;margin-bottom:var(--sp-3);">
+<div style="position:relative;width:56px;height:56px;margin:0 auto var(--sp-2);">
+<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--violet-dim),var(--gold-dim));border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;">
+<span style="font-size:20px;">★</span>
+</div>
+</div>
+<div style="height:8px;width:110px;background:var(--gold-dim);border-radius:var(--r-full);margin:0 auto var(--sp-1);"></div>
+<div style="height:5px;width:80px;background:var(--surface-4);border-radius:var(--r-full);margin:0 auto;"></div>
+</div>
+<!-- Progress after achievement -->
+<div class="ui-progress" style="margin-bottom:var(--sp-3);">
+<div class="ui-progress__label"><span style="width:90px;"></span><span style="width:30px;background:var(--gold-dim);"></span></div>
+<div class="ui-progress__track"><div class="ui-progress__fill" data-width="75" style="width:75%;"></div></div>
+</div>
+<!-- Badge collection -->
+<div style="background:var(--surface-2);border-radius:var(--r-md);padding:var(--sp-3);margin-bottom:var(--sp-3);border:1px solid var(--border-soft);">
+<div style="height:4px;width:60px;background:var(--surface-4);border-radius:var(--r-full);margin-bottom:var(--sp-2);"></div>
+<div class="ui-badges">
+<div class="ui-badge earned"></div>
+<div class="ui-badge earned"></div>
+<div class="ui-badge earned"></div>
+<div class="ui-badge" style="border-color:var(--gold-border);opacity:0.5;"></div>
+</div>
+</div>
+<!-- Next step CTA -->
+<div style="height:26px;background:var(--violet);border-radius:var(--r-full);opacity:0.85;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Controls -->
+<div class="journey-controls">
+<button aria-label="Etapa anterior" class="journey-btn journey-btn--prev" disabled="">
+<svg aria-hidden="true" fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+            Anterior
+          </button>
+<span class="journey-counter">1 / 4</span>
+<button aria-label="Next stage" class="journey-btn journey-btn--next">
+            Next
+            <svg aria-hidden="true" fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+<footer role="contentinfo">
+<p class="footer__copy">© 2026 Verônica Sperança · Senior Product Designer</p>
+<div class="footer__links">
+<a href="case-betano.html">Betano</a>
+<a aria-current="page" href="case-99jobs.html">99Jobs</a>
+<a href="case-banking.html">Banking</a>
+</div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
